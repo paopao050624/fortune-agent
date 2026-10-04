@@ -1,8 +1,17 @@
 # Fortune Agent
 
+[![Tests and package](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml)
+
 一个逐步构建的塔罗与每日运势 Agent 项目。目前包含可测试的塔罗抽牌工具、通过兼容 OpenAI Responses API 的中转站运行的解牌 Agent、可追溯的 Waite 原书牌义，以及限定中国标准时间的八字四柱排盘原型。紫微、易经与西方占星尚未实现。
 
 当前版本为 **v0.1 本地原型**。首次安装、配置和演示步骤见 [v0.1 使用说明](docs/release-v0.1.md)，开发流程见 [CONTRIBUTING](CONTRIBUTING.md)。
+
+仓库：[paopao050624/fortune-agent](https://github.com/paopao050624/fortune-agent)。下载代码后在项目目录运行下方命令：
+
+```bash
+git clone https://github.com/paopao050624/fortune-agent.git
+cd fortune-agent
+```
 
 ## 运行
 
@@ -91,4 +100,4 @@ fortune-agent "这个项目该怎么推进？" --spread three --interpret --styl
 
 候选典籍及使用规则见 [资料与方法](docs/references.md)。已注明的 Waite 塔罗资料、《滴天髓》和《子平真诠》有限摘录已接入；其他典籍仍在规划中。
 
-GitHub 发布状态与本地提交记录以 Git 仓库为准；当前还没有配置远程仓库。自动测试工作流已准备，需推送后由 GitHub 执行。
+代码已推送至 GitHub，自动测试状态见顶部徽章。该版本提供本地原型，尚未发布到 PyPI，也不是已部署的公共网站。
