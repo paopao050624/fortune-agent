@@ -3,7 +3,8 @@
 ## Unreleased
 
 - Add three-coin I Ching casting, six user-supplied line totals, moving lines, and main/changed hexagrams in the CLI and local web interface.
-- Preserve a source-linked lookup table for all 64 combinations and individual simulated coin records; no oracle-text interpretation is implemented yet.
+- Add the complete 64 judgments, 384 line texts and Qian/Kun special passages with per-page fixed source revisions and variant notes.
+- Add seven moving-count cases and an alternative all-moving-lines policy, offline reference lookup, structured model interpretation and validated passage IDs.
 - Accept user-supplied four pillars in the CLI and local web interface.
 - Validate individual pillars against the sexagenary cycle and explicitly preserve unknown birth time, timezone, solar terms, and day-boundary conventions.
 - Reuse source-linked interpretation and relationship calculations without inventing a birth date or claiming the supplied chart is calendar-verified.

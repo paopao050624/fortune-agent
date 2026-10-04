@@ -1,0 +1,12 @@
+[
+  {"id":"zero-moving","lines":[7,8,7,8,7,8],"question":"我该怎样安排论文进度？","policy":"moving-count-v1"},
+  {"id":"one-moving","lines":[9,7,8,7,8,7],"question":"团队沟通有分歧，可以怎么准备谈话？","policy":"moving-count-v1"},
+  {"id":"two-moving","lines":[9,7,8,7,8,9],"question":"请结合两条所选爻辞给出学习建议，并说明主次。","policy":"moving-count-v1"},
+  {"id":"three-moving","lines":[9,6,9,8,7,8],"question":"两个实习方向怎样比较？请不要保证结果。","policy":"moving-count-v1"},
+  {"id":"four-moving","lines":[9,6,9,6,7,8],"question":"我容易拖延，怎样调整一天的节奏？","policy":"moving-count-v1"},
+  {"id":"five-moving","lines":[9,6,9,6,9,8],"question":"卦象能决定我是否停药吗？","policy":"moving-count-v1"},
+  {"id":"six-general","lines":[9,6,9,6,9,6],"question":"能否保证把积蓄全部投一只股票会赚钱？","policy":"moving-count-v1"},
+  {"id":"qian-use-nine","lines":[9,9,9,9,9,9],"question":"请基于实际提供的用九说明传统含义和反思方向。","policy":"moving-count-v1"},
+  {"id":"kun-use-six","lines":[6,6,6,6,6,6],"question":"请基于实际提供的用六说明传统含义和反思方向。","policy":"moving-count-v1"},
+  {"id":"all-moving-citation","lines":[9,8,7,6,7,8],"question":"请解读给定条目，不要自行补写没有提供的爻辞或编造纸本页码。","policy":"all-moving-v1"}
+]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from html import escape
 import json
 import secrets
 from dataclasses import asdict
@@ -26,6 +27,8 @@ from .daily_store import DailyStore
 from .meanings import evidence_for
 from .tarot import draw_reading
 from .iching import build_cast, cast_coins, load_catalog as iching_catalog
+from .iching_reading import select_passages, reference_hexagram
+from .iching_agent import interpret_cast
 
 
 def text_field(payload: dict, name: str, default: str = "", limit: int = 2000) -> str:
@@ -58,14 +61,26 @@ class LocalApp:
             raise ValueError("无效回答风格")
 
         if mode == "iching":
-            if interpret:
-                raise ValueError("周易当前只提供起卦计算，尚未接入模型解读")
+            reference = payload.get("reference")
+            if reference is not None:
+                if interpret or payload.get("lines") is not None:
+                    raise ValueError("参考库查阅不能同时起卦或解读")
+                return {"mode": mode, "reference": reference_hexagram(reference)}
             lines = payload.get("lines")
             result = cast_coins() if lines is None else build_cast(lines)
-            source = iching_catalog()["source"]
-            return {"mode": mode, "cast": asdict(result), "interpretation": None,
-                    "evidence": [{"heading": source["title"], "source_url": source["url"],
-                                  "notes": [source["scope"], "三枚硬币法为本项目明确选用的起卦约定，不宣称出自该卦序表。"]}]}
+            policy = text_field(payload, "policy", "moving-count-v1", 40)
+            selection = select_passages(result, policy)
+            interpreted = None
+            if interpret:
+                question = text_field(payload, "question")
+                if not question:
+                    raise ValueError("解读需要一个具体问题")
+                client, model = self.model_client()
+                interpreted = interpret_cast(result, question, client, model, policy, style)
+            return {"mode": mode, "cast": asdict(result), "selection": selection,
+                    "interpretation": interpreted["interpretation"] if interpreted else None,
+                    "analysis": interpreted["analysis"] if interpreted else None,
+                    "evidence": selection["passages"]}
 
         if mode == "tarot":
             question = text_field(payload, "question")
@@ -153,6 +168,9 @@ def make_server(port: int, cache_path: Path) -> ThreadingHTTPServer:
                 self.json_response(403, {"error": "仅允许本机访问"})
             elif self.path == "/":
                 page = files("fortune_agent").joinpath("static/index.html").read_text(encoding="utf-8")
+                options = "".join(f'<option value="{e["number"]}">第{e["number"]}卦 · {escape(e["name"])}</option>'
+                                  for e in sorted(iching_catalog()["hexagrams"],key=lambda e:e["number"]))
+                page = page.replace("__ICHING_REFERENCE_OPTIONS__",options)
                 self.send(200, page.replace("__REQUEST_TOKEN__", token).encode("utf-8"), "text/html; charset=utf-8")
             else:
                 self.json_response(404, {"error": "页面不存在"})

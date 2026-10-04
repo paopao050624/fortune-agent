@@ -55,16 +55,23 @@ class WebTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(first["reading"], second["reading"])
 
-    def test_iching_uses_supplied_six_lines_and_rejects_model_request(self):
+    def test_iching_uses_supplied_six_lines_and_validates_question(self):
         with patch.object(LocalApp, "model_client", side_effect=AssertionError("No model for this mode")):
             status, data = self.post({"mode": "iching", "lines": [9] * 6})
             self.assertEqual(status, 200)
             self.assertEqual(data["cast"]["main_hexagram"]["name"], "乾")
             self.assertEqual(data["cast"]["changed_hexagram"]["name"], "坤")
+            self.assertEqual(data["selection"]["passages"][0]["kind"], "用九")
             status, _ = self.post({"mode": "iching", "lines": [7] * 5})
             self.assertEqual(status, 400)
             status, _ = self.post({"mode": "iching", "interpret": True})
             self.assertEqual(status, 400)
+
+    def test_full_iching_reference_available_without_model(self):
+        status, data = self.post({"mode":"iching", "reference":1})
+        self.assertEqual(status,200)
+        self.assertEqual(len(data["reference"]["lines"]),6)
+        self.assertIn("用九",data["reference"]["special"])
 
     def test_cross_site_requests_and_nonlocal_host_are_rejected(self):
         status, _ = self.post({"mode": "daily"}, token="wrong-token")

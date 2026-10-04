@@ -35,7 +35,7 @@ python -m pip install -e '.[agent,bazi]'
 fortune-web
 ```
 
-浏览器打开 `http://127.0.0.1:8765`，可选择塔罗问答、每日一张牌、八字排盘或周易起卦。默认只在本机抽牌或计算，勾选“生成模型解读”才使用中转站；周易当前只有起卦，不提供模型解读。中转站环境变量应在启动服务的终端设置，密钥不通过浏览器输入或返回。源码运行也可用 `PYTHONPATH=src python -m fortune_agent.web`。
+浏览器打开 `http://127.0.0.1:8765`，可选择塔罗问答、每日一张牌、八字排盘或周易起卦。默认只在本机抽牌或计算，勾选“生成模型解读”才使用中转站。周易另有完整经文参考库与两种取辞规则。中转站环境变量应在启动服务的终端设置，密钥不通过浏览器输入或返回。源码运行也可用 `PYTHONPATH=src python -m fortune_agent.web`。
 
 网页仅监听本机回环地址，供单人体验使用，尚未实现账户和公网部署。每日解读与命令行共用 `work/daily.sqlite3`（可用 `--cache` 指定固定路径）；塔罗问题与出生资料不保存。模型回答以文字展示，原文与来源可展开查看。关闭服务按 `Ctrl+C`，换端口可用 `fortune-web --port 8766`。
 
@@ -57,9 +57,11 @@ PYTHONPATH=src python -m fortune_agent.daily_cli --profile reader-01 --timezone 
 ```bash
 fortune-iching
 fortune-iching --lines 9 9 9 9 9 9
+fortune-iching --reference 1
+fortune-iching --lines 9 7 7 7 7 7 --interpret '研究项目如何推进？'
 ```
 
-支持程序模拟三枚硬币，或按初爻到上爻输入六次和数（6–9），输出主卦、变卦和动爻。六次全为 9 时为乾变坤。起卦约定、卦序来源与限制见 [周易起卦说明](docs/iching.md)。当前未接入卦辞、爻辞或解读规则。
+支持模拟或输入六次和数，计算主卦、变卦、动爻；参考库含 64 卦卦辞、384 条爻辞和乾坤用九、用六。程序按公开规则选文，模型逐条解释，引用原文由程序呈现并校验条目 ID。起卦约定见 [起卦说明](docs/iching.md)，取辞、来源与版本限制见 [周易解读](docs/iching-interpretation.md)。
 
 ## 八字四柱原型
 
