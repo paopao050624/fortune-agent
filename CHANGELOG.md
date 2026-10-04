@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Accept user-supplied four pillars in the CLI and local web interface.
+- Validate individual pillars against the sexagenary cycle and explicitly preserve unknown birth time, timezone, solar terms, and day-boundary conventions.
+- Reuse source-linked interpretation and relationship calculations without inventing a birth date or claiming the supplied chart is calendar-verified.
+
 ## 0.1.0
 
 First local prototype. This is a development release, not a complete implementation of all planned divination systems.

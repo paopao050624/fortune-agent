@@ -60,7 +60,10 @@ PYTHONPATH=src python -m fortune_agent.daily_cli --profile reader-01 --timezone 
 python -m pip install -e '.[bazi]'
 fortune-bazi --birth 2000-01-01T12:00:00+08:00
 fortune-bazi --birth 2000-01-01T12:00:00+08:00 --json
+fortune-bazi --pillars '己卯 丙子 戊午 戊午' --details --analysis
 ```
+
+也可直接提供四柱，顺序为年、月、日、时，接受空格、逗号或连续八字。此模式不需要历法库，只校验每柱是否为六十甲子的合法干支；不能验证四柱是否对应同一出生时刻。出生日期、时区、节气和换日规则会明确标为未知。网页八字页可切换“直接提供四柱”，模型解读沿用用户输入，不会虚构出生资料。
 
 如需模型解释，安装 `.[agent,bazi]` 并设置下文的中转站环境变量，再运行 `fortune-bazi --birth 2000-01-01T12:00:00+08:00 --interpret '学习上应注意什么？'`。出生时间和排盘结果会发送至中转站，命令不会保存出生资料。程序提供《滴天髓辑要》相关原文，以及《子平真诠》的五个扫描核对短段；`--sources` 可离线查看资料，`--details` 查看十神和藏干，`--analysis` 查看 [财格方法条件清单](docs/bazi-wealth-checklist.md)。版本与校勘限制见 [八字古籍资料](docs/bazi-sources.md) 和 [子平真诠摘录](docs/ziping-transcription.md)，计算规则见 [十神与藏干](docs/bazi-facts.md)。《渊海子平》等其他典籍尚未接入。未知出生时刻、海外出生或要求真太阳时校正的情况暂不支持，不应拿默认时刻代替真实时刻。
 

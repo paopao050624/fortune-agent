@@ -68,6 +68,17 @@ class WebTests(unittest.TestCase):
             status, _ = self.post({"mode": "tarot", "question": "学习", "picks": [True], "interpret": True})
         self.assertEqual(status, 400)
 
+    def test_direct_pillars_without_calculator_dependency_and_conflicting_inputs(self):
+        status, data = self.post({"mode": "bazi", "pillars": "己卯 丙子 戊午 戊午"})
+        self.assertEqual(status, 200)
+        self.assertIsNone(data["chart"]["birth_time"])
+        self.assertEqual(data["chart"]["day_master"], "戊")
+        status, _ = self.post({"mode": "bazi", "pillars": "甲丑 丙子 戊午 戊午"})
+        self.assertEqual(status, 400)
+        status, _ = self.post({"mode": "bazi", "pillars": "己卯 丙子 戊午 戊午",
+                               "birth": "2000-01-01T12:00:00+08:00"})
+        self.assertEqual(status, 400)
+
     def test_provider_error_details_are_not_sent_to_browser(self):
         with patch.object(LocalApp, "model_client", side_effect=Exception("secret-provider-detail")):
             status, data = self.post({"mode": "tarot", "question": "学习", "interpret": True})

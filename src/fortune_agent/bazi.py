@@ -4,25 +4,55 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from datetime import datetime
+import re
 from zoneinfo import ZoneInfo
 
 
 @dataclass(frozen=True)
 class BaziChart:
-    birth_time: str
-    timezone: str
+    birth_time: str | None
+    timezone: str | None
     year: str
     month: str
     day: str
     hour: str
     day_master: str
-    previous_jie: str
-    previous_jie_time: str
-    next_jie: str
-    next_jie_time: str
+    previous_jie: str | None
+    previous_jie_time: str | None
+    next_jie: str | None
+    next_jie_time: str | None
     day_boundary_rule: str
     solar_time_rule: str
     calculator: str
+
+
+def parse_bazi_pillars(value: str) -> BaziChart:
+    """Accept supplied pillars without inventing a birth date or conventions.
+
+    Membership in the sexagenary cycle is a syntax check only; it does not
+    establish that all four pillars correspond to one actual birth instant.
+    """
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError("请输入年、月、日、时四柱，例如 己卯 丙子 戊午 戊午")
+    compact = re.sub(r"[\s,，、]+", "", value)
+    if len(compact) != 8:
+        raise ValueError("需要四组干支，共八个汉字，顺序为年、月、日、时")
+    stems = "甲乙丙丁戊己庚辛壬癸"
+    branches = "子丑寅卯辰巳午未申酉戌亥"
+    valid_pairs = {stems[index % 10] + branches[index % 12] for index in range(60)}
+    pillars = tuple(compact[index:index + 2] for index in range(0, 8, 2))
+    for position, pillar in zip(("年柱", "月柱", "日柱", "时柱"), pillars, strict=True):
+        if pillar not in valid_pairs:
+            raise ValueError(f"{position} {pillar} 不是六十甲子中的有效干支")
+    return BaziChart(
+        birth_time=None, timezone=None,
+        year=pillars[0], month=pillars[1], day=pillars[2], hour=pillars[3],
+        day_master=pillars[2][0],
+        previous_jie=None, previous_jie_time=None, next_jie=None, next_jie_time=None,
+        day_boundary_rule="用户未提供换日规则，无法核对",
+        solar_time_rule="用户未提供时间体系，无法核对真太阳时或法定时间",
+        calculator="用户提供四柱；仅检查单柱干支合法性，未按出生时刻核对排盘",
+    )
 
 
 def calculate_bazi(birth_time: str, timezone_name: str = "Asia/Shanghai") -> BaziChart:

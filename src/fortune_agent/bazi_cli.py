@@ -6,7 +6,7 @@ import argparse
 import json
 from dataclasses import asdict
 
-from .bazi import calculate_bazi
+from .bazi import calculate_bazi, parse_bazi_pillars
 from .bazi_sources import evidence_for
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
@@ -14,7 +14,9 @@ from .bazi_rules import wealth_checklist
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="八字四柱排盘原型")
-    parser.add_argument("--birth", required=True, help="公历出生时刻，例如 2000-01-01T12:00:00+08:00")
+    inputs = parser.add_mutually_exclusive_group(required=True)
+    inputs.add_argument("--birth", help="公历出生时刻，例如 2000-01-01T12:00:00+08:00")
+    inputs.add_argument("--pillars", help="直接提供四柱，例如 '己卯 丙子 戊午 戊午'")
     parser.add_argument("--timezone", default="Asia/Shanghai")
     parser.add_argument("--interpret", help="可选：要问模型的问题")
     parser.add_argument("--json", action="store_true")
@@ -23,7 +25,7 @@ def main() -> None:
     parser.add_argument("--analysis", action="store_true", help="显示财格方法条件清单，无需 API")
     args = parser.parse_args()
     try:
-        chart = calculate_bazi(args.birth, args.timezone)
+        chart = parse_bazi_pillars(args.pillars) if args.pillars else calculate_bazi(args.birth, args.timezone)
         evidence = evidence_for(chart)
         facts = chart_facts(chart)
         checklist = wealth_checklist(chart)
@@ -53,11 +55,15 @@ def main() -> None:
                           "method_checklist": checklist, "interpretation": interpretation,
                           "evidence": evidence}, ensure_ascii=False, indent=2))
         return
-    print(f"出生时间：{chart.birth_time}（{chart.timezone}）")
+    if chart.birth_time is not None:
+        print(f"出生时间：{chart.birth_time}（{chart.timezone}）")
+    else:
+        print(f"资料来源：{chart.calculator}")
     print(f"四柱：{chart.year} {chart.month} {chart.day} {chart.hour}")
     print(f"日主：{chart.day_master}")
-    print(f"前一节：{chart.previous_jie} {chart.previous_jie_time}")
-    print(f"后一节：{chart.next_jie} {chart.next_jie_time}")
+    if chart.previous_jie is not None:
+        print(f"前一节：{chart.previous_jie} {chart.previous_jie_time}")
+        print(f"后一节：{chart.next_jie} {chart.next_jie_time}")
     print(f"规则：{chart.day_boundary_rule}；{chart.solar_time_rule}")
     if args.details:
         print(f"\n月令月支：{facts['month_branch']}")

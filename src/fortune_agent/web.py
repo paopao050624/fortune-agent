@@ -14,7 +14,7 @@ from threading import Lock
 from typing import Any
 
 from .agent import TarotAgent
-from .bazi import calculate_bazi
+from .bazi import calculate_bazi, parse_bazi_pillars
 from .bazi_agent import interpret_bazi
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
@@ -93,7 +93,10 @@ class LocalApp:
 
         if mode == "bazi":
             birth = text_field(payload, "birth", limit=60)
-            chart = calculate_bazi(birth)
+            pillars = text_field(payload, "pillars", limit=60)
+            if bool(birth) == bool(pillars):
+                raise ValueError("请提供出生时间或四柱之一，不能同时提供")
+            chart = parse_bazi_pillars(pillars) if pillars else calculate_bazi(birth)
             question = text_field(payload, "question", "请说明排盘和所提供的依据。")
             if interpret and not question:
                 raise ValueError("解读问题不能为空")
