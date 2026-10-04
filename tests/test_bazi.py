@@ -65,6 +65,7 @@ class BaziTests(unittest.TestCase):
         self.assertNotEqual(payload["reference_date"], chart.birth_time[:10])
         self.assertEqual(payload["source_evidence"][0]["stem"], chart.day_master)
         self.assertIn("oldid=", payload["source_evidence"][0]["source_url"])
+        self.assertEqual(payload["style"],"gentle")
 
 
 if __name__ == "__main__":

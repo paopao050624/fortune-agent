@@ -2,7 +2,7 @@
 from dataclasses import asdict
 import json
 
-from .iching_reading import select_passages
+from .iching_reading import select_passages, passage
 
 INSTRUCTIONS = """你是周易学习与反思助手。主卦、变卦、动爻及取辞由程序确定，不得重新起卦或修改。
 只解释 selection.passages 给出的经文，不补写其他爻辞、彖传、象传、纸本页码或流派出处。
@@ -14,12 +14,24 @@ INSTRUCTIONS = """你是周易学习与反思助手。主卦、变卦、动爻�
 直接风格要清楚简洁，温和风格给可选择的建议，两者都不得保证结果。中文回答。"""
 
 
-def interpret_cast(cast, question, client, model, policy="moving-count-v1", style="gentle"):
+def interpret_cast(cast, question, client, model, policy="moving-count-v1", style="gentle",include_hexagram_context=False):
     if not isinstance(question, str) or not question.strip():
         raise ValueError("解读需要一个具体问题")
     if style not in ("direct", "gentle"):
         raise ValueError("无效回答风格")
     selection = select_passages(cast, policy)
+    if include_hexagram_context:
+        ids={p["id"] for p in selection["passages"]}
+        added=[]
+        for number in (cast.main_hexagram["number"],cast.changed_hexagram["number"]):
+            original=passage(number,"judgment")
+            if original["id"] not in ids:
+                original.update({"primary":False,"supplementary":True,
+                                 "heading":original["heading"]+"（追问补充背景）"})
+                selection["passages"].append(original);ids.add(original["id"]);added.append(original["id"])
+        if added:
+            selection["rule_explanation"].append("应追问追加主变卦卦辞作背景查阅，不改变原取辞的主次。")
+            selection["supplementary_ids"]=added
     ids = [item["id"] for item in selection["passages"]]
     schema = {"type": "object", "additionalProperties": False,
         "properties": {
@@ -32,7 +44,7 @@ def interpret_cast(cast, question, client, model, policy="moving-count-v1", styl
             "limitations": {"type": "array", "items": {"type": "string"}}},
         "required": ["summary", "explanations", "advice", "limitations"]}
     response = client.responses.create(
-        model=model, instructions=INSTRUCTIONS,
+        model=model, instructions=INSTRUCTIONS+"\nsupplementary=true 的条目只是用户追问补充背景，不得将其说成原规则的主辞。",
         input=[{"role": "user", "content": json.dumps({"question": question.strip(), "style": style,
                         "cast": asdict(cast), "selection": selection}, ensure_ascii=False)}],
         text={"format": {"type": "json_schema", "name": "iching_interpretation", "strict": True, "schema": schema}},

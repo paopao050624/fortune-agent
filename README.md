@@ -6,6 +6,8 @@
 
 当前版本为 **v0.1 本地原型**。首次安装、配置和演示步骤见 [v0.1 使用说明](docs/release-v0.1.md)，开发流程见 [CONTRIBUTING](CONTRIBUTING.md)。
 
+网页默认打开 [统一对话 Agent](docs/unified-agent.md)：直接说想用塔罗、每日提示、八字或周易，助手会补问必要资料并调用工具。追问默认沿用同一次结果；清除按钮删除本机内存中的当前对话。
+
 仓库：[paopao050624/fortune-agent](https://github.com/paopao050624/fortune-agent)。下载代码后在项目目录运行下方命令：
 
 ```bash

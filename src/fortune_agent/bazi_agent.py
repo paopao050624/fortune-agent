@@ -54,12 +54,15 @@ def current_reference_date() -> date:
 def interpret_bazi(
     chart: BaziChart, question: str, client: Any, model: str,
     reference_date: date | None = None,
+    style: str = "gentle",
 ) -> str:
     if not question.strip():
         raise ValueError("问题不能为空")
+    if style not in ("direct","gentle"):
+        raise ValueError("无效回答风格")
     response = client.responses.create(
         model=model,
-        instructions=BAZI_INSTRUCTIONS,
+        instructions=BAZI_INSTRUCTIONS + ("\n措辞直接简洁，保留不确定性。" if style=="direct" else "\n措辞温和，给出可选择的建议。"),
         input=[{
             "role": "user",
             "content": json.dumps({
@@ -67,6 +70,7 @@ def interpret_bazi(
                 "chart": asdict(chart),
                 "reference_date": (reference_date or current_reference_date()).isoformat(),
                 "reference_timezone": "Asia/Shanghai",
+                "style": style,
                 "source_evidence": evidence_for(chart),
                 "derived_facts": chart_facts(chart),
                 "method_checklist": wealth_checklist(chart),

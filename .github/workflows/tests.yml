@@ -31,5 +31,6 @@ jobs:
           fortune-bazi --help
           fortune-web --help
           fortune-iching --help
+          fortune-chat --help
           fortune-iching --reference 1
           fortune-iching --lines 9 9 9 9 9 9

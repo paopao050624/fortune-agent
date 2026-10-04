@@ -103,6 +103,34 @@ class WebTests(unittest.TestCase):
         self.assertEqual(status, 502)
         self.assertNotIn("secret-provider-detail", str(data))
 
+    def test_chat_clarifies_then_clear_invalidates_session(self):
+        from test_unified_agent import FakeResponses,plan
+        responses=FakeResponses([plan(method="bazi"),plan(method="bazi")])
+        with patch.object(LocalApp,"model_client",return_value=(SimpleNamespace(responses=responses),"test-model")):
+            status,data=self.post({"mode":"chat","message":"算八字"})
+            self.assertEqual(status,200)
+            self.assertEqual(data["status"],"needs_input")
+            identifier=data["session_id"]
+            status,data=self.post({"mode":"chat-clear","session_id":identifier})
+            self.assertEqual(status,200)
+            self.assertTrue(data["cleared"])
+            status,_=self.post({"mode":"chat","session_id":identifier,"message":"再试"})
+            self.assertEqual(status,400)
+
+    def test_failed_chat_retains_session_and_actual_cards_for_retry(self):
+        from test_unified_agent import FakeResponses,plan
+        responses=FakeResponses([plan(question="学习安排"),plan(action="followup")])
+        with patch.object(LocalApp,"model_client",return_value=(SimpleNamespace(responses=responses),"test-model")):
+            with patch("fortune_agent.unified_agent.TarotAgent.read",side_effect=RuntimeError("fake-provider-private-error")):
+                status,first=self.post({"mode":"chat","message":"塔罗看学习安排"})
+            self.assertEqual(status,200)
+            self.assertEqual(first["status"],"failed")
+            self.assertNotIn("fake-provider-private-error",str(first))
+            status,second=self.post({"mode":"chat","session_id":first["session_id"],"message":"重试解读"})
+            self.assertEqual(status,200)
+            self.assertEqual(second["result"]["reading"]["cards"],first["result"]["reading"]["cards"])
+            self.assertTrue(second["trace"][-1]["reused"])
+
     def test_daily_interpretation_reuses_cache_without_model_configuration(self):
         class Responses:
             def __init__(self):

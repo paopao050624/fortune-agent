@@ -29,6 +29,8 @@ from .tarot import draw_reading
 from .iching import build_cast, cast_coins, load_catalog as iching_catalog
 from .iching_reading import select_passages, reference_hexagram
 from .iching_agent import interpret_cast
+from .conversation import ConversationStore
+from .unified_agent import UnifiedAgent
 
 
 def text_field(payload: dict, name: str, default: str = "", limit: int = 2000) -> str:
@@ -42,6 +44,7 @@ class LocalApp:
     def __init__(self, cache_path: Path):
         self.cache_path = cache_path
         self.daily_lock = Lock()
+        self.conversations = ConversationStore()
 
     def model_client(self) -> tuple[Any, str]:
         config = ApiConfig.from_env()
@@ -59,6 +62,50 @@ class LocalApp:
         style = text_field(payload, "style", "gentle", 20)
         if style not in ("direct", "gentle"):
             raise ValueError("无效回答风格")
+
+        if mode == "chat-clear":
+            identifier=text_field(payload,"session_id",limit=100)
+            return self.conversations.clear(identifier)
+        if mode == "chat":
+            message=text_field(payload,"message")
+            if not message:
+                raise ValueError("请输入消息")
+            profile=text_field(payload,"profile","reader-01",128)
+            zone=text_field(payload,"timezone","Asia/Shanghai",100)
+            daily_draw(profile,zone)  # Validate settings before a model request.
+            identifier=text_field(payload,"session_id",limit=100)
+            session=self.conversations.get(identifier) if identifier else None
+            client,model=self.model_client()
+            if session is None:
+                try:session=self.conversations.get()
+                except Exception:
+                    close=getattr(client,"close",None)
+                    if close:close()
+                    raise
+            if not session.lock.acquire(blocking=False):
+                close=getattr(client,"close",None)
+                if close:close()
+                raise ValueError("当前对话正在处理，请稍候")
+            try:
+                agent=UnifiedAgent(client,model,self.cache_path,self.daily_lock)
+                try:
+                    result=agent.turn(session,message,profile,zone)
+                except ValueError:
+                    raise
+                except Exception:
+                    reply="本次模型请求未完成。已保留当前对话和已有计算结果，可以说‘重试解读’；不会因此重新抽牌或起卦。"
+                    session.messages.extend([{"role":"user","content":message},{"role":"assistant","content":reply}])
+                    result={"session_id":session.id,"reply":reply,"status":"failed",
+                            "method":session.slots.get("method","none"),"trace":[],
+                            "result":dict(session.artifact.data) if session.artifact else None,
+                            "turns":len(session.messages)//2}
+                if result.get("result"):
+                    result["result"]={key:value for key,value in result["result"].items() if key!="profile_key"}
+                return result
+            finally:
+                session.lock.release()
+                close=getattr(client,"close",None)
+                if close:close()
 
         if mode == "iching":
             reference = payload.get("reference")

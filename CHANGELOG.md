@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add a unified conversational agent with model tool routing, required-data clarification, stable followups and in-memory expiring sessions.
+- Add local web chat, tool traces, clear/new conversation controls and an interactive `fortune-chat` command.
+- Preserve prepared artifacts after model failures and validate birth data against user messages before execution.
 - Add three-coin I Ching casting, six user-supplied line totals, moving lines, and main/changed hexagrams in the CLI and local web interface.
 - Add the complete 64 judgments, 384 line texts and Qian/Kun special passages with per-page fixed source revisions and variant notes.
 - Add seven moving-count cases and an alternative all-moving-lines policy, offline reference lookup, structured model interpretation and validated passage IDs.
