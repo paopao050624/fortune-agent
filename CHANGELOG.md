@@ -31,3 +31,9 @@ First local prototype. This is a development release, not a complete implementat
 - Offline tests, reproducible evaluation fixtures, and package build workflow.
 
 Known limits: no complete strength, pattern, useful-god, or luck-cycle calculation; no Zi Wei Dou Shu, I Ching, or Western astrology; no public deployment or account system. Real evaluations are small, reviewed samples. The browser layout still requires visual acceptance in a supported browser environment.
+
+## 未发布：八字特殊月令规则
+
+- 增加建禄、阴干月劫、五阳干阳刃的研究路径映射。
+- 增加辰戌丑未杂气月的透干与完整三合支字证据筛选。
+- 保留原文异文和未核实条件，不自动判合化、旺衰、成格或喜用神。

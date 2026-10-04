@@ -20,9 +20,9 @@ class BaziSourceTests(unittest.TestCase):
         for stem in "甲乙丙丁戊己庚辛壬癸":
             with self.subTest(stem=stem):
                 evidence = evidence_for(SimpleNamespace(day_master=stem))
-                self.assertEqual(len(evidence), 10)
+                self.assertEqual(len(evidence), 14)
                 self.assertEqual(evidence[0]["stem"], stem)
-                self.assertEqual({entry["chapter"] for entry in evidence[1:]}, {"月令论", "衰旺论", "论用神", "论用神成败救应","论十干得时不旺失时不弱"})
+                self.assertEqual({entry["chapter"] for entry in evidence[1:]}, {"月令论", "衰旺论", "论用神", "论用神成败救应","论十干得时不旺失时不弱", "论杂气如何取用", "论阳刃", "论建禄月劫"})
 
     def test_unrecognized_stem_is_rejected(self):
         with self.assertRaises(ValueError):
@@ -35,13 +35,13 @@ class BaziSourceTests(unittest.TestCase):
 
     def test_ziping_excerpt_locations_preserve_printed_and_scan_pages(self):
         catalog = load_ziping_catalog()
-        self.assertEqual(len(catalog["entries"]), 7)
+        self.assertEqual(len(catalog["entries"]), 11)
         self.assertIsNone(catalog["source"]["publication_year"])
         self.assertEqual(catalog["source"]["scan_page_count"], 287)
         for entry in catalog["entries"]:
             self.assertEqual(len(entry["scan_pages"]), len(entry["printed_pages"]))
             self.assertTrue(entry["source_url"].endswith(f"#page={entry['scan_pages'][0]}"))
-            self.assertTrue(set(entry["printed_pages"]) <= {13,17,18,19})
+            self.assertTrue(set(entry["printed_pages"]) <= {13,17,18,19,32,77,80})
 
     def test_ziping_original_word_order_and_context_are_preserved(self):
         catalog = load_ziping_catalog()

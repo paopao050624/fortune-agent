@@ -89,6 +89,15 @@ def main() -> None:
             print(f"研究方向：{candidate['label']}，据月支藏{candidate['stem']}；仅候选")
         for flag in structure["special_case_flags"]:
             print(flag["reason"])
+        selection = structure["research_selection"]
+        print(f"候选筛选：{selection['label']}；仅研究路径")
+        for item in selection["candidate_selection"]:
+            labels = {"supported_for_review": "已有筛选证据，继续核查", "deferred_without_selection_evidence": "尚缺筛选证据", "special_route_review": "转入特殊路径核查", "ordinary_candidate": "普通候选"}
+            support = "、".join("同干透出" if value == "exact_transmission" else "完整三合支字组合" for value in item["support"])
+            print(f"{item['label']}：{labels[item['status']]}；{support or '无额外筛选证据'}")
+        for group in selection["month_combinations"]:
+            print(f"{''.join(group['branches'])}三合支字齐备；未判合化")
+        print(selection["limitations"])
         print(structure["limitations"])
     if daily_context:
         print(f"\n每日八字参考：{daily_context['date']}（中国标准时间12:00）")

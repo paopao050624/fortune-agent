@@ -153,6 +153,83 @@
         "原段仍需结合后续根气轻重与配合讨论；程序的同五行藏干观察不能直接当作强根或身强结论。"
       ],
       "retrieval_basis": "月令与通根的结构分析方法依据；不直接判定当前命盘强弱。"
+    },
+    {
+      "id": "ziping-mixed-selection",
+      "work": "子平真诠",
+      "chapter": "论杂气如何取用",
+      "heading": "杂气的透干与会支",
+      "source_text": "透干會支，取其清者用之，雜而不雜也。",
+      "scan_pages": [
+        41
+      ],
+      "printed_pages": [
+        32
+      ],
+      "locator": "论杂气如何取用 · 书内第32页（PDF 第 41 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=41",
+      "notes": [
+        "全章还有兼用、有情无情与互相损害条件；支字齐备不等于实际合化。"
+      ],
+      "retrieval_basis": "月令特殊路径与杂气候选筛选的方法参考；不据单句确定成格、旺衰、用神或吉凶。"
+    },
+    {
+      "id": "ziping-mixed-conflict",
+      "work": "子平真诠",
+      "chapter": "论杂气如何取用",
+      "heading": "透干与会支仍须配合",
+      "source_text": "一透則一用，兼透則兼用，透而又會則透與會並用。其合而有情者則爲吉，其合而無情者則不吉。",
+      "scan_pages": [
+        41
+      ],
+      "printed_pages": [
+        32
+      ],
+      "locator": "论杂气如何取用 · 书内第32页（PDF 第 41 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=41",
+      "notes": [
+        "程序仅组织透干、三合支字齐备证据，不判有情无情、用神或吉凶。"
+      ],
+      "retrieval_basis": "月令特殊路径与杂气候选筛选的方法参考；不据单句确定成格、旺衰、用神或吉凶。"
+    },
+    {
+      "id": "ziping-yang-blade",
+      "work": "子平真诠",
+      "chapter": "论阳刃",
+      "heading": "月令阳刃的方法范围",
+      "source_text": "陽刃者，劫我正財之神，乃正財之七煞也。祿前一位，惟六陽有之。",
+      "scan_pages": [
+        86
+      ],
+      "printed_pages": [
+        77
+      ],
+      "locator": "论阳刃 · 书内第77页（PDF 第 86 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=86",
+      "notes": [
+        "扫描本印作‘惟六陽有之’，保留原字，不静默改为通行本‘五陽’；待跨版本校勘。",
+        "程序明示采用甲丙戊庚壬五阳干及卯午午酉子映射，属于项目约定；不从本段‘六陽’推定额外阳干。"
+      ],
+      "retrieval_basis": "月令特殊路径与杂气候选筛选的方法参考；不据单句确定成格、旺衰、用神或吉凶。"
+    },
+    {
+      "id": "ziping-lu-jie-method",
+      "work": "子平真诠",
+      "chapter": "论建禄月劫",
+      "heading": "建禄月劫另寻四柱配合",
+      "source_text": "故建祿與月劫，可同一格，不必另分，皆以透干會支，別取財官煞食爲用。",
+      "scan_pages": [
+        89
+      ],
+      "printed_pages": [
+        80
+      ],
+      "locator": "论建禄月劫 · 书内第80页（PDF 第 89 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=89",
+      "notes": [
+        "此句用于特殊研究路径，不表示程序已完整判断财官煞食取用；整章未转录。"
+      ],
+      "retrieval_basis": "月令特殊路径与杂气候选筛选的方法参考；不据单句确定成格、旺衰、用神或吉凶。"
     }
   ]
 }
