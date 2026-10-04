@@ -30,3 +30,4 @@ jobs:
           fortune-daily --help
           fortune-bazi --help
           fortune-web --help
+          fortune-iching --help

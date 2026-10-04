@@ -1,0 +1,586 @@
+{
+  "source": {
+    "title": "周易 · 六十四卦速查表",
+    "revision_id": 7907208,
+    "url": "https://zh.wikisource.org/w/index.php?title=周易&oldid=7907208",
+    "scope": "仅卦名、上下卦及卦序，不含卦辞、爻辞或变爻解读规则。"
+  },
+  "hexagrams": [
+    {
+      "number": 1,
+      "name": "乾",
+      "symbol": "䷀",
+      "lower_trigram": "乾",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "111111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/乾"
+    },
+    {
+      "number": 43,
+      "name": "夬",
+      "symbol": "䷪",
+      "lower_trigram": "乾",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "111110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/夬"
+    },
+    {
+      "number": 14,
+      "name": "大有",
+      "symbol": "䷍",
+      "lower_trigram": "乾",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "111101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/大有"
+    },
+    {
+      "number": 34,
+      "name": "大壯",
+      "symbol": "䷡",
+      "lower_trigram": "乾",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "111100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/大壯"
+    },
+    {
+      "number": 9,
+      "name": "小畜",
+      "symbol": "䷈",
+      "lower_trigram": "乾",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "111011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/小畜"
+    },
+    {
+      "number": 5,
+      "name": "需",
+      "symbol": "䷄",
+      "lower_trigram": "乾",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "111010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/需"
+    },
+    {
+      "number": 26,
+      "name": "大畜",
+      "symbol": "䷙",
+      "lower_trigram": "乾",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "111001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/大畜"
+    },
+    {
+      "number": 11,
+      "name": "泰",
+      "symbol": "䷊",
+      "lower_trigram": "乾",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "111000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/泰"
+    },
+    {
+      "number": 10,
+      "name": "履",
+      "symbol": "䷉",
+      "lower_trigram": "兌",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "110111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/履"
+    },
+    {
+      "number": 58,
+      "name": "兌",
+      "symbol": "䷹",
+      "lower_trigram": "兌",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "110110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/兌"
+    },
+    {
+      "number": 38,
+      "name": "睽",
+      "symbol": "䷥",
+      "lower_trigram": "兌",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "110101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/睽"
+    },
+    {
+      "number": 54,
+      "name": "歸妹",
+      "symbol": "䷵",
+      "lower_trigram": "兌",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "110100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/歸妹"
+    },
+    {
+      "number": 61,
+      "name": "中孚",
+      "symbol": "䷼",
+      "lower_trigram": "兌",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "110011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/中孚"
+    },
+    {
+      "number": 60,
+      "name": "節",
+      "symbol": "䷻",
+      "lower_trigram": "兌",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "110010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/節"
+    },
+    {
+      "number": 41,
+      "name": "損",
+      "symbol": "䷨",
+      "lower_trigram": "兌",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "110001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/損"
+    },
+    {
+      "number": 19,
+      "name": "臨",
+      "symbol": "䷒",
+      "lower_trigram": "兌",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "110000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/臨"
+    },
+    {
+      "number": 13,
+      "name": "同人",
+      "symbol": "䷌",
+      "lower_trigram": "離",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "101111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/同人"
+    },
+    {
+      "number": 49,
+      "name": "革",
+      "symbol": "䷰",
+      "lower_trigram": "離",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "101110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/革"
+    },
+    {
+      "number": 30,
+      "name": "離",
+      "symbol": "䷝",
+      "lower_trigram": "離",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "101101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/離"
+    },
+    {
+      "number": 55,
+      "name": "豐",
+      "symbol": "䷶",
+      "lower_trigram": "離",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "101100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/豐"
+    },
+    {
+      "number": 37,
+      "name": "家人",
+      "symbol": "䷤",
+      "lower_trigram": "離",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "101011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/家人"
+    },
+    {
+      "number": 63,
+      "name": "既濟",
+      "symbol": "䷾",
+      "lower_trigram": "離",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "101010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/既濟"
+    },
+    {
+      "number": 22,
+      "name": "賁",
+      "symbol": "䷕",
+      "lower_trigram": "離",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "101001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/賁"
+    },
+    {
+      "number": 36,
+      "name": "明夷",
+      "symbol": "䷣",
+      "lower_trigram": "離",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "101000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/明夷"
+    },
+    {
+      "number": 25,
+      "name": "无妄",
+      "symbol": "䷘",
+      "lower_trigram": "震",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "100111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/无妄"
+    },
+    {
+      "number": 17,
+      "name": "隨",
+      "symbol": "䷐",
+      "lower_trigram": "震",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "100110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/隨"
+    },
+    {
+      "number": 21,
+      "name": "噬嗑",
+      "symbol": "䷔",
+      "lower_trigram": "震",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "100101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/噬嗑"
+    },
+    {
+      "number": 51,
+      "name": "震",
+      "symbol": "䷲",
+      "lower_trigram": "震",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "100100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/震"
+    },
+    {
+      "number": 42,
+      "name": "益",
+      "symbol": "䷩",
+      "lower_trigram": "震",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "100011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/益"
+    },
+    {
+      "number": 3,
+      "name": "屯",
+      "symbol": "䷂",
+      "lower_trigram": "震",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "100010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/屯"
+    },
+    {
+      "number": 27,
+      "name": "頤",
+      "symbol": "䷚",
+      "lower_trigram": "震",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "100001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/頤"
+    },
+    {
+      "number": 24,
+      "name": "復",
+      "symbol": "䷗",
+      "lower_trigram": "震",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "100000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/復"
+    },
+    {
+      "number": 44,
+      "name": "姤",
+      "symbol": "䷫",
+      "lower_trigram": "巽",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "011111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/姤"
+    },
+    {
+      "number": 28,
+      "name": "大過",
+      "symbol": "䷛",
+      "lower_trigram": "巽",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "011110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/大過"
+    },
+    {
+      "number": 50,
+      "name": "鼎",
+      "symbol": "䷱",
+      "lower_trigram": "巽",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "011101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/鼎"
+    },
+    {
+      "number": 32,
+      "name": "恒",
+      "symbol": "䷟",
+      "lower_trigram": "巽",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "011100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/恒"
+    },
+    {
+      "number": 57,
+      "name": "巽",
+      "symbol": "䷸",
+      "lower_trigram": "巽",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "011011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/巽"
+    },
+    {
+      "number": 48,
+      "name": "井",
+      "symbol": "䷯",
+      "lower_trigram": "巽",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "011010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/井"
+    },
+    {
+      "number": 18,
+      "name": "蠱",
+      "symbol": "䷑",
+      "lower_trigram": "巽",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "011001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/蠱"
+    },
+    {
+      "number": 46,
+      "name": "升",
+      "symbol": "䷭",
+      "lower_trigram": "巽",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "011000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/升"
+    },
+    {
+      "number": 6,
+      "name": "訟",
+      "symbol": "䷅",
+      "lower_trigram": "坎",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "010111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/訟"
+    },
+    {
+      "number": 47,
+      "name": "困",
+      "symbol": "䷮",
+      "lower_trigram": "坎",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "010110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/困"
+    },
+    {
+      "number": 64,
+      "name": "未濟",
+      "symbol": "䷿",
+      "lower_trigram": "坎",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "010101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/未濟"
+    },
+    {
+      "number": 40,
+      "name": "解",
+      "symbol": "䷧",
+      "lower_trigram": "坎",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "010100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/解"
+    },
+    {
+      "number": 59,
+      "name": "渙",
+      "symbol": "䷺",
+      "lower_trigram": "坎",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "010011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/渙"
+    },
+    {
+      "number": 29,
+      "name": "坎",
+      "symbol": "䷜",
+      "lower_trigram": "坎",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "010010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/坎"
+    },
+    {
+      "number": 4,
+      "name": "蒙",
+      "symbol": "䷃",
+      "lower_trigram": "坎",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "010001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/蒙"
+    },
+    {
+      "number": 7,
+      "name": "師",
+      "symbol": "䷆",
+      "lower_trigram": "坎",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "010000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/師"
+    },
+    {
+      "number": 33,
+      "name": "遯",
+      "symbol": "䷠",
+      "lower_trigram": "艮",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "001111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/遯"
+    },
+    {
+      "number": 31,
+      "name": "咸",
+      "symbol": "䷞",
+      "lower_trigram": "艮",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "001110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/咸"
+    },
+    {
+      "number": 56,
+      "name": "旅",
+      "symbol": "䷷",
+      "lower_trigram": "艮",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "001101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/旅"
+    },
+    {
+      "number": 62,
+      "name": "小過",
+      "symbol": "䷽",
+      "lower_trigram": "艮",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "001100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/小過"
+    },
+    {
+      "number": 53,
+      "name": "漸",
+      "symbol": "䷴",
+      "lower_trigram": "艮",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "001011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/漸"
+    },
+    {
+      "number": 39,
+      "name": "蹇",
+      "symbol": "䷦",
+      "lower_trigram": "艮",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "001010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/蹇"
+    },
+    {
+      "number": 52,
+      "name": "艮",
+      "symbol": "䷳",
+      "lower_trigram": "艮",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "001001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/艮"
+    },
+    {
+      "number": 15,
+      "name": "謙",
+      "symbol": "䷎",
+      "lower_trigram": "艮",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "001000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/謙"
+    },
+    {
+      "number": 12,
+      "name": "否",
+      "symbol": "䷋",
+      "lower_trigram": "坤",
+      "upper_trigram": "乾",
+      "bits_bottom_to_top": "000111",
+      "source_url": "https://zh.wikisource.org/wiki/周易/否"
+    },
+    {
+      "number": 45,
+      "name": "萃",
+      "symbol": "䷬",
+      "lower_trigram": "坤",
+      "upper_trigram": "兌",
+      "bits_bottom_to_top": "000110",
+      "source_url": "https://zh.wikisource.org/wiki/周易/萃"
+    },
+    {
+      "number": 35,
+      "name": "晉",
+      "symbol": "䷢",
+      "lower_trigram": "坤",
+      "upper_trigram": "離",
+      "bits_bottom_to_top": "000101",
+      "source_url": "https://zh.wikisource.org/wiki/周易/晉"
+    },
+    {
+      "number": 16,
+      "name": "豫",
+      "symbol": "䷏",
+      "lower_trigram": "坤",
+      "upper_trigram": "震",
+      "bits_bottom_to_top": "000100",
+      "source_url": "https://zh.wikisource.org/wiki/周易/豫"
+    },
+    {
+      "number": 20,
+      "name": "觀",
+      "symbol": "䷓",
+      "lower_trigram": "坤",
+      "upper_trigram": "巽",
+      "bits_bottom_to_top": "000011",
+      "source_url": "https://zh.wikisource.org/wiki/周易/觀"
+    },
+    {
+      "number": 8,
+      "name": "比",
+      "symbol": "䷇",
+      "lower_trigram": "坤",
+      "upper_trigram": "坎",
+      "bits_bottom_to_top": "000010",
+      "source_url": "https://zh.wikisource.org/wiki/周易/比"
+    },
+    {
+      "number": 23,
+      "name": "剝",
+      "symbol": "䷖",
+      "lower_trigram": "坤",
+      "upper_trigram": "艮",
+      "bits_bottom_to_top": "000001",
+      "source_url": "https://zh.wikisource.org/wiki/周易/剝"
+    },
+    {
+      "number": 2,
+      "name": "坤",
+      "symbol": "䷁",
+      "lower_trigram": "坤",
+      "upper_trigram": "坤",
+      "bits_bottom_to_top": "000000",
+      "source_url": "https://zh.wikisource.org/wiki/周易/坤"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ fortune-agent = "fortune_agent.cli:main"
 fortune-daily = "fortune_agent.daily_cli:main"
 fortune-bazi = "fortune_agent.bazi_cli:main"
 fortune-web = "fortune_agent.web:main"
+fortune-iching = "fortune_agent.iching_cli:main"
 
 [project.optional-dependencies]
 agent = ["openai>=3.7,<4"]

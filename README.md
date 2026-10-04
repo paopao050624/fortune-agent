@@ -2,7 +2,7 @@
 
 [![Tests and package](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml)
 
-一个逐步构建的塔罗与每日运势 Agent 项目。目前包含可测试的塔罗抽牌工具、通过兼容 OpenAI Responses API 的中转站运行的解牌 Agent、可追溯的 Waite 原书牌义，以及限定中国标准时间的八字四柱排盘原型。紫微、易经与西方占星尚未实现。
+一个逐步构建的塔罗与每日运势 Agent 项目。目前包含塔罗解读、每日牌、中国标准时间八字排盘及周易硬币起卦。紫微与西方占星尚未实现；八字和周易也仍有明确的功能边界。
 
 当前版本为 **v0.1 本地原型**。首次安装、配置和演示步骤见 [v0.1 使用说明](docs/release-v0.1.md)，开发流程见 [CONTRIBUTING](CONTRIBUTING.md)。
 
@@ -35,7 +35,7 @@ python -m pip install -e '.[agent,bazi]'
 fortune-web
 ```
 
-浏览器打开 `http://127.0.0.1:8765`，可选择塔罗问答、每日一张牌或八字排盘。默认只在本机抽牌或计算，勾选“生成模型解读”才使用中转站；中转站环境变量应在启动服务的终端设置，密钥不通过浏览器输入或返回。源码运行也可用 `PYTHONPATH=src python -m fortune_agent.web`。
+浏览器打开 `http://127.0.0.1:8765`，可选择塔罗问答、每日一张牌、八字排盘或周易起卦。默认只在本机抽牌或计算，勾选“生成模型解读”才使用中转站；周易当前只有起卦，不提供模型解读。中转站环境变量应在启动服务的终端设置，密钥不通过浏览器输入或返回。源码运行也可用 `PYTHONPATH=src python -m fortune_agent.web`。
 
 网页仅监听本机回环地址，供单人体验使用，尚未实现账户和公网部署。每日解读与命令行共用 `work/daily.sqlite3`（可用 `--cache` 指定固定路径）；塔罗问题与出生资料不保存。模型回答以文字展示，原文与来源可展开查看。关闭服务按 `Ctrl+C`，换端口可用 `fortune-web --port 8766`。
 
@@ -51,6 +51,15 @@ PYTHONPATH=src python -m fortune_agent.daily_cli --profile reader-01 --timezone 
 安装项目后也可运行 `fortune-daily --profile reader-01 --timezone Asia/Shanghai --interpret`。同一代号、时区和当地日期会得到相同牌面。牌面由稳定哈希生成，属于可复现的伪随机抽牌，不是对未来的确定性计算。解读使用现有中转站环境变量；首次解读缓存在当前目录的 `work/daily.sqlite3`，之后同日直接返回缓存，即使改用不同回答风格或模型也保留当天首次结果。请从同一项目目录运行，或用 `--cache` 指定固定路径。缓存不保存原始代号，但会保存牌面、解读及来源，可删除该文件清除本地记录。请用非个人信息作为代号；代号不会发送给模型。`--json` 可输出结构化结果。
 
 当前是单机原型。若部署成多人服务，需要以认证后的用户 ID 区分记录，并隔离各用户的缓存；自填代号不能充当账户认证。
+
+## 周易起卦
+
+```bash
+fortune-iching
+fortune-iching --lines 9 9 9 9 9 9
+```
+
+支持程序模拟三枚硬币，或按初爻到上爻输入六次和数（6–9），输出主卦、变卦和动爻。六次全为 9 时为乾变坤。起卦约定、卦序来源与限制见 [周易起卦说明](docs/iching.md)。当前未接入卦辞、爻辞或解读规则。
 
 ## 八字四柱原型
 

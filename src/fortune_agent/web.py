@@ -25,6 +25,7 @@ from .daily_service import get_daily
 from .daily_store import DailyStore
 from .meanings import evidence_for
 from .tarot import draw_reading
+from .iching import build_cast, cast_coins, load_catalog as iching_catalog
 
 
 def text_field(payload: dict, name: str, default: str = "", limit: int = 2000) -> str:
@@ -55,6 +56,16 @@ class LocalApp:
         style = text_field(payload, "style", "gentle", 20)
         if style not in ("direct", "gentle"):
             raise ValueError("无效回答风格")
+
+        if mode == "iching":
+            if interpret:
+                raise ValueError("周易当前只提供起卦计算，尚未接入模型解读")
+            lines = payload.get("lines")
+            result = cast_coins() if lines is None else build_cast(lines)
+            source = iching_catalog()["source"]
+            return {"mode": mode, "cast": asdict(result), "interpretation": None,
+                    "evidence": [{"heading": source["title"], "source_url": source["url"],
+                                  "notes": [source["scope"], "三枚硬币法为本项目明确选用的起卦约定，不宣称出自该卦序表。"]}]}
 
         if mode == "tarot":
             question = text_field(payload, "question")
