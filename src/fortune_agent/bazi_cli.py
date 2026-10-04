@@ -98,6 +98,15 @@ def main() -> None:
         for group in selection["month_combinations"]:
             print(f"{''.join(group['branches'])}三合支字齐备；未判合化")
         print(selection["limitations"])
+        interactions = structure["interactions"]
+        print("干支关系观察（效力未判定）：")
+        for item in interactions["observations"]:
+            locations = " → ".join(p + c for p, c in zip(item["positions"], item["characters"]))
+            print(f"{item['kind']}：{locations}")
+        for group in interactions["complete_punishment_groups"]:
+            print(f"{''.join(group['branches'])}三刑支字齐备；未判效力")
+        print(f"根气关联待核查 {len(interactions['root_reviews'])} 项；不自动删根或定格")
+        print(interactions["limitations"])
         print(structure["limitations"])
     if daily_context:
         print(f"\n每日八字参考：{daily_context['date']}（中国标准时间12:00）")

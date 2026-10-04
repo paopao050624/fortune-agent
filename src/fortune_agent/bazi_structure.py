@@ -4,6 +4,7 @@ from importlib.resources import files
 import json
 
 from .bazi import BaziChart
+from .bazi_interactions import analyze_interactions
 from .bazi_facts import ELEMENTS, HIDDEN_STEMS, chart_facts, stem_facts
 
 
@@ -155,5 +156,6 @@ def analyze_structure(chart: BaziChart) -> dict:
             "roots":roots,"month_transmission":transmission,"pattern_candidates":candidates,
             "special_case_flags":special,"trace":trace,"unresolved":rules["unresolved"],
             "research_selection":selection,
+            "interactions":analyze_interactions(facts, roots, candidates),
             "strength_conclusion":"undetermined","pattern_conclusion":"undetermined","useful_god_conclusion":"undetermined",
             "limitations":"程序已计算关系与候选，尚未判定根力、整体旺衰、最终格局、喜用神或大运；列表顺序不是优先级。"}
