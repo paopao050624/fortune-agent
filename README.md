@@ -82,7 +82,7 @@ fortune-bazi --pillars '己卯 丙子 戊午 戊午' --details --analysis
 
 第一批 [八字规则分析](docs/bazi-rule-system.md) 已实现月令季节、通根位置、藏干透出、特殊月令路径和格局研究候选：`fortune-bazi --pillars '己卯 丙子 戊午 戊午' --structure` 可离线查看。网页与统一对话复用同一程序结果，最终旺衰、成格和喜用神仍列为未确定。
 
-如需模型解释，安装 `.[agent,bazi]` 并设置下文的中转站环境变量，再运行 `fortune-bazi --birth 2000-01-01T12:00:00+08:00 --interpret '学习上应注意什么？'`。出生时间和排盘结果会发送至中转站，命令不会保存出生资料。程序提供《滴天髓辑要》相关原文，以及《子平真诠》的七个扫描核对短段；`--sources` 可离线查看资料，`--details` 查看十神和藏干，`--analysis` 查看 [财格方法条件清单](docs/bazi-wealth-checklist.md)。版本与校勘限制见 [八字古籍资料](docs/bazi-sources.md) 和 [子平真诠摘录](docs/ziping-transcription.md)，计算规则见 [十神与藏干](docs/bazi-facts.md)。《渊海子平》等其他典籍尚未接入。未知出生时刻、海外出生或要求真太阳时校正的情况暂不支持，不应拿默认时刻代替真实时刻。
+如需模型解释，安装 `.[agent,bazi]` 并设置下文的中转站环境变量，再运行 `fortune-bazi --birth 2000-01-01T12:00:00+08:00 --interpret '学习上应注意什么？'`。出生时间和排盘结果会发送至中转站，命令不会保存出生资料。程序提供《滴天髓辑要》相关原文，以及《子平真诠》的十一个扫描核对短段；`--sources` 可离线查看资料，`--details` 查看十神和藏干，`--analysis` 查看 [财格方法条件清单](docs/bazi-wealth-checklist.md)。版本与校勘限制见 [八字古籍资料](docs/bazi-sources.md) 和 [子平真诠摘录](docs/ziping-transcription.md)，计算规则见 [十神与藏干](docs/bazi-facts.md)。《渊海子平》等其他典籍尚未接入。未知出生时刻、海外出生或要求真太阳时校正的情况暂不支持，不应拿默认时刻代替真实时刻。
 
 八字解读的固定案例与人工复核标准见 [八字解释评估](docs/bazi-evaluation.md)。12 例真实请求的结果和限制见 [八字评估报告](evals/results/bazi-review-2026-10-04.md)，新增关系与方法资料的验证见 [月令与关系报告](evals/results/bazi-context-review-2026-10-04.md)。
 
