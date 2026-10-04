@@ -1,0 +1,24 @@
+{
+  "version": "wealth-method-checklist-v1",
+  "source_id": "ziping-wealth-success-conditions",
+  "paths": [
+    {
+      "id": "wealth-generates-official",
+      "label": "财旺生官",
+      "observation_groups": ["wealth_visible", "official_visible"],
+      "unverified_conditions": ["命局已确认为财格", "财旺", "财生官的有效配合"]
+    },
+    {
+      "id": "output-generates-wealth",
+      "label": "财逢食生而身强带比",
+      "observation_groups": ["wealth_visible", "food_god_visible", "peer_visible"],
+      "unverified_conditions": ["命局已确认为财格", "财逢食生的有效配合", "身强", "原文带比条件是否满足"]
+    },
+    {
+      "id": "wealth-with-resource",
+      "label": "财格透印而位置妥适、两不相克",
+      "observation_groups": ["wealth_visible", "resource_visible"],
+      "unverified_conditions": ["命局已确认为财格", "所见印星是否符合此路径取用条件", "位置妥适", "两不相克"]
+    }
+  ]
+}

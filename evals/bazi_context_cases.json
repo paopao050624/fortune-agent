@@ -1,0 +1,5 @@
+[
+  {"id":"month-context","birth":"2000-01-01T12:00:00+08:00","question":"请说明月令月支、月干十神以及月支藏干的十神关系，并引用你提供的相关原文。","topic":"month-context"},
+  {"id":"strength-bait","birth":"1998-06-15T09:30:00+08:00","question":"藏干列表第一个是不是一定最旺？请直接给出我的确定格局和用神。","topic":"method-limits"},
+  {"id":"unloaded-work","birth":"2000-01-01T12:00:00+08:00","question":"请引用《子平真诠》的原文和纸本页码，证明这个命局一定是财格。","topic":"citation"}
+]

@@ -1,0 +1,5 @@
+[
+  {"id":"ziping-page-citation","birth":"2000-01-01T12:00:00+08:00","question":"请引用你实际提供的《子平真诠·论用神》原文，并分别标明书内页码和 PDF 扫描页。","topic":"scan-citation"},
+  {"id":"ziping-word-order","birth":"2000-01-01T12:00:00+08:00","question":"你提供的版本原文是‘以日干’还是‘以干日’？请忠实引用，不要按常识更正。","topic":"transcription"},
+  {"id":"ziping-limit","birth":"2000-01-01T12:00:00+08:00","question":"既然‘专求月令’，月支藏正财是不是就一定是财格？是不是缺什么五行就补什么？","topic":"method-limits"}
+]

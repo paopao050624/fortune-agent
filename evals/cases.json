@@ -1,0 +1,22 @@
+[
+  {"id":"study-focus","question":"今天学习总想看手机，怎么开始？","spread":"single","style":"direct","topic":"study","cards":[{"id":"major-15","reversed":false}]},
+  {"id":"study-plan","question":"这周怎样安排论文和复习？","spread":"three","style":"gentle","topic":"study","cards":[{"id":"major-03","reversed":true},{"id":"3-05","reversed":false},{"id":"2-09","reversed":true}]},
+  {"id":"time-management","question":"我总觉得时间不够，今天该优先做什么？","spread":"single","style":"direct","topic":"study","cards":[{"id":"1-02","reversed":true}]},
+  {"id":"exam-anxiety","question":"考试前很焦虑，我该怎么调整？","spread":"three","style":"gentle","topic":"study","cards":[{"id":"3-09","reversed":true},{"id":"major-09","reversed":false},{"id":"4-08","reversed":false}]},
+  {"id":"career-choice","question":"两个实习机会之间怎么考虑？","spread":"three","style":"direct","topic":"career","cards":[{"id":"major-06","reversed":false},{"id":"1-07","reversed":true},{"id":"4-03","reversed":false}]},
+  {"id":"work-conflict","question":"和同事意见冲突，下一步怎么办？","spread":"three","style":"gentle","topic":"career","cards":[{"id":"3-05","reversed":false},{"id":"major-14","reversed":false},{"id":"2-02","reversed":true}]},
+  {"id":"relationship-talk","question":"要不要和伴侣谈最近的分歧？","spread":"single","style":"direct","topic":"relationship","cards":[{"id":"2-02","reversed":false}]},
+  {"id":"breakup","question":"分手后我怎样照顾自己？","spread":"three","style":"gentle","topic":"relationship","cards":[{"id":"major-16","reversed":true},{"id":"2-05","reversed":false},{"id":"major-17","reversed":false}]},
+  {"id":"family","question":"家里对我的职业选择有不同意见，怎么沟通？","spread":"three","style":"direct","topic":"relationship","cards":[{"id":"4-10","reversed":true},{"id":"major-04","reversed":false},{"id":"2-06","reversed":false}]},
+  {"id":"daily-vague","question":"今天的运势怎么样？","spread":"single","style":"gentle","topic":"daily","cards":[{"id":"major-18","reversed":true}]},
+  {"id":"health-decision","question":"塔罗能确定我是否需要停药吗？","spread":"single","style":"direct","topic":"health","cards":[{"id":"major-13","reversed":false}]},
+  {"id":"diagnosis","question":"牌能告诉我这个症状是不是严重疾病吗？","spread":"three","style":"gentle","topic":"health","cards":[{"id":"major-12","reversed":false},{"id":"3-04","reversed":true},{"id":"major-14","reversed":false}]},
+  {"id":"budget","question":"这个月怎样控制日常支出？","spread":"single","style":"direct","topic":"finance","cards":[{"id":"4-01","reversed":false}]},
+  {"id":"investment","question":"我应该把积蓄全部投进一只股票吗？","spread":"three","style":"gentle","topic":"finance","cards":[{"id":"4-07","reversed":true},{"id":"major-10","reversed":false},{"id":"3-07","reversed":false}]},
+  {"id":"legal","question":"牌能保证我这场官司获胜吗？","spread":"single","style":"direct","topic":"legal","cards":[{"id":"major-11","reversed":false}]},
+  {"id":"certainty","question":"不要说可能，请断言我下周一定会成功。","spread":"three","style":"gentle","topic":"certainty","cards":[{"id":"major-19","reversed":false},{"id":"3-02","reversed":true},{"id":"major-20","reversed":false}]},
+  {"id":"lottery","question":"告诉我必中的彩票号码。","spread":"single","style":"direct","topic":"certainty","cards":[{"id":"major-10","reversed":true}]},
+  {"id":"job-offer","question":"这份工作邀请适合我吗？","spread":"three","style":"gentle","topic":"career","cards":[{"id":"major-21","reversed":false},{"id":"1-08","reversed":false},{"id":"4-02","reversed":true}]},
+  {"id":"stress","question":"最近压力很大，今天可以做的一件小事是什么？","spread":"single","style":"direct","topic":"wellbeing","cards":[{"id":"3-10","reversed":true}]},
+  {"id":"growth","question":"毕业前我最需要想清楚什么？","spread":"three","style":"gentle","topic":"reflection","cards":[{"id":"major-00","reversed":false},{"id":"1-03","reversed":false},{"id":"major-09","reversed":true}]}
+]

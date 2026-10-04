@@ -1,0 +1,128 @@
+{
+  "source": {
+    "provider": "Wikisource",
+    "title": "滴天髓/02",
+    "revision_id": 11117658,
+    "revision_timestamp": "2026-10-03T03:04:37Z",
+    "url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+    "wikitext_sha256": "31d66e10a07c77ec23a75acadfa7e6a85f81fcb783e5322e6e52aec11a02deca",
+    "edition_note": "电子转录，尚未与扫描底本或指定纸本校勘；作者归属及底本版本不在此批数据中确证。",
+    "scope": "仅十天干原文，不收录页面的解释段落。"
+  },
+  "entries": [
+    {
+      "id": "ditiansui-tiangan-甲",
+      "stem": "甲",
+      "heading": "甲木",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "甲木參天，脱胎要火，春不容金，秋不容土，火熾乘龍，水蕩騎虎，地潤天和，植立千古。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 甲木",
+      "notes": []
+    },
+    {
+      "id": "ditiansui-tiangan-乙",
+      "stem": "乙",
+      "heading": "乙木",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "乙木雖柔，刲羊解牛，懷丁抱丙，跨雞乘猴，虛濕之地，騎馬亦憂，籐蘿繫甲，可春可秋。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 乙木",
+      "notes": []
+    },
+    {
+      "id": "ditiansui-tiangan-丙",
+      "stem": "丙",
+      "heading": "丙火",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "丙火猛烈，欺霜侮雪，能煆庚金，逄辛反怯，土眾成慈，水猖顯節，虎馬犬鄉，甲來焚滅。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 丙火",
+      "notes": []
+    },
+    {
+      "id": "ditiansui-tiangan-丁",
+      "stem": "丁",
+      "heading": "丁火",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "丁火柔中，內性昭融，抱乙而考，合壬而忠，旺而不烈，衰而不窮，如有嫡母，可秋可冬。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 丁火",
+      "notes": [
+        "转录作‘抱乙而考’，未据扫描底本校勘；请勿静默改成其他字。"
+      ]
+    },
+    {
+      "id": "ditiansui-tiangan-戊",
+      "stem": "戊",
+      "heading": "戊土",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "戊土固重，既中且正，靜翕動闢，萬物司命，水旺物生，火燥囍潤，若在坤艮，怕沖宜靜。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 戊土",
+      "notes": [
+        "转录作‘火燥囍潤’，原样保留；未据扫描底本校勘。"
+      ]
+    },
+    {
+      "id": "ditiansui-tiangan-己",
+      "stem": "己",
+      "heading": "己土",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "己土卑濕，中正蓄藏，不愁木盛，不畏水旺，火少火晦，金多金明，若要物昌，宜助宜幫。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 己土",
+      "notes": []
+    },
+    {
+      "id": "ditiansui-tiangan-庚",
+      "stem": "庚",
+      "heading": "庚金",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "庚金帶煞，剛強為最，得水而清，得火而銳，土潤則生，土乾則脆，能勝甲兄，輸於乙妹。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 庚金",
+      "notes": []
+    },
+    {
+      "id": "ditiansui-tiangan-辛",
+      "stem": "辛",
+      "heading": "辛金",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "辛金軟弱，溫潤而清，畏土之疊，樂水之盈，能扶社稷，能救生靈，熱則喜母，寒則喜丁。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 辛金",
+      "notes": []
+    },
+    {
+      "id": "ditiansui-tiangan-壬",
+      "stem": "壬",
+      "heading": "壬水",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "壬水汪洋，能洩金氣，剛中之德，周流不滯，通根透癸，沖天奔地，化則有情，從則相濟。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 壬水",
+      "notes": []
+    },
+    {
+      "id": "ditiansui-tiangan-癸",
+      "stem": "癸",
+      "heading": "癸水",
+      "work": "滴天髓辑要",
+      "chapter": "天干论",
+      "source_text": "癸水至弱，達於天津，龍德而運，功化斯神，不畏火土，不論庚辛，合戊見火，火根乃真。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/02&oldid=11117658",
+      "locator": "天干论 · 癸水",
+      "notes": []
+    }
+  ]
+}

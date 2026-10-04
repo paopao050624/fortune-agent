@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fortune-agent"
+version = "0.1.0"
+description = "A transparent tarot and fortune agent project"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[project.scripts]
+fortune-agent = "fortune_agent.cli:main"
+fortune-daily = "fortune_agent.daily_cli:main"
+fortune-bazi = "fortune_agent.bazi_cli:main"
+fortune-web = "fortune_agent.web:main"
+
+[project.optional-dependencies]
+agent = ["openai>=3.7,<4"]
+bazi = ["lunar-python==1.4.8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+fortune_agent = ["data/*.json", "static/*.html"]

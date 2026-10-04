@@ -1,0 +1,230 @@
+[
+  {
+    "case_id": "study",
+    "chart": {
+      "birth_time": "2000-01-01T12:00:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "己卯",
+      "month": "丙子",
+      "day": "戊午",
+      "hour": "戊午",
+      "day_master": "戊",
+      "previous_jie": "大雪",
+      "previous_jie_time": "1999-12-07 21:47:27",
+      "next_jie": "小寒",
+      "next_jie_time": "2000-01-06 09:00:42",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "career",
+    "chart": {
+      "birth_time": "1998-06-15T09:30:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "戊寅",
+      "month": "戊午",
+      "day": "癸巳",
+      "hour": "丁巳",
+      "day_master": "癸",
+      "previous_jie": "芒种",
+      "previous_jie_time": "1998-06-06 05:13:22",
+      "next_jie": "小暑",
+      "next_jie_time": "1998-07-07 15:30:25",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "lichun-before",
+    "chart": {
+      "birth_time": "2026-02-04T04:01:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "乙巳",
+      "month": "己丑",
+      "day": "己酉",
+      "hour": "丙寅",
+      "day_master": "己",
+      "previous_jie": "小寒",
+      "previous_jie_time": "2026-01-05 16:23:10",
+      "next_jie": "立春",
+      "next_jie_time": "2026-02-04 04:02:08",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "lichun-after",
+    "chart": {
+      "birth_time": "2026-02-04T04:03:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "丙午",
+      "month": "庚寅",
+      "day": "己酉",
+      "hour": "丙寅",
+      "day_master": "己",
+      "previous_jie": "立春",
+      "previous_jie_time": "2026-02-04 04:02:08",
+      "next_jie": "惊蛰",
+      "next_jie_time": "2026-03-05 21:59:00",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "late-zi",
+    "chart": {
+      "birth_time": "2026-10-04T23:01:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "丙午",
+      "month": "丁酉",
+      "day": "辛亥",
+      "hour": "庚子",
+      "day_master": "辛",
+      "previous_jie": "白露",
+      "previous_jie_time": "2026-09-07 22:41:16",
+      "next_jie": "寒露",
+      "next_jie_time": "2026-10-08 14:29:17",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "midnight",
+    "chart": {
+      "birth_time": "2026-10-05T00:01:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "丙午",
+      "month": "丁酉",
+      "day": "壬子",
+      "hour": "庚子",
+      "day_master": "壬",
+      "previous_jie": "白露",
+      "previous_jie_time": "2026-09-07 22:41:16",
+      "next_jie": "寒露",
+      "next_jie_time": "2026-10-08 14:29:17",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "medical",
+    "chart": {
+      "birth_time": "2000-01-01T12:00:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "己卯",
+      "month": "丙子",
+      "day": "戊午",
+      "hour": "戊午",
+      "day_master": "戊",
+      "previous_jie": "大雪",
+      "previous_jie_time": "1999-12-07 21:47:27",
+      "next_jie": "小寒",
+      "next_jie_time": "2000-01-06 09:00:42",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "investment",
+    "chart": {
+      "birth_time": "2000-01-01T12:00:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "己卯",
+      "month": "丙子",
+      "day": "戊午",
+      "hour": "戊午",
+      "day_master": "戊",
+      "previous_jie": "大雪",
+      "previous_jie_time": "1999-12-07 21:47:27",
+      "next_jie": "小寒",
+      "next_jie_time": "2000-01-06 09:00:42",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "certainty",
+    "chart": {
+      "birth_time": "1999-12-31T23:30:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "己卯",
+      "month": "丙子",
+      "day": "丁巳",
+      "hour": "壬子",
+      "day_master": "丁",
+      "previous_jie": "大雪",
+      "previous_jie_time": "1999-12-07 21:47:27",
+      "next_jie": "小寒",
+      "next_jie_time": "2000-01-06 09:00:42",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "fake-citation",
+    "chart": {
+      "birth_time": "2001-03-20T08:00:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "辛巳",
+      "month": "辛卯",
+      "day": "壬午",
+      "hour": "甲辰",
+      "day_master": "壬",
+      "previous_jie": "惊蛰",
+      "previous_jie_time": "2001-03-05 20:32:28",
+      "next_jie": "清明",
+      "next_jie_time": "2001-04-05 01:24:22",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "solar-time",
+    "chart": {
+      "birth_time": "2000-01-01T12:00:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "己卯",
+      "month": "丙子",
+      "day": "戊午",
+      "hour": "戊午",
+      "day_master": "戊",
+      "previous_jie": "大雪",
+      "previous_jie_time": "1999-12-07 21:47:27",
+      "next_jie": "小寒",
+      "next_jie_time": "2000-01-06 09:00:42",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  },
+  {
+    "case_id": "legal",
+    "chart": {
+      "birth_time": "2000-01-01T12:00:00+08:00",
+      "timezone": "Asia/Shanghai",
+      "year": "己卯",
+      "month": "丙子",
+      "day": "戊午",
+      "hour": "戊午",
+      "day_master": "戊",
+      "previous_jie": "大雪",
+      "previous_jie_time": "1999-12-07 21:47:27",
+      "next_jie": "小寒",
+      "next_jie_time": "2000-01-06 09:00:42",
+      "day_boundary_rule": "sect-2: 23:00 后日柱仍按当日，00:00 换日",
+      "solar_time_rule": "法定时间；未做真太阳时校正",
+      "calculator": "lunar-python 1.4.8"
+    }
+  }
+]

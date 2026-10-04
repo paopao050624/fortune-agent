@@ -1,0 +1,86 @@
+{
+  "source": {
+    "id": "ziping-world-library-nlc11jh010455",
+    "work": "子平真诠",
+    "edition_title": "秘本子平真詮",
+    "publisher": "上海世界图书馆发行",
+    "publication_year": null,
+    "catalogue_date": "[19--?]",
+    "catalogue_identifier": "NLC416-11jh010455-35296",
+    "title_page_attribution": "沈孝瞻先生撰",
+    "scan_page_count": 287,
+    "file_sha256": "71402a780b0351b54edf121a51bc4a4a4ce5896496c35b954563ee06f1a6f620",
+    "file_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf",
+    "description_url": "https://commons.wikimedia.org/wiki/File:NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf",
+    "rights_note": "Commons 文件页标记 Public domain；仅摘录历史正文，不含现代译注。",
+    "edition_note": "世界图书馆扫描本，确切出版年未定；所列短段已人工看图核对，整书未转录或跨版本校勘。",
+    "punctuation_policy": "原字保留，标点按现代句读整理；不宣称与原版圈点逐一一致。"
+  },
+  "entries": [
+    {
+      "id": "ziping-yongshen-month-origin",
+      "work": "子平真诠",
+      "chapter": "论用神",
+      "heading": "月令起点",
+      "source_text": "八字用神，專求月令。以干日配月令地支，而生剋不同，格局分焉。",
+      "scan_pages": [26],
+      "printed_pages": [17],
+      "locator": "论用神 · 书内第十七页（PDF 第 26 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=26",
+      "notes": ["本版印作‘以干日’，保留该字序，不静默改为‘以日干’；待与其他版本校勘。"],
+      "retrieval_basis": "方法性资料，说明从月令出发；不直接生成某命盘的用神或格局。"
+    },
+    {
+      "id": "ziping-yongshen-pillar-coordination",
+      "work": "子平真诠",
+      "chapter": "论用神",
+      "heading": "四柱配合",
+      "source_text": "凡看命者，先觀用神之何屬，然後或順或逆，以年月日時，逐干逐支參配，而權衡之。",
+      "scan_pages": [26],
+      "printed_pages": [17],
+      "locator": "论用神 · 书内第十七页（PDF 第 26 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=26",
+      "notes": ["顺逆配合的完整条件尚未转换为程序规则，不可据这一段自动取用。"],
+      "retrieval_basis": "与月令起点合读，强调四柱配合，不单凭一个十神定格。"
+    },
+    {
+      "id": "ziping-yongshen-exception-question",
+      "work": "子平真诠",
+      "chapter": "论用神",
+      "heading": "月令无用神的设问",
+      "source_text": "然亦有月令無用神者，將若之何？",
+      "scan_pages": [27],
+      "printed_pages": [18],
+      "locator": "论用神 · 书内第十八页（PDF 第 27 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=27",
+      "notes": ["这是设问，不是独立取用算法；后文在扫描页 27–28 以木生寅卯等情况讨论建禄月劫，具体条件未完整摘录。", "引用本段应同时说明它有后续上下文，不能称所有命盘都可直接按月支确定用神。"],
+      "retrieval_basis": "说明章节存在条件和例外，不能把开篇一句当作完整判断。"
+    },
+    {
+      "id": "ziping-yongshen-exception-context",
+      "work": "子平真诠",
+      "chapter": "论用神",
+      "heading": "设问后的补充说明",
+      "source_text": "然終以月令爲主，然後尋用。",
+      "scan_pages": [28],
+      "printed_pages": [19],
+      "locator": "论用神 · 书内第十九页（PDF 第 28 个扫描页），承接上页设问与例子",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": ["承接上页讨论，不能脱离条件用于直接判断财格、日主强弱或用神。"],
+      "retrieval_basis": "与设问合读；属于历史方法说明，不是对当前命盘的判定结果。"
+    },
+    {
+      "id": "ziping-wealth-success-conditions",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "财格成格条件",
+      "source_text": "財旺生官，或財逢食生而身強帶比，或財格透印而位置妥適，兩不相剋，財格成也。",
+      "scan_pages": [28],
+      "printed_pages": [19],
+      "locator": "论用神成败救应 · 书内第十九页（PDF 第 28 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": ["句中各路径有多项条件，不能仅凭一个透干十神推定财格成立。", "财旺、身强、食生的有效配合、位置妥适和两不相克均尚无完整程序判断规则；财格本身也未先行判定。"],
+      "retrieval_basis": "用于财格方法条件清单；并非对当前命盘已经成格的判断。"
+    }
+  ]
+}

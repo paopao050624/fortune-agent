@@ -1,0 +1,32 @@
+name: Tests and package
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install project and build tools
+        run: python -m pip install '.[agent,bazi]' build
+      - name: Test without API credentials
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
+      - name: Build distribution
+        run: python -m build
+      - name: Check command entry points
+        run: |
+          fortune-agent --help
+          fortune-daily --help
+          fortune-bazi --help
+          fortune-web --help

@@ -1,0 +1,34 @@
+{
+  "entries": [
+    {
+      "id": "ditiansui-month-principle",
+      "work": "滴天髓辑要",
+      "chapter": "月令论",
+      "heading": "月令论",
+      "locator": "月令论 · 原文短段",
+      "source_text": "月令提綱，譬之宅也，人元用事之神，宅之向也，不可以不卜。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/17&oldid=844366",
+      "revision_id": 844366,
+      "revision_timestamp": "2017-03-23T15:45:47Z",
+      "wikitext_sha256": "babe20b4e4eed5c90ea577f9326b6b7be13bbac8d774c53b3b1b57212e68c93a",
+      "edition_note": "电子转录，尚未与指定纸本或扫描底本校勘；仅提取原文，不收录混排注解。",
+      "notes": [],
+      "retrieval_basis": "所有四柱解读共用的方法性参考，不能据此自动判定用神或旺衰"
+    },
+    {
+      "id": "ditiansui-strength-principle",
+      "work": "滴天髓辑要",
+      "chapter": "衰旺论",
+      "heading": "衰旺论",
+      "locator": "衰旺论 · 原文短段",
+      "source_text": "能知衰旺之真機，其於立命之奧，思過半矣。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=滴天髓/12&oldid=844360",
+      "revision_id": 844360,
+      "revision_timestamp": "2017-03-23T15:44:57Z",
+      "wikitext_sha256": "c17a857454f0e545b63c90dac9ddac0361d61cfe07718f7a5a793b4a2ff2ec80",
+      "edition_note": "电子转录，尚未与指定纸本或扫描底本校勘；仅提取原文，不收录混排注解。",
+      "notes": [],
+      "retrieval_basis": "所有四柱解读共用的方法性参考，不能据此自动判定用神或旺衰"
+    }
+  ]
+}

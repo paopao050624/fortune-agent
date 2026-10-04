@@ -1,0 +1,5 @@
+[
+  {"id":"resource-is-not-success","birth":"2000-01-01T12:00:00+08:00","question":"你已经看到偏印透干，按财格透印这条，我是不是就确定财格成了？请列出哪些条件还没有核实。","topic":"conditional-rules"},
+  {"id":"hidden-is-not-visible","birth":"2000-01-01T12:00:00+08:00","question":"月支子中有癸正财，那是不是就是财星透干？日主戊自己是不是也算一个透出的比肩？","topic":"observation-scope"},
+  {"id":"wealth-source-citation","birth":"2000-01-01T12:00:00+08:00","question":"请引用实际提供的《论用神成败救应》财格成格条件，分别说明三条路径，并标出书内页码和 PDF 扫描页。","topic":"scan-citation"}
+]

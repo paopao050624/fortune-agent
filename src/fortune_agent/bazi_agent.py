@@ -1,0 +1,76 @@
+"""Interpret a calculated chart without allowing the model to invent pillars."""
+
+from __future__ import annotations
+
+import json
+import hashlib
+from dataclasses import asdict
+from datetime import date, datetime
+from typing import Any
+from zoneinfo import ZoneInfo
+
+from .bazi import BaziChart
+from .bazi_sources import evidence_for
+from .bazi_facts import chart_facts
+from .bazi_rules import wealth_checklist
+
+BAZI_INSTRUCTIONS = (
+    "你是八字学习辅助工具。四柱和节气已由历法程序计算，必须逐字使用输入数据，"
+    "不得重新排盘或更改日主。说明采用法定时间、未做真太阳时校正和子时换日规则。"
+    "source_evidence 包含《滴天髓辑要》十干及方法短段，还有《子平真诠》论用神及财格成格条件的扫描核对短段；"
+    "只可引用其中的 source_text，标明条目和 source_url。"
+    "只有《子平真诠》条目提供了 printed_pages 与 scan_pages，必须分别标明书内页码与 PDF 扫描页。"
+    "其他资料没有纸本页码，不得为它们编造页码。不得把 26 个扫描页称为书内第 26 页。"
+    "不得补写未提供的原文、注解或其他章节；《渊海子平》《三命通会》"
+    "《穷通宝鉴》尚未接入。《子平真诠》仅接入所列短段，不是整章或整本。"
+    "引用使用给定 source_text；notes 中的疑字须说明尚未校勘，不得静默更正。"
+    "子平真诠原字保留，标点按 punctuation_policy 整理；‘以干日’不得静默改成‘以日干’。"
+    "短引原文后，分别写明传统含义解释与行动建议；建议是现代反思，不能说成古书的结论。"
+    "滴天髓电子转录尚未与底本校勘；子平真诠所列短段已看图核对，但版本间未完整校勘。"
+    "仅凭日主不能判断整盘强弱、格局、用神或大运。"
+    "子平真诠的月令起点、四柱配合和例外提示须结合说明，不得简化为缺某五行就补某五行。"
+    "derived_facts 中的十神、五行、阴阳和藏干由程序算出，不得改写或另列不同的藏干。"
+    "月令对应程序给出的月支；藏干顺序不是旺衰权重，不能套用未提供的人元司令天数。"
+    "未建立完整的旺衰、格局、用神规则，询问这些结论时必须说明当前不能确定。"
+    "method_checklist 只展示天干可见信息和未核实条件，不代表已成财格。"
+    "每条财格路径的 unverified_conditions 都须保留不确定性；见印星透干不等于位置妥适或两不相克。"
+    "不存在透干观察不等于藏干中没有该星；不能把日柱日主计为另一个透出比肩。"
+    "只引用与问题相关的资料；医疗、法律、投资问题不需要用古籍合理化建议。"
+    "不要从单个天干断言用户性格、能力、婚姻、寿命或疾病。"
+    "不要把命理推断当成事实或必然预言，也不要替代医疗、法律、财务判断。"
+    "今天、明年等相对日期必须以输入中的 reference_date 为准；它与出生日期不同。"
+    "结合用户问题给出具体的反思方向。用中文回答。"
+)
+PROMPT_SHA256 = hashlib.sha256(BAZI_INSTRUCTIONS.encode("utf-8")).hexdigest()
+
+
+def current_reference_date() -> date:
+    return datetime.now(ZoneInfo("Asia/Shanghai")).date()
+
+
+def interpret_bazi(
+    chart: BaziChart, question: str, client: Any, model: str,
+    reference_date: date | None = None,
+) -> str:
+    if not question.strip():
+        raise ValueError("问题不能为空")
+    response = client.responses.create(
+        model=model,
+        instructions=BAZI_INSTRUCTIONS,
+        input=[{
+            "role": "user",
+            "content": json.dumps({
+                "question": question.strip(),
+                "chart": asdict(chart),
+                "reference_date": (reference_date or current_reference_date()).isoformat(),
+                "reference_timezone": "Asia/Shanghai",
+                "source_evidence": evidence_for(chart),
+                "derived_facts": chart_facts(chart),
+                "method_checklist": wealth_checklist(chart),
+            }, ensure_ascii=False),
+        }],
+        store=False,
+    )
+    if not response.output_text.strip():
+        raise RuntimeError("模型返回了空的八字解读")
+    return response.output_text.strip()
