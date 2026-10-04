@@ -32,6 +32,7 @@ from .iching_agent import interpret_cast
 from .conversation import ConversationStore
 from .unified_agent import UnifiedAgent
 from .bazi_daily import daily_bazi_context
+from .bazi_structure import analyze_structure
 
 
 def text_field(payload: dict, name: str, default: str = "", limit: int = 2000) -> str:
@@ -183,7 +184,8 @@ class LocalApp:
                 answer = interpret_bazi(chart, question, client, model,style=style,daily_context=daily_context)
             return {"mode": mode, "chart": asdict(chart), "derived_facts": chart_facts(chart),
                     "method_checklist": wealth_checklist(chart),
-                    "interpretation": answer, "evidence": bazi_evidence(chart),"daily_context":daily_context}
+                    "interpretation": answer, "evidence": bazi_evidence(chart),"daily_context":daily_context,
+                    "structural_analysis":analyze_structure(chart)}
         raise ValueError("未知功能")
 
 

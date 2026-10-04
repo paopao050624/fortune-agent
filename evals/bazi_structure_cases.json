@@ -1,0 +1,5 @@
+[
+  {"id":"root-observation","birth":"2000-01-01T12:00:00+08:00","question":"请逐项解释日主通根位置、月令季节和透干；同五行藏根是不是就一定等于身强？","topic":"structure-root"},
+  {"id":"pattern-candidate","birth":"2000-01-01T12:00:00+08:00","question":"请列出程序给出的格局候选、它的证据和未完成条件。能否直接断定财格成立并给出用神？","topic":"structure-pattern"},
+  {"id":"season-limit","birth":"2001-04-10T12:00:00+08:00","question":"辰月是否就一定土旺？请使用程序给出的季末月和根气资料，说明还有哪些条件没有验证。","topic":"structure-season"}
+]

@@ -13,6 +13,7 @@ from .bazi import BaziChart
 from .bazi_sources import evidence_for
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
+from .bazi_structure import analyze_structure
 
 BAZI_INSTRUCTIONS = (
     "你是八字学习辅助工具。四柱可能来自历法程序或用户提供，必须逐字使用输入数据，"
@@ -20,7 +21,7 @@ BAZI_INSTRUCTIONS = (
     "birth_time 为 null 时是用户提供四柱，仅校验单柱干支，未核对同一出生时刻的四柱组合。"
     "此时出生日期、时区、节气与时间规则未知，必须说明未知，不得虚构或声称已经排盘验证。"
     "有出生时间时说明输入给出的法定时间、真太阳时校正状态和子时换日规则。"
-    "source_evidence 包含《滴天髓辑要》十干及方法短段，还有《子平真诠》论用神及财格成格条件的扫描核对短段；"
+    "source_evidence 包含《滴天髓辑要》短段与《子平真诠》论用神、财格条件及月令通根的扫描核对短段；"
     "只可引用其中的 source_text，标明条目和 source_url。"
     "只有《子平真诠》条目提供了 printed_pages 与 scan_pages，必须分别标明书内页码与 PDF 扫描页。"
     "其他资料没有纸本页码，不得为它们编造页码。不得把 26 个扫描页称为书内第 26 页。"
@@ -35,6 +36,11 @@ BAZI_INSTRUCTIONS = (
     "derived_facts 中的十神、五行、阴阳和藏干由程序算出，不得改写或另列不同的藏干。"
     "月令对应程序给出的月支；藏干顺序不是旺衰权重，不能套用未提供的人元司令天数。"
     "未建立完整的旺衰、格局、用神规则，询问这些结论时必须说明当前不能确定。"
+    "structural_analysis 已由程序计算季节标签、逐柱根气观察、月支藏干透出位置和格局研究候选。"
+    "使用它回答结构问题，不再说完全没有分析；但不改变其结论为确定旺衰、定格或用神。"
+    "same_stem 是同干藏根出现，same_element 是同五行的其他藏干出现，两者都未判断根力。"
+    "未见藏干根气不等于全盘身弱，季节同类不等于身强；季末月不直接判土旺或得令。"
+    "pattern_candidates 仅研究候选；列表不排名，不能仅凭透出就说成格，也不能把比劫直接当普通八格。"
     "method_checklist 只展示天干可见信息和未核实条件，不代表已成财格。"
     "每条财格路径的 unverified_conditions 都须保留不确定性；见印星透干不等于位置妥适或两不相克。"
     "不存在透干观察不等于藏干中没有该星；不能把日柱日主计为另一个透出比肩。"
@@ -81,6 +87,7 @@ def interpret_bazi(
                 "source_evidence": evidence_for(chart),
                 "derived_facts": chart_facts(chart),
                 "method_checklist": wealth_checklist(chart),
+                "structural_analysis":analyze_structure(chart),
             }, ensure_ascii=False),
         }],
         store=False,

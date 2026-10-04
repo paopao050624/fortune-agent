@@ -9,6 +9,7 @@ from importlib.resources import files
 
 from .bazi import BaziChart
 from .bazi_rules import load_rule_catalog
+from .bazi_structure import load_structure_rules
 
 
 @lru_cache(maxsize=1)
@@ -31,7 +32,8 @@ def load_ziping_catalog() -> dict:
 
 def catalog_sha256() -> str:
     content = json.dumps({"stems": load_catalog(), "context": load_context_catalog(),
-                          "ziping": load_ziping_catalog(), "wealth_rules": load_rule_catalog()},
+                          "ziping": load_ziping_catalog(), "wealth_rules": load_rule_catalog(),
+                          "structure_rules":load_structure_rules()},
                          ensure_ascii=False, sort_keys=True).encode("utf-8")
     return hashlib.sha256(content).hexdigest()
 

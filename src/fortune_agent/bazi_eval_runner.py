@@ -14,6 +14,7 @@ from .config import ApiConfig
 from .bazi_sources import catalog_sha256, evidence_for
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
+from .bazi_structure import analyze_structure
 
 
 def completed_cases(path: Path, cases: list, model: str, reference_date: date) -> set[str]:
@@ -33,6 +34,7 @@ def completed_cases(path: Path, cases: list, model: str, reference_date: date) -
             or record.get("source_catalog_sha256") != catalog_sha256()
             or record.get("derived_facts") != chart_facts(case.chart())
             or record.get("method_checklist") != wealth_checklist(case.chart())
+            or record.get("structural_analysis") != analyze_structure(case.chart())
         ):
             raise ValueError(f"已有结果与当前案例、模型、参考日期或提示词不一致：{record.get('case_id')}")
         completed.add(case.id)
@@ -100,6 +102,7 @@ def main() -> None:
                 "source_evidence": evidence_for(chart),
                 "derived_facts": chart_facts(chart),
                 "method_checklist": wealth_checklist(chart),
+                "structural_analysis":analyze_structure(chart),
                 "evaluated_at_utc": datetime.now(timezone.utc).isoformat(),
                 "chart": asdict(chart),
                 "answer": answer,

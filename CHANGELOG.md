@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add source-traced natal structural analysis: seasonal month context, exact-stem versus same-element hidden-root observations, month-stem transmission and pattern-study candidates.
+- Preserve root-strength and final pattern/useful-god uncertainty, separating program facts from unimplemented full judgment rules.
 - Add explicit daily Ba Zi reference pillars and ten-god relationships at a documented China-standard-time noon reference, with CLI, web and conversational support.
 - Keep natal and daily data separate, disclose solar-term boundary limits, and avoid unsupported daily luck scores or promises.
 - Add a unified conversational agent with model tool routing, required-data clarification, stable followups and in-memory expiring sessions.

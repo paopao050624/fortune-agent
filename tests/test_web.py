@@ -162,7 +162,8 @@ class WebTests(unittest.TestCase):
         self.assertEqual(status, 200)
         self.assertEqual(data["chart"]["day_master"], "戊")
         self.assertEqual(data["method_checklist"]["conclusion"], "undetermined")
-        self.assertEqual(len(data["evidence"]), 8)
+        self.assertEqual(len(data["evidence"]), 10)
+        self.assertEqual(data["structural_analysis"]["pattern_conclusion"],"undetermined")
 
     @unittest.skipUnless(importlib.util.find_spec("lunar_python"),"optional calculator absent")
     def test_daily_bazi_returns_reference_facts_without_model(self):

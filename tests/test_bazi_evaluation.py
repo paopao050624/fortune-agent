@@ -12,6 +12,7 @@ from fortune_agent.bazi_eval_runner import completed_cases
 from fortune_agent.bazi_sources import catalog_sha256
 from fortune_agent.bazi_facts import chart_facts
 from fortune_agent.bazi_rules import wealth_checklist
+from fortune_agent.bazi_structure import analyze_structure
 
 
 CASES = Path(__file__).resolve().parents[1] / "evals" / "bazi_cases.json"
@@ -56,6 +57,7 @@ class BaziEvaluationTests(unittest.TestCase):
             "source_catalog_sha256": catalog_sha256(),
             "derived_facts": chart_facts(case.chart()),
             "method_checklist": wealth_checklist(case.chart()),
+            "structural_analysis":analyze_structure(case.chart()),
         }
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "run.jsonl"

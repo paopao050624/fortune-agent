@@ -12,6 +12,7 @@ from .bazi_agent import interpret_bazi
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
 from .bazi_daily import daily_bazi_context
+from .bazi_structure import analyze_structure
 from .bazi_sources import evidence_for as bazi_evidence
 from .daily import daily_draw
 from .daily_service import get_daily
@@ -260,6 +261,7 @@ class UnifiedAgent:
             chart=parse_bazi_pillars(slots["pillars"]) if slots.get("pillars") else calculate_bazi(slots["birth"])
             data={"mode":method,"chart":asdict(chart),"derived_facts":chart_facts(chart),
                   "method_checklist":wealth_checklist(chart),"evidence":bazi_evidence(chart),
+                  "structural_analysis":analyze_structure(chart),
                   "daily_context":daily_bazi_context(chart) if slots.get("daily_bazi") else None}
             return Artifact(method,question,chart,data)
         if method=="daily":

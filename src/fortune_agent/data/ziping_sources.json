@@ -23,11 +23,17 @@
       "chapter": "论用神",
       "heading": "月令起点",
       "source_text": "八字用神，專求月令。以干日配月令地支，而生剋不同，格局分焉。",
-      "scan_pages": [26],
-      "printed_pages": [17],
+      "scan_pages": [
+        26
+      ],
+      "printed_pages": [
+        17
+      ],
       "locator": "论用神 · 书内第十七页（PDF 第 26 个扫描页）",
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=26",
-      "notes": ["本版印作‘以干日’，保留该字序，不静默改为‘以日干’；待与其他版本校勘。"],
+      "notes": [
+        "本版印作‘以干日’，保留该字序，不静默改为‘以日干’；待与其他版本校勘。"
+      ],
       "retrieval_basis": "方法性资料，说明从月令出发；不直接生成某命盘的用神或格局。"
     },
     {
@@ -36,11 +42,17 @@
       "chapter": "论用神",
       "heading": "四柱配合",
       "source_text": "凡看命者，先觀用神之何屬，然後或順或逆，以年月日時，逐干逐支參配，而權衡之。",
-      "scan_pages": [26],
-      "printed_pages": [17],
+      "scan_pages": [
+        26
+      ],
+      "printed_pages": [
+        17
+      ],
       "locator": "论用神 · 书内第十七页（PDF 第 26 个扫描页）",
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=26",
-      "notes": ["顺逆配合的完整条件尚未转换为程序规则，不可据这一段自动取用。"],
+      "notes": [
+        "顺逆配合的完整条件尚未转换为程序规则，不可据这一段自动取用。"
+      ],
       "retrieval_basis": "与月令起点合读，强调四柱配合，不单凭一个十神定格。"
     },
     {
@@ -49,11 +61,18 @@
       "chapter": "论用神",
       "heading": "月令无用神的设问",
       "source_text": "然亦有月令無用神者，將若之何？",
-      "scan_pages": [27],
-      "printed_pages": [18],
+      "scan_pages": [
+        27
+      ],
+      "printed_pages": [
+        18
+      ],
       "locator": "论用神 · 书内第十八页（PDF 第 27 个扫描页）",
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=27",
-      "notes": ["这是设问，不是独立取用算法；后文在扫描页 27–28 以木生寅卯等情况讨论建禄月劫，具体条件未完整摘录。", "引用本段应同时说明它有后续上下文，不能称所有命盘都可直接按月支确定用神。"],
+      "notes": [
+        "这是设问，不是独立取用算法；后文在扫描页 27–28 以木生寅卯等情况讨论建禄月劫，具体条件未完整摘录。",
+        "引用本段应同时说明它有后续上下文，不能称所有命盘都可直接按月支确定用神。"
+      ],
       "retrieval_basis": "说明章节存在条件和例外，不能把开篇一句当作完整判断。"
     },
     {
@@ -62,11 +81,17 @@
       "chapter": "论用神",
       "heading": "设问后的补充说明",
       "source_text": "然終以月令爲主，然後尋用。",
-      "scan_pages": [28],
-      "printed_pages": [19],
+      "scan_pages": [
+        28
+      ],
+      "printed_pages": [
+        19
+      ],
       "locator": "论用神 · 书内第十九页（PDF 第 28 个扫描页），承接上页设问与例子",
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
-      "notes": ["承接上页讨论，不能脱离条件用于直接判断财格、日主强弱或用神。"],
+      "notes": [
+        "承接上页讨论，不能脱离条件用于直接判断财格、日主强弱或用神。"
+      ],
       "retrieval_basis": "与设问合读；属于历史方法说明，不是对当前命盘的判定结果。"
     },
     {
@@ -75,12 +100,59 @@
       "chapter": "论用神成败救应",
       "heading": "财格成格条件",
       "source_text": "財旺生官，或財逢食生而身強帶比，或財格透印而位置妥適，兩不相剋，財格成也。",
-      "scan_pages": [28],
-      "printed_pages": [19],
+      "scan_pages": [
+        28
+      ],
+      "printed_pages": [
+        19
+      ],
       "locator": "论用神成败救应 · 书内第十九页（PDF 第 28 个扫描页）",
       "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
-      "notes": ["句中各路径有多项条件，不能仅凭一个透干十神推定财格成立。", "财旺、身强、食生的有效配合、位置妥适和两不相克均尚无完整程序判断规则；财格本身也未先行判定。"],
+      "notes": [
+        "句中各路径有多项条件，不能仅凭一个透干十神推定财格成立。",
+        "财旺、身强、食生的有效配合、位置妥适和两不相克均尚无完整程序判断规则；财格本身也未先行判定。"
+      ],
       "retrieval_basis": "用于财格方法条件清单；并非对当前命盘已经成格的判断。"
+    },
+    {
+      "id": "ziping-season-not-final",
+      "heading": "月令重要但不是唯一判断",
+      "source_text": "八字雖以月令為重，而旺相休囚，年月日時亦有損益之權。",
+      "work": "子平真诠",
+      "chapter": "论十干得时不旺失时不弱",
+      "scan_pages": [
+        22
+      ],
+      "printed_pages": [
+        13
+      ],
+      "locator": "论十干得时不旺失时不弱 · 书内第十三页（PDF 第 22 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=22",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理。",
+        "原段仍需结合后续根气轻重与配合讨论；程序的同五行藏干观察不能直接当作强根或身强结论。"
+      ],
+      "retrieval_basis": "月令与通根的结构分析方法依据；不直接判定当前命盘强弱。"
+    },
+    {
+      "id": "ziping-root-observation",
+      "heading": "四柱有根的分析要求",
+      "source_text": "是故十干不論月令休囚，只要四柱有根，便能受財官食神，而當傷官七殺。",
+      "work": "子平真诠",
+      "chapter": "论十干得时不旺失时不弱",
+      "scan_pages": [
+        22
+      ],
+      "printed_pages": [
+        13
+      ],
+      "locator": "论十干得时不旺失时不弱 · 书内第十三页（PDF 第 22 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=22",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理。",
+        "原段仍需结合后续根气轻重与配合讨论；程序的同五行藏干观察不能直接当作强根或身强结论。"
+      ],
+      "retrieval_basis": "月令与通根的结构分析方法依据；不直接判定当前命盘强弱。"
     }
   ]
 }
