@@ -4,12 +4,14 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import date
 from dataclasses import asdict
 
 from .bazi import calculate_bazi, parse_bazi_pillars
 from .bazi_sources import evidence_for
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
+from .bazi_daily import daily_bazi_context
 
 
 def main() -> None:
@@ -23,12 +25,17 @@ def main() -> None:
     parser.add_argument("--sources", action="store_true", help="显示日主对应的原文和出处，无需 API")
     parser.add_argument("--details", action="store_true", help="显示程序计算的十神与藏干，无需 API")
     parser.add_argument("--analysis", action="store_true", help="显示财格方法条件清单，无需 API")
+    parser.add_argument("--daily",action="store_true",help="查看今日干支与本命日主关系")
+    parser.add_argument("--date",type=date.fromisoformat,help="每日参考公历日期，需同时使用 --daily")
     args = parser.parse_args()
+    if args.date is not None and not args.daily:
+        parser.error("--date 须配合 --daily")
     try:
         chart = parse_bazi_pillars(args.pillars) if args.pillars else calculate_bazi(args.birth, args.timezone)
         evidence = evidence_for(chart)
         facts = chart_facts(chart)
         checklist = wealth_checklist(chart)
+        daily_context=daily_bazi_context(chart,args.date) if args.daily else None
         interpretation = None
         if args.interpret:
             from .config import ApiConfig
@@ -42,6 +49,7 @@ def main() -> None:
                 interpretation = interpret_bazi(
                     chart, args.interpret,
                     OpenAI(api_key=config.api_key, base_url=config.base_url, timeout=60, max_retries=0), config.model,
+                    reference_date=args.date,daily_context=daily_context,
                 )
             except APIStatusError as exc:
                 parser.exit(1, f"中转站请求失败：HTTP {exc.status_code}，错误码 {exc.code or 'unknown'}。\n")
@@ -53,7 +61,7 @@ def main() -> None:
     if args.json:
         print(json.dumps({"chart": asdict(chart), "derived_facts": facts,
                           "method_checklist": checklist, "interpretation": interpretation,
-                          "evidence": evidence}, ensure_ascii=False, indent=2))
+                          "evidence": evidence,"daily_context":daily_context}, ensure_ascii=False, indent=2))
         return
     if chart.birth_time is not None:
         print(f"出生时间：{chart.birth_time}（{chart.timezone}）")
@@ -65,6 +73,13 @@ def main() -> None:
         print(f"前一节：{chart.previous_jie} {chart.previous_jie_time}")
         print(f"后一节：{chart.next_jie} {chart.next_jie_time}")
     print(f"规则：{chart.day_boundary_rule}；{chart.solar_time_rule}")
+    if daily_context:
+        print(f"\n每日八字参考：{daily_context['date']}（中国标准时间12:00）")
+        for pillar in daily_context["pillars"]:
+            stem=pillar["heavenly_stem"]
+            hidden="、".join(f"{item['stem']}（{item['ten_god']}）" for item in pillar["hidden_stems"])
+            print(f"{pillar['position']} {pillar['ganzhi']}：相对本命日主{chart.day_master}，天干{stem['ten_god']}；藏干{hidden}")
+        print(daily_context["limitations"])
     if args.details:
         print(f"\n月令月支：{facts['month_branch']}")
         for pillar in facts["pillars"]:

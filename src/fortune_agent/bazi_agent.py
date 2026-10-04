@@ -55,6 +55,7 @@ def interpret_bazi(
     chart: BaziChart, question: str, client: Any, model: str,
     reference_date: date | None = None,
     style: str = "gentle",
+    daily_context: dict | None = None,
 ) -> str:
     if not question.strip():
         raise ValueError("问题不能为空")
@@ -62,7 +63,12 @@ def interpret_bazi(
         raise ValueError("无效回答风格")
     response = client.responses.create(
         model=model,
-        instructions=BAZI_INSTRUCTIONS + ("\n措辞直接简洁，保留不确定性。" if style=="direct" else "\n措辞温和，给出可选择的建议。"),
+        instructions=BAZI_INSTRUCTIONS + ("\n措辞直接简洁，保留不确定性。" if style=="direct" else "\n措辞温和，给出可选择的建议。") + (
+            "\n这是每日八字提示。daily_context 的日期和参考时刻由程序确定，不能把当日柱说成本命柱。"
+            "只使用其中计算的十神关系。偏财、正官等是分类，不意味着今天有进账或升职，"
+            "七杀、伤官等不能变成灾祸、疾病或失败预言。没有大运或旺衰、喜用神，不能评分或判断吉凶。"
+            "把当日关系转化为可选的反思问题，并结合用户实际问题给行动建议；这种现代类比不冒充古籍结论。"
+            "说明每日参考为中国标准时间12:00，节气切换日其他时段可能不同。" if daily_context else ""),
         input=[{
             "role": "user",
             "content": json.dumps({
@@ -71,6 +77,7 @@ def interpret_bazi(
                 "reference_date": (reference_date or current_reference_date()).isoformat(),
                 "reference_timezone": "Asia/Shanghai",
                 "style": style,
+                "daily_context":daily_context,
                 "source_evidence": evidence_for(chart),
                 "derived_facts": chart_facts(chart),
                 "method_checklist": wealth_checklist(chart),

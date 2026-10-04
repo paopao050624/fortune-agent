@@ -164,6 +164,16 @@ class WebTests(unittest.TestCase):
         self.assertEqual(data["method_checklist"]["conclusion"], "undetermined")
         self.assertEqual(len(data["evidence"]), 8)
 
+    @unittest.skipUnless(importlib.util.find_spec("lunar_python"),"optional calculator absent")
+    def test_daily_bazi_returns_reference_facts_without_model(self):
+        with patch.object(LocalApp,"model_client",side_effect=AssertionError("No model expected")):
+            status,data=self.post({"mode":"bazi","pillars":"己卯 丙子 戊午 戊午","daily_bazi":True})
+        self.assertEqual(status,200)
+        self.assertIsNone(data["chart"]["birth_time"])
+        self.assertEqual(data["daily_context"]["natal_day_master"],"戊")
+        status,_=self.post({"mode":"bazi","pillars":"己卯 丙子 戊午 戊午","daily_bazi":"yes"})
+        self.assertEqual(status,400)
+
 
 if __name__ == "__main__":
     unittest.main()

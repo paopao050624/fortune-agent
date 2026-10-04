@@ -11,6 +11,7 @@ from .bazi import calculate_bazi, parse_bazi_pillars
 from .bazi_agent import interpret_bazi
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
+from .bazi_daily import daily_bazi_context
 from .bazi_sources import evidence_for as bazi_evidence
 from .daily import daily_draw
 from .daily_service import get_daily
@@ -24,6 +25,7 @@ from .tarot import draw_reading
 ROUTER_INSTRUCTIONS = """你是统一占卜助手的意图与资料路由器，只调用 choose_action，不自行起卦、抽牌或排盘。
 支持 tarot（塔罗）、daily（每日一张塔罗）、bazi（八字）和 iching（周易）。紫微和西方占星尚未实现。
 今天运势等泛化当日问题默认 daily，但明确指定其他方式时遵循用户选择。没有指定方式且不是每日问题时，clarify 询问想用塔罗、八字或周易，不擅自替用户选择。
+明确要求每日八字或用八字看今天时选 bazi，沿用本方式已收集资料；普通今日提示才用 daily 塔罗。每日八字只算当天干支与本命日主关系，不能承诺吉凶。
 用户只说算塔罗或起卦但没有具体问题，clarify 追问。问题足够具体则 read；塔罗未选牌阵采用 three。
 八字可以提供完整四柱或准确出生时间。只提取用户实际给出的信息，未说时辰不得填午夜，未说日期不得编造日期。
 将明确出生日期时间规范为 ISO 8601；仅当前支持的中国标准时间可用 +08:00，用户没确认时区时 birth_timezone=unknown 并追问。
@@ -142,6 +144,13 @@ class UnifiedAgent:
                 session.slots[key]=route[key]
         if route["birth"] is not None: session.slots.pop("pillars",None)
         if route["pillars"] is not None: session.slots.pop("birth",None)
+        if method=="bazi":
+            if re.search(r"今天|今日|每日|当日",message):
+                session.slots["daily_bazi"]=True
+            elif re.search(r"取消每日|不看当天|只看本命",message):
+                session.slots.pop("daily_bazi",None)
+            if session.artifact and bool(session.artifact.data.get("daily_context"))!=bool(session.slots.get("daily_bazi")):
+                session.artifact=None
         if method=="bazi" and session.slots.get("_awaiting_birth_timezone") and re.fullmatch(r"(?:是|是的|对|对的|确认|没错|按这个时区)[。！!\s]*",message):
             session.slots["birth_timezone"]="Asia/Shanghai"
             session.slots["_birth_timezone_user_confirmed"]=True
@@ -180,6 +189,9 @@ class UnifiedAgent:
                     or session.artifact.data.get("profile_key")!=current.cache_key):
                     session.artifact=None
             if session.artifact:
+                if method=="bazi" and session.slots.get("daily_bazi"):
+                    current=daily_bazi_context(session.artifact.domain)
+                    session.artifact.data["daily_context"]=current
                 context=self.followup_question(session,message)
                 result=self.explain(session.artifact,context,session.slots.get("style","gentle"),
                                     include_hexagram_context=bool(re.search(r"主卦|变卦",message)))
@@ -247,7 +259,8 @@ class UnifiedAgent:
         if method=="bazi":
             chart=parse_bazi_pillars(slots["pillars"]) if slots.get("pillars") else calculate_bazi(slots["birth"])
             data={"mode":method,"chart":asdict(chart),"derived_facts":chart_facts(chart),
-                  "method_checklist":wealth_checklist(chart),"evidence":bazi_evidence(chart)}
+                  "method_checklist":wealth_checklist(chart),"evidence":bazi_evidence(chart),
+                  "daily_context":daily_bazi_context(chart) if slots.get("daily_bazi") else None}
             return Artifact(method,question,chart,data)
         if method=="daily":
             instant=datetime.now(timezone.utc)
@@ -271,7 +284,8 @@ class UnifiedAgent:
             result=TarotAgent(self.client,self.model,draw=lambda *_:fixed).read(question,fixed.spread,style=style)
             data["interpretation"]=result.interpretation
         elif artifact.method=="bazi":
-            data["interpretation"]=interpret_bazi(artifact.domain,question,self.client,self.model,style=style)
+            data["interpretation"]=interpret_bazi(artifact.domain,question,self.client,self.model,
+                                                   style=style,daily_context=data.get("daily_context"))
         else:
             result=interpret_cast(artifact.domain,question,self.client,self.model,artifact.policy,style,
                                   include_hexagram_context=include_hexagram_context)

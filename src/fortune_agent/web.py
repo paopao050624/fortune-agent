@@ -31,6 +31,7 @@ from .iching_reading import select_passages, reference_hexagram
 from .iching_agent import interpret_cast
 from .conversation import ConversationStore
 from .unified_agent import UnifiedAgent
+from .bazi_daily import daily_bazi_context
 
 
 def text_field(payload: dict, name: str, default: str = "", limit: int = 2000) -> str:
@@ -170,16 +171,19 @@ class LocalApp:
             if bool(birth) == bool(pillars):
                 raise ValueError("请提供出生时间或四柱之一，不能同时提供")
             chart = parse_bazi_pillars(pillars) if pillars else calculate_bazi(birth)
+            daily=payload.get("daily_bazi",False)
+            if not isinstance(daily,bool):raise ValueError("daily_bazi 必须为布尔值")
+            daily_context=daily_bazi_context(chart) if daily else None
             question = text_field(payload, "question", "请说明排盘和所提供的依据。")
             if interpret and not question:
                 raise ValueError("解读问题不能为空")
             answer = None
             if interpret:
                 client, model = self.model_client()
-                answer = interpret_bazi(chart, question, client, model)
+                answer = interpret_bazi(chart, question, client, model,style=style,daily_context=daily_context)
             return {"mode": mode, "chart": asdict(chart), "derived_facts": chart_facts(chart),
                     "method_checklist": wealth_checklist(chart),
-                    "interpretation": answer, "evidence": bazi_evidence(chart)}
+                    "interpretation": answer, "evidence": bazi_evidence(chart),"daily_context":daily_context}
         raise ValueError("未知功能")
 
 

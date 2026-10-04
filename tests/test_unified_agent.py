@@ -94,6 +94,18 @@ class UnifiedTests(unittest.TestCase):
         self.assertIsNone(result["result"]["chart"]["birth_time"])
         self.assertEqual(result["result"]["chart"]["day_master"],"戊")
 
+    @unittest.skipUnless(importlib.util.find_spec("lunar_python"),"optional calculator absent")
+    def test_daily_bazi_collects_data_then_reuses_chart_and_daily_context(self):
+        agent,_=self.agent([plan(method="bazi",question="今日学习安排"),
+                           plan(method="bazi",pillars="己卯 丙子 戊午 戊午"),
+                           plan(method="bazi",action="followup")])
+        self.assertEqual(agent.turn(self.session,"用八字看今日学习安排")["status"],"needs_input")
+        first=agent.turn(self.session,"四柱是己卯 丙子 戊午 戊午")
+        self.assertIsNotNone(first["result"]["daily_context"])
+        second=agent.turn(self.session,"给一个具体小步骤")
+        self.assertEqual(first["result"]["chart"],second["result"]["chart"])
+        self.assertEqual(first["result"]["daily_context"],second["result"]["daily_context"])
+
     def test_invented_pillars_and_birth_clock_are_not_executed(self):
         agent,_=self.agent([plan(method="bazi",pillars="己卯 丙子 戊午 戊午")])
         result=agent.turn(self.session,"我只有出生年份2000年")
