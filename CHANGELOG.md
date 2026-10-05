@@ -1,20 +1,25 @@
 # Changelog
 
-## Unreleased
+## Unreleased（主分支，v0.2.0发布后）
 
-- Add source-traced natal structural analysis: seasonal month context, exact-stem versus same-element hidden-root observations, month-stem transmission and pattern-study candidates.
-- Preserve root-strength and final pattern/useful-god uncertainty, separating program facts from unimplemented full judgment rules.
-- Add explicit daily Ba Zi reference pillars and ten-god relationships at a documented China-standard-time noon reference, with CLI, web and conversational support.
-- Keep natal and daily data separate, disclose solar-term boundary limits, and avoid unsupported daily luck scores or promises.
-- Add a unified conversational agent with model tool routing, required-data clarification, stable followups and in-memory expiring sessions.
-- Add local web chat, tool traces, clear/new conversation controls and an interactive `fortune-chat` command.
-- Preserve prepared artifacts after model failures and validate birth data against user messages before execution.
-- Add three-coin I Ching casting, six user-supplied line totals, moving lines, and main/changed hexagrams in the CLI and local web interface.
-- Add the complete 64 judgments, 384 line texts and Qian/Kun special passages with per-page fixed source revisions and variant notes.
-- Add seven moving-count cases and an alternative all-moving-lines policy, offline reference lookup, structured model interpretation and validated passage IDs.
-- Accept user-supplied four pillars in the CLI and local web interface.
-- Validate individual pillars against the sexagenary cycle and explicitly preserve unknown birth time, timezone, solar terms, and day-boundary conventions.
-- Reuse source-linked interpretation and relationship calculations without inventing a birth date or claiming the supplied chart is calendar-verified.
+- 完整网页、HTTP与Docker验证：桌面/手机17组交互、容器构建、Host/token校验及重启持久化；新增可复现脚本和CI任务。
+- 修复Docker外部端口映射引起的Host拒绝，支持显式 `--external-port`。
+- 档案模式禁用未使用的手填星盘资料，并显示实际计算采用的出生时间。
+- 全面同步README、功能文档、安装依赖、存储说明与验证状态；历史版本单独标注。
+- 修正对话能力说明和CLI欢迎语，避免将已支持的紫微/占星误称为尚未实现。
+
+## 0.2.0
+
+- 统一Agent：六种工具路由、必要资料补问、稳定追问、重试与会话清除；不假填出生资料。
+- 周易：硬币起卦、主变卦与动爻、64卦辞/384爻辞/用九用六参考库，两种取辞策略与校验后的原文呈现。
+- 八字：用户四柱输入、月令/藏根/透干观察、禄劫刃及杂气路径、合冲刑害破关系、公开参数的旺衰估计、格局条件与喜用候选。
+- 八字时间链：准确出生时间与传统顺逆参数具备时计算起运、十年大运及参考流年；本命与当日干支分开。
+- 每日与档案：塔罗和八字综合日报、本地多档案、偏好与经纬度、回顾、导出恢复、删除及显式保存的工具历史。
+- 紫微与占星：固定iztro十二宫本命盘、Astronomy Engine十大天体热带整宫制，CLI及统一对话支持。
+- 塔罗体验：服务端固定洗牌、78背牌选择、翻牌与原牌追问，单张/三张/对比/五张/凯尔特十字。
+- 开源交付：第三方完整许可、Docker本机配置、环境检查命令、贡献和安全文档，以及GitHub发行附件。
+
+发布时部分网页与Docker验证按用户要求跳过；发布后在主分支补充验证并修复。v0.2.0标签和原附件保留发布时内容，详见 [发布记录](docs/release-v0.2.md)。
 
 ## 0.1.0
 
@@ -32,42 +37,4 @@ First local prototype. This is a development release, not a complete implementat
 
 Known limits: no complete strength, pattern, useful-god, or luck-cycle calculation; no Zi Wei Dou Shu, I Ching, or Western astrology; no public deployment or account system. Real evaluations are small, reviewed samples. The browser layout still requires visual acceptance in a supported browser environment.
 
-## 未发布：八字特殊月令规则
-
-- 增加建禄、阴干月劫、五阳干阳刃的研究路径映射。
-- 增加辰戌丑未杂气月的透干与完整三合支字证据筛选。
-- 保留原文异文和未核实条件，不自动判合化、旺衰、成格或喜用神。
-
-## 未发布：干支关系观察
-
-- 新增显干五合、地支六合冲害破、相刑、自刑重复支及三刑支字齐备观察。
-- 保留柱位、方向、多项关系重叠与根气／候选关联，未判断关系效力。
-- 网页、统一对话和命令行共用程序结果；关系规则纳入参考库哈希。
-
-## 未发布：综合报告与每日运势
-
-- 新增八字旺衰证据、分方法取用和大运流年报告。最终判断缺条件时仍未确定。
-- 准确出生时间与用户提供的传统顺逆参数具备时，按分钟折算起运，按精确起运周年选择当前大运。
-- 新增本地档案、塔罗与八字综合日报、历史回顾、导出与删除，统一对话复用保存档案。
-- 新增 fortune-report 命令与网页入口，离线可用；模型失败不保存空日报。
-
-## 未发布：八字判断模型 v1
-
-- 新增项目旺衰估计及六情景敏感性检查，公开权重和阈值。
-- 新增格局配合、风险、救应与禄劫刃条件规则，新增10个扫描核对短段。
-- 新增扶抑候选、通用月支调候方向、方法冲突与特殊从化筛选。
-- 网页、统一对话和综合日报复用计算结果；模型估计与古籍最终效力分别标注。
-
-## 0.2.0
-
-- 增加固定iztro紫微本命盘与Astronomy Engine热带整宫占星、CLI及统一对话路由。
-- 增加多档案、出生地点、偏好、工具历史与导入恢复；保留明确保存操作。
-- 增加服务端固定洗牌、78背牌选择、翻牌、稳定追问及对比/五张/十字牌阵。
-- 增加第三方许可、Docker本机部署、健康检查、贡献与安全文档、CI容器检查。
-
-## Unreleased: browser and Docker validation fixes
-
-- Support explicit Docker external localhost ports while preserving Host/token checks.
-- Disable unused manual birth fields in profile mode and display actual chart input.
-- Restore complete HTTP tests and add browser/container persistence validation in CI.
-- Confirm 183 tests and 17 browser acceptance groups; validate real image build and restart persistence.
+以上0.1.0限制记录该历史版本，不代表当前功能。

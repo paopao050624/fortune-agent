@@ -1,6 +1,6 @@
 # Contributing
 
-Install Python 3.11+ and Node.js 18+, then run:
+The package supports Python 3.10+; Python 3.11+ is recommended and CI tests 3.11/3.13. Install Node.js 18+, then run:
 
 ```bash
 python -m venv .venv

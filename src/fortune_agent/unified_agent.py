@@ -188,8 +188,8 @@ class UnifiedAgent:
                     "trace":trace,"result":deepcopy(result),"turns":len(session.messages)//2}
 
         if route["action"] in ("answer","unsupported"):
-            reply=("紫微斗数与西方占星目前尚未实现。可以使用塔罗、每日提示、八字或周易。"
-                   if route["action"]=="unsupported" else route["reply"] or "可以问我塔罗、每日提示、八字或周易问题。")
+            reply=("这项具体功能超出当前支持范围。已支持塔罗、每日提示、八字、周易、紫微本命盘与热带整宫占星；特殊流派、合盘或其他未接入方法不能代算。"
+                   if route["action"]=="unsupported" else route["reply"] or "可以问我塔罗、每日提示、八字、周易、紫微本命盘或占星问题。")
             return finish(reply,status="answered")
 
         if route["action"]=="followup" and session.artifact and session.artifact.method==method:
@@ -225,7 +225,7 @@ class UnifiedAgent:
         slots=session.slots
         question=slots.get("question")
         if method=="none":
-            return finish("你想用塔罗、八字还是周易？如果只想看今天的提示，可以选择每日一张。",status="needs_input")
+            return finish("你想用塔罗、八字、周易、紫微本命盘还是占星？今天的提示也可选择每日运势。",status="needs_input")
         if method in ("tarot","iching") and not question:
             return finish("你想梳理什么具体问题？例如学习安排、工作选择或沟通分歧。",status="needs_input")
         if method=="bazi":

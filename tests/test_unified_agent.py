@@ -196,7 +196,9 @@ class UnifiedTests(unittest.TestCase):
         agent,_=self.agent([plan(action="unsupported",method="none")])
         result=agent.turn(self.session,"排紫微斗数")
         self.assertEqual(result["status"],"answered")
-        self.assertIn("尚未实现",result["reply"])
+        self.assertIn("超出当前支持范围",result["reply"])
+        self.assertIn("已支持",result["reply"])
+        self.assertNotIn("尚未实现",result["reply"])
 
 
 class ConversationTests(unittest.TestCase):

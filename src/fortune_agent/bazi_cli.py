@@ -17,7 +17,7 @@ from .bazi_structure import analyze_structure
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="八字四柱排盘原型")
+    parser = argparse.ArgumentParser(description="八字排盘、结构与判断报告、大运流年")
     inputs = parser.add_mutually_exclusive_group(required=True)
     inputs.add_argument("--birth", help="公历出生时刻，例如 2000-01-01T12:00:00+08:00")
     inputs.add_argument("--pillars", help="直接提供四柱，例如 '己卯 丙子 戊午 戊午'")

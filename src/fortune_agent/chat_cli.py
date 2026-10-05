@@ -20,7 +20,7 @@ def main():
     agent=UnifiedAgent(client,config.model,args.cache,Lock())
     store=ConversationStore()
     session=store.get()
-    print("统一对话：塔罗、每日提示、八字、周易。/new 清除本次对话，/exit 退出。")
+    print("统一对话：塔罗、每日提示、八字、周易、紫微本命盘、西方占星。/new 清除本次对话，/exit 退出。")
     try:
         while True:
             message=input("你：").strip()

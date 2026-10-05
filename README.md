@@ -2,138 +2,115 @@
 
 [![Tests and package](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml)
 
-一个逐步构建的塔罗与每日运势 Agent 项目。目前包含塔罗解读、每日牌、中国标准时间八字排盘及周易硬币起卦。新增紫微本命盘、热带整宫占星、多档案与可视化选牌；各模块展示版本与功能边界。
+一个用于Agent实战的开源塔罗、八字、紫微斗数与占星项目。模型选择工具、补问资料并解释实际计算结果；牌面、历法和天体位置由程序生成，追问默认复用同一次结果。
 
-当前版本为 **v0.1 本地原型**。首次安装、配置和演示步骤见 [v0.1 使用说明](docs/release-v0.1.md)，开发流程见 [CONTRIBUTING](CONTRIBUTING.md)。
+最新正式发布为 **[v0.2.0](https://github.com/paopao050624/fortune-agent/releases/tag/v0.2.0)**。主分支还包含发布后的网页与Docker修复，使用源码时以主分支文档为准。安装与各模块约定见 [使用指南](docs/charts-and-profiles.md)，历史版本见 [CHANGELOG](CHANGELOG.md)。
 
-网页默认打开 [统一对话 Agent](docs/unified-agent.md)：直接说想用塔罗、每日提示、八字或周易，助手会补问必要资料并调用工具。追问默认沿用同一次结果；清除按钮删除本机内存中的当前对话。
+## 已实现的功能
 
-仓库：[paopao050624/fortune-agent](https://github.com/paopao050624/fortune-agent)。下载代码后在项目目录运行下方命令：
+| 功能 | 当前内容 | 使用说明 |
+| --- | --- | --- |
+| 统一对话 | 六种方式的工具路由、缺资料补问、稳定追问、重试及清除会话 | [对话流程](docs/unified-agent.md) |
+| 塔罗问答 | 78张牌、单张／三张／选择对比／五张／凯尔特十字，背牌选取、翻牌和原牌追问 | [塔罗体验](docs/charts-and-profiles.md#塔罗交互) |
+| 每日一张 | 按代号、时区与当地日期确定固定牌面，首次模型解读本地缓存 | 下文“每日提示与综合日报” |
+| 每日运势与回顾 | 档案关联的塔罗＋八字参考、大运流年依据、日报缓存、历史回顾 | [综合报告](docs/complete-fortune.md) |
+| 八字 | 中国标准时间排盘、十神藏干、结构关系、项目旺衰估计、格局条件和分方法取用、大运流年 | [判断模型及边界](docs/bazi-judgment.md) |
+| 紫微斗数 | 固定iztro本命十二宫、主辅杂曜、亮度、生年四化、大限年龄标签 | [排盘约定](docs/charts-and-profiles.md#紫微斗数) |
+| 西方占星 | 十大天体、热带黄道、地心位置、整宫宫位、角点、主要相位和逆行 | [占星约定](docs/charts-and-profiles.md#西方占星) |
+| 用户档案 | 多代号、出生资料与经纬度、偏好、显式保存工具历史、导出恢复与删除 | [保存与隐私](docs/charts-and-profiles.md#档案) |
+| 周易 | 三枚硬币起卦、主变卦与动爻，两种取辞策略，64卦全文参考库 | [起卦](docs/iching.md)／[解读](docs/iching-interpretation.md) |
+
+## 安装与启动
+
+Python包要求 **Python 3.10+**；CI验证Python 3.11与3.13，推荐使用3.11+。紫微运行需要 **Node.js 18+**；紫微排盘桥已打包，普通使用不需要安装npm依赖。
 
 ```bash
 git clone https://github.com/paopao050624/fortune-agent.git
 cd fortune-agent
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -e '.[all]'
+fortune-doctor
+fortune-web --port 8766
 ```
 
-## 运行
+浏览器打开 `http://127.0.0.1:8766/`。默认进入统一对话，另有七个手动功能页。`fortune-web`不指定端口时使用8765。Node不在PATH时可以设置 `FORTUNE_NODE` 为完整可执行路径。
 
-需要 Python 3.10 或以上。只运行抽牌工具不需要第三方依赖。
-
-```bash
-PYTHONPATH=src python -m fortune_agent.cli "今天的学习状态如何？"
-PYTHONPATH=src python -m fortune_agent.cli "这个项目该怎么推进？" --spread three --pick 1 15 78
-PYTHONPATH=src python -m fortune_agent.cli "今天的学习状态如何？" --json
-PYTHONPATH=src python -m unittest discover -s tests
-```
-
-使用 `--pick` 时，数字是洗牌后的牌堆位置。正逆位独立随机决定。JSON 输出保留抽牌事实，供后续解牌工具和 Agent 使用。
-
-## 本地网页
-
-在项目根目录启动：
+本机计算、选牌、档案和资料查看不需要API密钥。统一对话和勾选模型解读时会使用中转站，需在启动服务的终端设置环境变量：
 
 ```bash
-python -m pip install -e '.[agent,bazi]'
-fortune-web
-```
-
-浏览器打开 `http://127.0.0.1:8765`，可选择塔罗问答、每日一张牌、八字排盘或周易起卦。默认只在本机抽牌或计算，勾选“生成模型解读”才使用中转站。周易另有完整经文参考库与两种取辞规则。中转站环境变量应在启动服务的终端设置，密钥不通过浏览器输入或返回。源码运行也可用 `PYTHONPATH=src python -m fortune_agent.web`。
-
-网页仅监听本机回环地址，供单人体验使用，尚未实现账户和公网部署。每日解读与命令行共用 `work/daily.sqlite3`（可用 `--cache` 指定固定路径）；塔罗问题与出生资料不保存。模型回答以文字展示，原文与来源可展开查看。关闭服务按 `Ctrl+C`，换端口可用 `fortune-web --port 8766`。
-
-## 每日一张牌
-
-每日模式以**塔罗一张牌**为唯一依据，暂不使用八字、紫微、易经或出生资料。使用固定的自选代号和 IANA 时区，例如：
-
-```bash
-PYTHONPATH=src python -m fortune_agent.daily_cli --profile reader-01 --timezone Asia/Shanghai
-PYTHONPATH=src python -m fortune_agent.daily_cli --profile reader-01 --timezone Asia/Shanghai --interpret
-```
-
-安装项目后也可运行 `fortune-daily --profile reader-01 --timezone Asia/Shanghai --interpret`。同一代号、时区和当地日期会得到相同牌面。牌面由稳定哈希生成，属于可复现的伪随机抽牌，不是对未来的确定性计算。解读使用现有中转站环境变量；首次解读缓存在当前目录的 `work/daily.sqlite3`，之后同日直接返回缓存，即使改用不同回答风格或模型也保留当天首次结果。请从同一项目目录运行，或用 `--cache` 指定固定路径。缓存不保存原始代号，但会保存牌面、解读及来源，可删除该文件清除本地记录。请用非个人信息作为代号；代号不会发送给模型。`--json` 可输出结构化结果。
-
-当前是单机原型。若部署成多人服务，需要以认证后的用户 ID 区分记录，并隔离各用户的缓存；自填代号不能充当账户认证。
-
-## 周易起卦
-
-```bash
-fortune-iching
-fortune-iching --lines 9 9 9 9 9 9
-fortune-iching --reference 1
-fortune-iching --lines 9 7 7 7 7 7 --interpret '研究项目如何推进？'
-```
-
-支持模拟或输入六次和数，计算主卦、变卦、动爻；参考库含 64 卦卦辞、384 条爻辞和乾坤用九、用六。程序按公开规则选文，模型逐条解释，引用原文由程序呈现并校验条目 ID。起卦约定见 [起卦说明](docs/iching.md)，取辞、来源与版本限制见 [周易解读](docs/iching-interpretation.md)。
-
-## 八字四柱原型
-
-八字模块使用 `lunar-python 1.4.8` 计算年、月、日、时四柱。第一版只接受公历出生时刻、`Asia/Shanghai` 时区及明确的 `+08:00` 偏移；采用节气换年换月、库的 `sect 2` 子时规则（23:00 后日柱仍按当日，00:00 换日），不做真太阳时校正。出生地暂不参与计算。详细约定见 [八字排盘方法](docs/bazi.md)。例子：
-
-```bash
-python -m pip install -e '.[bazi]'
-fortune-bazi --birth 2000-01-01T12:00:00+08:00
-fortune-bazi --birth 2000-01-01T12:00:00+08:00 --json
-fortune-bazi --pillars '己卯 丙子 戊午 戊午' --details --analysis
-```
-
-也可直接提供四柱，顺序为年、月、日、时，接受空格、逗号或连续八字。此模式不需要历法库，只校验每柱是否为六十甲子的合法干支；不能验证四柱是否对应同一出生时刻。出生日期、时区、节气和换日规则会明确标为未知。网页八字页可切换“直接提供四柱”，模型解读沿用用户输入，不会虚构出生资料。
-
-每日八字参考使用当日中国标准时间 12:00 的干支与本命日主关系，可在八字页面勾选或在统一对话中明确提出。`fortune-bazi --pillars '己卯 丙子 戊午 戊午' --daily` 可离线查看；这项计算仍需要历法库。它不判断吉凶或计算大运，说明见 [每日八字参考](docs/daily-bazi.md)。
-
-第一批 [八字规则分析](docs/bazi-rule-system.md) 已实现月令季节、通根位置、藏干透出、特殊月令路径、格局研究候选及合冲刑害破关联核查：`fortune-bazi --pillars '己卯 丙子 戊午 戊午' --structure` 可离线查看。网页与统一对话复用同一程序结果，新增项目旺衰估计、格局条件与喜用候选，参数敏感性和特殊格保留复核。
-
-如需模型解释，安装 `.[agent,bazi]` 并设置下文的中转站环境变量，再运行 `fortune-bazi --birth 2000-01-01T12:00:00+08:00 --interpret '学习上应注意什么？'`。出生时间和排盘结果会发送至中转站，命令不会保存出生资料。程序提供《滴天髓辑要》相关原文，以及《子平真诠》的二十一个扫描核对短段；`--sources` 可离线查看资料，`--details` 查看十神和藏干，`--analysis` 查看 [财格方法条件清单](docs/bazi-wealth-checklist.md)。版本与校勘限制见 [八字古籍资料](docs/bazi-sources.md) 和 [子平真诠摘录](docs/ziping-transcription.md)，计算规则见 [十神与藏干](docs/bazi-facts.md)。《渊海子平》等其他典籍尚未接入。未知出生时刻、海外出生或要求真太阳时校正的情况暂不支持，不应拿默认时刻代替真实时刻。
-
-八字解读的固定案例与人工复核标准见 [八字解释评估](docs/bazi-evaluation.md)。12 例真实请求的结果和限制见 [八字评估报告](evals/results/bazi-review-2026-10-04.md)，新增关系与方法资料的验证见 [月令与关系报告](evals/results/bazi-context-review-2026-10-04.md)。
-
-要启用中转站解牌，先安装可选依赖，并在自己的终端设置中转站的密钥、API 根地址和模型名称：
-
-```bash
-python -m pip install -e '.[agent]'
 export FORTUNE_API_KEY='你的中转站密钥'
 export FORTUNE_BASE_URL='https://你的中转站域名/v1'
-export FORTUNE_MODEL='中转站提供的模型名称'
-fortune-agent "这个项目该怎么推进？" --spread three --interpret --style direct
+export FORTUNE_MODEL='中转站实际支持的完整模型ID'
 ```
 
-`FORTUNE_BASE_URL` 填 API 根地址（通常以 `/v1` 结尾），不要填完整的 `/responses` 请求地址。当前 Agent 使用 Responses API 和函数工具调用；中转站需要支持这两项。`--style` 支持 `direct`（直接）和 `gentle`（温和）。`--json` 会同时输出抽牌事实和模型解读。密钥只从环境变量读取；代码发起请求时设置 `store=False`，但实际数据保存策略由中转站决定。问题和抽牌结果会发送到中转站，请勿输入不愿发送的个人信息。
+模型接口使用Responses API；塔罗与统一对话还需要函数工具调用。不要把完整 `/responses` 地址填作API根地址。应用不自动读取 `.env`，示例字段见 [.env.example](.env.example)。密钥不通过网页输入或返回，也不要提交到Git。请求使用 `store=False`，但中转站保存政策仍由服务商决定。
 
-有来源的牌会附上 Waite 原书扫描页链接。当前 78/78 张牌均有来源；原书未给出逆位释义的方向会明确标注，不会冒充原书依据。评估案例与运行方法见 [塔罗解读评估](docs/evaluation.md)。
-
-如果收到 `model_not_found`，请在中转站后台核对该密钥所属分组的模型授权和实际可用通道；`/models` 列出的模型不一定都能在当前分组调用。
-
-## 产品边界
-
-- 每日运势、塔罗和八字应分别标明采用的规则，不把多个体系混成无法核查的结论。
-- 用户想要的两种风格实现为“直接”和“温和”；“直接”表示措辞清楚，不表示对未来作确定性保证。
-- 八字排盘必须由历法程序完成，模型只负责解释。出生时间、地点或流派规则不明时应显示不确定性。
-- 出生信息和提问可能涉及隐私。未来接入存储时默认最小化保存，并提供删除方式。
-- 结果用于反思与娱乐，不替代医疗、法律或财务等专业判断。
-
-## 路线图
-
-1. **已完成：塔罗抽牌核心。** 78 张牌、单张及三张牌阵、用户选牌、自动抽牌和测试。
-2. **已完成：塔罗解读 Agent 与 20 例对照评估。** 模型通过工具获得抽牌结果；无资料与有出处资料各运行 20 例。78 张牌均有原书页码，原书缺失的个别逆位释义会明确标记。逐例评分与限制见 [评估报告](evals/results/review-2026-10-03.md)。
-3. **已完成第一版：每日一张塔罗牌。** 按用户时区确定日期，同日牌面固定、首次解读本地缓存。未来可加入用户主动选择的其他依据与交互界面。
-4. **八字四柱原型已完成；紫微与其他体系待开发。** 八字先限定中国标准时间，展示节气和换日规则；后续验证更多边界并建立有出处的古籍解释资料。
-5. **本地网页已完成；开源发布待完成。** 网页整合三种体验；后续增加部署说明与贡献指南。项目使用 MIT 许可证。
-
-候选典籍及使用规则见 [资料与方法](docs/references.md)。已注明的 Waite 塔罗资料、《滴天髓》和《子平真诠》有限摘录已接入；其他典籍仍在规划中。
-
-代码已推送至 GitHub，自动测试状态见顶部徽章。该版本提供本地原型，尚未发布到 PyPI，也不是已部署的公共网站。
-
-## 八字综合报告与每日运势
-
-新增“每日运势与回顾”：保存本地档案后，把每日塔罗、八字当日关系和已计算的大运流年整合成日报，支持历史、回顾、JSON导出与删除。准确出生时间与传统顺逆运参数具备时可计算起运与十年大运。旺衰、成格、喜用神条件不足时仍明确待核实。详见 [使用说明与边界](docs/complete-fortune.md)。
+## 常用命令
 
 ```bash
+# 只抽牌，不调用模型
+fortune-agent '怎样安排学习？' --spread three --pick 1 15 78 --json
+fortune-agent '比较两种项目方向' --spread decision --interpret --style direct
+
+# 八字综合报告；准确出生时间和传统顺逆参数具备时才计算大运
 fortune-bazi --birth 2000-01-01T12:00:00+08:00 --gender female --complete --json
-fortune-report save --profile demo --birth 2000-01-01T12:00:00+08:00 --gender female
-fortune-report report --profile demo --date 2026-10-05
+fortune-bazi --pillars '己卯 丙子 戊午 戊午' --structure
+fortune-bazi --pillars '己卯 丙子 戊午 戊午' --daily --date 2026-10-06
+
+# 紫微与西方占星
+fortune-chart ziwei --birth 2000-01-01T12:00:00+08:00 --gender female
+fortune-chart astrology --birth 2000-01-01T12:00:00+00:00 --timezone Europe/London --latitude 51.4779 --longitude 0
+
+# 周易起卦与完整参考库
+fortune-iching --lines 9 9 9 9 9 9
+fortune-iching --reference 1
+
+# 命令行统一对话
+fortune-chat --profile reader-01 --timezone Asia/Shanghai
 ```
 
-八字判断层已加入 [项目模型 v1](docs/bazi-judgment.md)：执行旺衰、格局配合/风险/救应、扶抑与调候候选、特殊格筛选；权重和条件代理为公开工程约定，不声称古籍统一标准。
+直接输入八字四柱时，只核验每柱的六十甲子合法性，不声称四柱已按同一出生时间校验；缺日期和时辰不能让模型假填。八字、紫微的换日及闰月约定分别展示，不混为一种历法规则。
 
-## v0.2.0：星盘、档案与选牌
+## 每日提示与综合日报
 
-紫微十二宫和十大天体占星盘、多个本地档案、工具历史、导入恢复、78张背牌选取与原牌追问已接入页面和统一对话。安装需要Python 3.11+与Node.js 18+，执行 `pip install -e ".[all]"`，再运行 `fortune-doctor` 与 `fortune-web --port 8766`。详见 [完整使用与部署说明](docs/charts-and-profiles.md)、[发布说明](docs/release-v0.2.md) 和 [第三方许可](THIRD_PARTY_NOTICES.md)。
+**“每日一张”**和 `fortune-daily` 只使用固定塔罗牌。相同代号、时区和日期产生相同牌面；首次模型解读存入 `work/daily.sqlite3`，同日沿用首次回答与风格，次日也可能出现相同牌。代号用非个人信息即可；这份缓存不保存原始代号。
+
+**“每日运势与回顾”**和 `fortune-report` 使用显式保存的档案。没有八字资料时只用塔罗；有资料时加入当天干支、本命关系以及具备起运资料时的大运流年。结合八字的日报目前仅支持Asia/Shanghai，纯塔罗支持其他IANA时区。
+
+```bash
+fortune-report save --profile demo --birth 2000-01-01T12:00:00+08:00 --gender female
+fortune-report report --profile demo --date 2026-10-06
+fortune-report history --profile demo
+fortune-report export --profile demo
+```
+
+综合日报保存在 `work/fortune.sqlite3`。相同资料、日期和规则版本保存首次报告；首次离线保存后不会因为再次勾选模型偷偷生成第二份当天报告。修改资料或规则产生新版本，历史保留原快照。详情见 [综合日报](docs/complete-fortune.md)。
+
+## 数据与隐私
+
+- 单次手动八字和星盘计算不默认保存出生资料；用户主动保存档案或勾选保存工具历史时，相关资料、问题及结果会写入本机数据库。
+- 档案数据库明文保存，文件权限600。导出的JSON可能包含出生资料；提供删除、导出和导入恢复。自填代号不是账户认证。
+- 对话暂存在本机内存，最多20轮、闲置1小时过期。清除对话不删除档案、综合日报或独立每日塔罗缓存。
+- 模型请求发送相关问题、出生资料、实际计算结果与来源；本地回顾内容不发送给模型。模型措辞支持直接／温和，但不保证未来事件。
+- 默认服务仅监听本机地址；Docker内部显式绑定0.0.0.0，Compose只向127.0.0.1发布端口。没有公网账户认证，不作为多人公共服务直接暴露。
+
+## 来源与能力边界
+
+塔罗已有Waite原书78张牌的出处，圣杯二逆位原书缺少对应释义，页面明确标注。周易包含64卦辞、384爻辞及乾坤用九用六，使用固定电子修订与公开取辞约定。
+
+八字参考库包含《滴天髓辑要》相关短段和《子平真诠》21个扫描核对短段。判断层的量化权重、阈值及条件代理是公开的工程近似，不是古籍统一标准；特殊从化、经典调候及各派差异保留复核。《渊海子平》《三命通会》《穷通宝鉴》和《紫微斗数全书》未完成指定底本全文校勘，不编造未接入原文和页码。
+
+西方占星固定十大天体、热带黄道与整宫制，不包含所有宫制、小行星或合盘。天文位置与软件计算可验证，不代表占卜预测效力已经验证。结果用于反思参考，不替代医疗、法律或财务专业判断。详见 [资料与方法](docs/references.md)。
+
+## 验证与部署
+
+```bash
+python -W error::ResourceWarning -m unittest discover -s tests -v
+# Docker本机部署
+docker compose up --build -d
+```
+
+完整测试包括HTTP请求；CI还运行桌面／手机浏览器验收、Docker构建、请求防护与重启数据持久化。最近补充验证见 [网页与Docker报告](evals/results/web-docker-review-2026-10-06.md)；模型相关浏览器场景使用明确测试替身，不把它报告为中转站实时可用性。
+
+复现命令见 [CONTRIBUTING](CONTRIBUTING.md)，容器端口和数据卷说明见 [部署指南](docs/charts-and-profiles.md#docker本机部署)。项目已发布GitHub Release，尚未发布到PyPI，也没有部署成公共网站。软件与第三方依赖的授权见 [LICENSE](LICENSE) 和 [第三方许可](THIRD_PARTY_NOTICES.md)。
