@@ -82,7 +82,7 @@ def main() -> None:
         print(f"后一节：{chart.next_jie} {chart.next_jie_time}")
     print(f"规则：{chart.day_boundary_rule}；{chart.solar_time_rule}")
     if args.complete:
-        print("完整分析报告：")
+        print("完整分析报告（含项目模型估计，参数与敏感性公开）：")
         print(json.dumps(complete,ensure_ascii=False,indent=2))
     if args.structure:
         season=structure["season"]

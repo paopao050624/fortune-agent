@@ -14,7 +14,7 @@ from .bazi_facts import chart_facts,HIDDEN_STEMS,stem_facts
 from .meanings import evidence_for,load_catalog
 from .bazi_sources import catalog_sha256,evidence_for as bazi_evidence
 
-VERSION='integrated-daily-v3'
+VERSION='integrated-daily-v5'
 REFLECTIONS={
  '比肩':('自主与合作','今天哪些任务适合自己完成，哪些需要明确分工？'),
  '劫财':('共享与边界','是否需要先确认资源、时间或费用如何分配？'),
@@ -84,7 +84,7 @@ def make_daily_report(store,profile_id,day=None,client=None,model=None):
     if client is not None:
         if not model:raise ValueError('缺少日报模型配置')
         response=client.responses.create(model=model,store=False,
-            instructions='用中文写简洁每日反思报告，分为总体提示、学习工作、关系沟通、资源安排、今日行动。塔罗与八字分别说明依据，不把十神或牌义当事件预言，不打运势分。只能使用输入计算数据和提供原文；natal_chart是本命四柱，daily_context是当日参考，两者本来就不同，不把不同当数据矛盾。资料不足明确说明。不能断定旺衰、喜用神、成格或灾祸。给2条可执行建议。',
+            instructions='用中文写简洁每日反思报告，分为总体提示、学习工作、关系沟通、资源安排、今日行动。塔罗与八字分别说明依据，不把十神或牌义当事件预言，不打运势分。只能使用输入计算数据和提供原文；natal_chart是本命四柱，daily_context是当日参考，两者本来就不同，不把不同当数据矛盾。资料不足明确说明。可以复述bazi_analysis.rule_judgment的项目旺衰估计和喜用候选，必须标明工程近似与参数敏感性；不能把它当经典最终旺衰、喜用神或成格，不预测灾祸。给2条可执行建议。',
             input=[{'role':'user','content':json.dumps(data,ensure_ascii=False)}])
         answer=response.output_text.strip()
         if not answer:raise RuntimeError('模型返回空日报；未保存，可重试')

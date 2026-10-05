@@ -35,7 +35,7 @@ BAZI_INSTRUCTIONS = (
     "子平真诠的月令起点、四柱配合和例外提示须结合说明，不得简化为缺某五行就补某五行。"
     "derived_facts 中的十神、五行、阴阳和藏干由程序算出，不得改写或另列不同的藏干。"
     "月令对应程序给出的月支；藏干顺序不是旺衰权重，不能套用未提供的人元司令天数。"
-    "未建立完整的旺衰、格局、用神规则，询问这些结论时必须说明当前不能确定。"
+    "complete_analysis.rule_judgment 是程序的项目估计模型，允许复述其旺衰分类、格局条件与喜用候选；必须标注模型估计和参数敏感性，不冒充各派统一定论。"
     "structural_analysis 已由程序计算季节标签、逐柱根气观察、月支藏干透出位置和格局研究候选。"
     "使用它回答结构问题，不再说完全没有分析；但不改变其结论为确定旺衰、定格或用神。"
     "same_stem 是同干藏根出现，same_element 是同五行的其他藏干出现，两者都未判断根力。"
@@ -57,10 +57,13 @@ BAZI_INSTRUCTIONS = (
     "不要从单个天干断言用户性格、能力、婚姻、寿命或疾病。"
     "不要把命理推断当成事实或必然预言，也不要替代医疗、法律、财务判断。"
     "今天、明年等相对日期必须以输入中的 reference_date 为准；它与出生日期不同。"
-    "complete_analysis 若提供，使用其中的旺衰证据、格局条件与分方法取用；未确定字段不能变为确定结论。"
+    "complete_analysis 若提供，先解释rule_judgment的已计算估计与条件结果，再说明经典最终效力未核实；不得只说完全没有分析。"
+    "strength.status=estimated 的分类为项目模型估计，可写偏强、偏弱或相对均衡，但必须标注工程权重约定，不称古籍算法或现实验证。support_ratio不是运势评分。"
+    "patterns中的supported_conditions是条件代理满足，不是经典最终成格；risk_conditions不等于人生失败或灾祸；rescue观察不代表救应实际成立。"
+    "useful_gods的preferred为所选方法候选，不直接下单一最终用神。climate是项目月支寒暖估计，不引用穷通宝鉴证明。冲突与special_reviews须说明，不补出从格化格成立。"
     "pattern研究清单和balance_scenarios是项目条件讨论，不是已核对古籍的成败算法；分别解释两个前提分支，不替用户选择身强或身弱，不把cooperation存在当成已成格。"
     "luck.status=calculated 时允许解释实际计算的大运干支、顺逆与起运时间，不再声称完全没有大运；区分年龄标签与实际起运区间。不由运柱预言事件。"
-    "结合用户问题给出具体的反思方向。用中文回答。"
+    "结合用户问题给出具体的反思方向。用中文回答；除非用户要求长篇，控制在600字左右，原文只引用直接相关的一两条。"
 )
 PROMPT_SHA256 = hashlib.sha256(BAZI_INSTRUCTIONS.encode("utf-8")).hexdigest()
 
@@ -80,6 +83,9 @@ def interpret_bazi(
         raise ValueError("问题不能为空")
     if style not in ("direct","gentle"):
         raise ValueError("无效回答风格")
+    if full_analysis is None:
+        from .bazi_analysis import comprehensive_analysis
+        full_analysis = comprehensive_analysis(chart,reference_date=reference_date)
     response = client.responses.create(
         model=model,
         instructions=BAZI_INSTRUCTIONS + ("\n措辞直接简洁，保留不确定性。" if style=="direct" else "\n措辞温和，给出可选择的建议。") + (

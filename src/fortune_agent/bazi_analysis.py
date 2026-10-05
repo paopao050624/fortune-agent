@@ -9,8 +9,9 @@ from .bazi import calculate_bazi
 from .bazi_facts import ELEMENTS, chart_facts, stem_facts
 from .bazi_structure import analyze_structure
 from .bazi_rules import wealth_checklist
+from .bazi_judgment import judge_chart
 
-VERSION = 'bazi-report-v2'
+VERSION = 'bazi-report-v3'
 
 
 @lru_cache(maxsize=1)
@@ -65,6 +66,7 @@ def luck_cycles(chart, gender=None, reference_date=None):
 
 
 def comprehensive_analysis(chart, gender=None, reference_date=None):
+    judgment=judge_chart(chart)
     facts=chart_facts(chart)
     structure=analyze_structure(chart)
     master=stem_facts(chart.day_master,chart.day_master)['element']
@@ -114,13 +116,17 @@ def comprehensive_analysis(chart, gender=None, reference_date=None):
          'conclusion':'一般研究方向：身强再查泄耗制、身弱再查生扶；整体旺衰尚未核实，因此不输出具体喜忌五行。'},
         {'id':'climate','label':'调候取用','status':'needs_source','evidence':climate,'source_ids':[],
          'conclusion':'季节检查提示为项目方法说明；《穷通宝鉴》指定日主月令条文尚未逐条核对，不冒充经典调候结论。'}]
+    inferred=judgment['useful_gods']
+    methods[0].update(status='provisional_selection',conclusion='月令研究类别：'+judgment['patterns']['main']['label']+'。格局用神与扶抑喜用含义分开；按候选配合条件继续判断。')
+    methods[1].update(status=inferred['balance']['status'],conclusion=inferred['balance']['reason']+' 候选五行：'+('、'.join(i['element'] for i in inferred['balance']['preferred']) or '不强行指定')+'。仅项目估计。')
+    methods[2].update(status=inferred['climate']['status'],conclusion=inferred['climate']['reason']+' 候选五行：'+('、'.join(i['element'] for i in inferred['climate']['preferred']) or '无通用优先项')+'。这是月支寒暖工程方向，《穷通宝鉴》逐月条文未校勘。')
     balance_scenarios=[{**scenario,'actual_observations':[star for star in all_stars if star['ten_god'] in scenario['relations']],
                         'status':'conditional_not_selected'} for scenario in methods_catalog['balance_scenarios']]
-    return {'method_version':VERSION,'balance_scenarios':balance_scenarios,'strength' :{'status':'unresolved','signals':signals,
+    return {'method_version':VERSION,'rule_judgment':judgment,'balance_scenarios':balance_scenarios,'strength' :{**judgment['strength'],'classical_status':'unresolved','signals':signals,
             'season':structure['season'],'roots':day_roots,'support_observations':support,'drain_control_observations':drain,
             'unresolved':['人元司令与本余气轻重','藏根有效性与合冲竞争','四柱生克制化的实际效力','从格化格及方法差异'],
-            'conclusion':'已完成得时、得地、得助的证据汇总；不按五行数量或任意分数判身强身弱。'},
+            'conclusion':judgment['strength']['label']+'；参数稳定性：'+('稳定' if judgment['strength']['parameter_stability']=='stable' else '敏感')+'。这不是古籍给定的统一旺衰标准。'},
             'patterns':patterns,'special_route':selection,'wealth_conditions':wealth_checklist(chart),
             'useful_god_methods':methods,'luck':luck_cycles(chart,gender,reference_date),
             'source_ids':['ziping-season-not-final','ziping-root-observation','ziping-yongshen-pillar-coordination'],
-            'limitations':'完整报告覆盖结构、旺衰证据、格局成败待核实项、三种取用方法及起运流年；最终旺衰、成格与喜用神仍依赖尚未核实的条件，不代表已实现完整古籍判命算法。'}
+            'limitations':'报告包含可执行的项目旺衰估计、格局条件规则、分方法喜用候选、特殊格复核与起运流年。模型参数及条件代理明确公开，不是古籍统一算法；学派分歧和特殊从化不强行定论。'}

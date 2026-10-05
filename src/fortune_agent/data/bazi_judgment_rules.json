@@ -1,0 +1,178 @@
+{
+  "version": "bazi-estimate-v1",
+  "method_name": "项目量化扶抑与格局条件模型 v1",
+  "attribution": "基于传统生克、月令与藏干概念构建的项目近似模型；权重、阈值与条件代理为工程约定，未由古籍给定，未作专家或现实效力验证。结论是本模型估计，不是各学派统一定论。",
+  "stem_weight": 1.0,
+  "branch_weight": 1.0,
+  "month_weight": 1.8,
+  "hidden_weights": {
+    "子": {
+      "癸": 1.0
+    },
+    "丑": {
+      "己": 0.6,
+      "癸": 0.3,
+      "辛": 0.1
+    },
+    "寅": {
+      "甲": 0.6,
+      "丙": 0.3,
+      "戊": 0.1
+    },
+    "卯": {
+      "乙": 1.0
+    },
+    "辰": {
+      "戊": 0.6,
+      "乙": 0.3,
+      "癸": 0.1
+    },
+    "巳": {
+      "丙": 0.6,
+      "戊": 0.3,
+      "庚": 0.1
+    },
+    "午": {
+      "丁": 0.7,
+      "己": 0.3
+    },
+    "未": {
+      "己": 0.6,
+      "丁": 0.3,
+      "乙": 0.1
+    },
+    "申": {
+      "庚": 0.6,
+      "壬": 0.3,
+      "戊": 0.1
+    },
+    "酉": {
+      "辛": 1.0
+    },
+    "戌": {
+      "戊": 0.6,
+      "辛": 0.3,
+      "丁": 0.1
+    },
+    "亥": {
+      "壬": 0.7,
+      "甲": 0.3
+    }
+  },
+  "season_multipliers": {
+    "春": {
+      "木": 1.5,
+      "火": 1.25,
+      "土": 0.5,
+      "金": 0.75,
+      "水": 1.0
+    },
+    "夏": {
+      "木": 1.0,
+      "火": 1.5,
+      "土": 1.25,
+      "金": 0.5,
+      "水": 0.75
+    },
+    "秋": {
+      "木": 0.75,
+      "火": 1.0,
+      "土": 0.5,
+      "金": 1.5,
+      "水": 1.25
+    },
+    "冬": {
+      "木": 1.25,
+      "火": 0.75,
+      "土": 1.0,
+      "金": 0.5,
+      "水": 1.5
+    },
+    "季末月": {
+      "木": 1.0,
+      "火": 1.0,
+      "土": 1.0,
+      "金": 1.0,
+      "水": 1.0
+    }
+  },
+  "thresholds": {
+    "weak": 0.42,
+    "strong": 0.58,
+    "extreme_weak": 0.15,
+    "extreme_strong": 0.85,
+    "star_substantial": 0.15,
+    "transform_dominance": 0.6
+  },
+  "sensitivity": {
+    "month_weights": [
+      1.3,
+      1.8,
+      2.3
+    ],
+    "clashed_branch_retention": [
+      0.7,
+      1.0
+    ]
+  },
+  "stem_transform_elements": {
+    "甲己": "土",
+    "乙庚": "金",
+    "丙辛": "水",
+    "丁壬": "木",
+    "戊癸": "火"
+  },
+  "climate_months": {
+    "亥": {
+      "need": "火",
+      "secondary": "土",
+      "reason": "初冬寒湿方向"
+    },
+    "子": {
+      "need": "火",
+      "secondary": "土",
+      "reason": "冬月寒湿方向"
+    },
+    "丑": {
+      "need": "火",
+      "secondary": "木",
+      "reason": "冬末寒湿方向"
+    },
+    "巳": {
+      "need": "水",
+      "secondary": "金",
+      "reason": "初夏温燥方向"
+    },
+    "午": {
+      "need": "水",
+      "secondary": "金",
+      "reason": "夏月炎燥方向"
+    },
+    "未": {
+      "need": "水",
+      "secondary": "金",
+      "reason": "夏末燥热方向"
+    },
+    "戌": {
+      "need": "水",
+      "secondary": "木",
+      "reason": "秋末燥土方向"
+    }
+  },
+  "climate_attribution": "按月支给出的工程调候方向，不是《穷通宝鉴》日主逐月条文算法。春秋普通月不强行指定调候元素。不得据此让用户改变药物、投资或生活决策。",
+  "source_ids": [
+    "ziping-season-not-final",
+    "ziping-root-observation",
+    "ziping-official-success",
+    "ziping-resource-success",
+    "ziping-food-success",
+    "ziping-killing-success",
+    "ziping-hurting-success",
+    "ziping-wealth-success-conditions",
+    "ziping-pattern-failure",
+    "ziping-official-rescue",
+    "ziping-blade-success",
+    "ziping-lu-success",
+    "ziping-rescue-other"
+  ]
+}

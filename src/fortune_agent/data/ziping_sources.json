@@ -230,6 +230,209 @@
         "此句用于特殊研究路径，不表示程序已完整判断财官煞食取用；整章未转录。"
       ],
       "retrieval_basis": "月令特殊路径与杂气候选筛选的方法参考；不据单句确定成格、旺衰、用神或吉凶。"
+    },
+    {
+      "id": "ziping-official-success",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "正官成格条件",
+      "source_text": "官逢財印，又無刑沖破害，官格成也。",
+      "scan_pages": [
+        28
+      ],
+      "printed_pages": [
+        19
+      ],
+      "locator": "论用神成败救应 · 书内第19页（PDF 第 28 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理；历史条件不能简化为仅见星名便成败。",
+        "程序量化旺衰、根力和关系效力是项目算法约定，不是原文给出的数值；判定须显示适用前提。"
+      ],
+      "retrieval_basis": "用于格局条件规则的原文依据；项目近似算法的数值与条件替代须另行说明。"
+    },
+    {
+      "id": "ziping-resource-success",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "印格成格条件",
+      "source_text": "印輕逢煞，或官印雙全，或身印兩旺而用食傷洩氣，或印多逢財而財透根輕，印格成也。",
+      "scan_pages": [
+        28
+      ],
+      "printed_pages": [
+        19
+      ],
+      "locator": "论用神成败救应 · 书内第19页（PDF 第 28 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理；历史条件不能简化为仅见星名便成败。",
+        "程序量化旺衰、根力和关系效力是项目算法约定，不是原文给出的数值；判定须显示适用前提。"
+      ],
+      "retrieval_basis": "用于格局条件规则的原文依据；项目近似算法的数值与条件替代须另行说明。"
+    },
+    {
+      "id": "ziping-food-success",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "食神成格条件",
+      "source_text": "食神生財，或食帶煞而無財，棄食就煞而透印，食神格成也。",
+      "scan_pages": [
+        28
+      ],
+      "printed_pages": [
+        19
+      ],
+      "locator": "论用神成败救应 · 书内第19页（PDF 第 28 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理；历史条件不能简化为仅见星名便成败。",
+        "程序量化旺衰、根力和关系效力是项目算法约定，不是原文给出的数值；判定须显示适用前提。"
+      ],
+      "retrieval_basis": "用于格局条件规则的原文依据；项目近似算法的数值与条件替代须另行说明。"
+    },
+    {
+      "id": "ziping-killing-success",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "七杀成格条件",
+      "source_text": "身強七煞逢制，煞格成也。",
+      "scan_pages": [
+        28
+      ],
+      "printed_pages": [
+        19
+      ],
+      "locator": "论用神成败救应 · 书内第19页（PDF 第 28 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理；历史条件不能简化为仅见星名便成败。",
+        "程序量化旺衰、根力和关系效力是项目算法约定，不是原文给出的数值；判定须显示适用前提。"
+      ],
+      "retrieval_basis": "用于格局条件规则的原文依据；项目近似算法的数值与条件替代须另行说明。"
+    },
+    {
+      "id": "ziping-hurting-success",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "伤官成格条件",
+      "source_text": "傷官生財，或傷官佩印，而傷官旺印有根，或傷官旺而身主弱而透煞印，或傷官帶煞而無財，傷官格成也。",
+      "scan_pages": [
+        28
+      ],
+      "printed_pages": [
+        19
+      ],
+      "locator": "论用神成败救应 · 书内第19页（PDF 第 28 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理；历史条件不能简化为仅见星名便成败。",
+        "程序量化旺衰、根力和关系效力是项目算法约定，不是原文给出的数值；判定须显示适用前提。"
+      ],
+      "retrieval_basis": "用于格局条件规则的原文依据；项目近似算法的数值与条件替代须另行说明。"
+    },
+    {
+      "id": "ziping-pattern-failure",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "格局败因的条件",
+      "source_text": "何謂敗？官逢傷剋刑沖，官格敗也。財輕比重，財透七煞，財格敗也。印輕逢財，或身強印重而透煞，印格敗也。食神逢梟，或生財露煞，食神格敗也。七煞逢財無制，七煞格敗也。",
+      "scan_pages": [
+        29
+      ],
+      "printed_pages": [
+        20
+      ],
+      "locator": "论用神成败救应 · 书内第20页（PDF 第 29 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=29",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理；历史条件不能简化为仅见星名便成败。",
+        "程序量化旺衰、根力和关系效力是项目算法约定，不是原文给出的数值；判定须显示适用前提。"
+      ],
+      "retrieval_basis": "用于格局条件规则的原文依据；项目近似算法的数值与条件替代须另行说明。"
+    },
+    {
+      "id": "ziping-official-rescue",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "官格救应条件",
+      "source_text": "何論救應？如官逢傷而透印以解之，雜煞而合煞以清之，刑沖而會合以解之。",
+      "scan_pages": [
+        30
+      ],
+      "printed_pages": [
+        21
+      ],
+      "locator": "论用神成败救应 · 书内第21页（PDF 第 30 个扫描页）",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=30",
+      "notes": [
+        "原字依据工作扫描本看图核对，标点按现代句读整理；历史条件不能简化为仅见星名便成败。",
+        "程序量化旺衰、根力和关系效力是项目算法约定，不是原文给出的数值；判定须显示适用前提。"
+      ],
+      "retrieval_basis": "用于格局条件规则的原文依据；项目近似算法的数值与条件替代须另行说明。"
+    },
+    {
+      "id": "ziping-blade-success",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "阳刃成格条件",
+      "source_text": "羊刃透官煞而露財印，不見傷官，羊刃格成也。",
+      "scan_pages": [
+        28,
+        29
+      ],
+      "printed_pages": [
+        19,
+        20
+      ],
+      "locator": "论用神成败救应 · 书内页 19,20；PDF扫描页 28,29",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=28",
+      "notes": [
+        "已按工作扫描页看图核对；原字保留、标点现代整理。",
+        "原文以羊刃为字，保留；程序名阳刃按同一月令研究方向处理，不默改引文。"
+      ],
+      "retrieval_basis": "用于特殊月令和救应规则的条件依据，不表示项目代理已等同经典效力判断。"
+    },
+    {
+      "id": "ziping-lu-success",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "建禄月劫成格条件",
+      "source_text": "建祿月劫透官而逢財印，透財而逢食傷，透煞而遇伏制，建祿月劫之格成也。",
+      "scan_pages": [
+        29
+      ],
+      "printed_pages": [
+        20
+      ],
+      "locator": "论用神成败救应 · 书内页 20；PDF扫描页 29",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=29",
+      "notes": [
+        "已按工作扫描页看图核对；原字保留、标点现代整理。",
+        "有效制化与位置需要条件核查；星同现只是程序条件代理。"
+      ],
+      "retrieval_basis": "用于特殊月令和救应规则的条件依据，不表示项目代理已等同经典效力判断。"
+    },
+    {
+      "id": "ziping-rescue-other",
+      "work": "子平真诠",
+      "chapter": "论用神成败救应",
+      "heading": "财印食杀伤官的救应条件",
+      "source_text": "財逢劫而透食以化之，生官以制之。……印逢財而劫財以解之。……食逢梟而就煞以成格，或生財以護食。煞逢食制，印來護煞，而逢財以去印存食。",
+      "scan_pages": [
+        30
+      ],
+      "printed_pages": [
+        21
+      ],
+      "locator": "论用神成败救应 · 书内页 21；PDF扫描页 30",
+      "source_url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=30",
+      "notes": [
+        "已按工作扫描页看图核对；原字保留、标点现代整理。",
+        "有效制化与位置需要条件核查；星同现只是程序条件代理。",
+        "本条摘录非连续短段，省略处明确以……标示，不声称为连续完整原段。"
+      ],
+      "retrieval_basis": "用于特殊月令和救应规则的条件依据，不表示项目代理已等同经典效力判断。"
     }
   ]
 }

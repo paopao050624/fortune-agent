@@ -202,6 +202,9 @@ class UnifiedAgent:
                 if method=="bazi" and session.slots.get("daily_bazi"):
                     current=daily_bazi_context(session.artifact.domain)
                     session.artifact.data["daily_context"]=current
+                    previous=session.artifact.data.get("complete_analysis",{})
+                    gender=previous.get("luck",{}).get("gender_parameter")
+                    session.artifact.data["complete_analysis"]=comprehensive_analysis(session.artifact.domain,gender)
                 context=self.followup_question(session,message)
                 result=self.explain(session.artifact,context,session.slots.get("style","gentle"),
                                     include_hexagram_context=bool(re.search(r"主卦|变卦",message)))

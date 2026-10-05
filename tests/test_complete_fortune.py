@@ -48,7 +48,8 @@ class CompleteFortuneTests(unittest.TestCase):
         full=comprehensive_analysis(parse_bazi_pillars('庚申 丙寅 甲子 戊辰'))
         self.assertTrue(full['strength']['support_observations'])
         self.assertTrue(full['strength']['drain_control_observations'])
-        self.assertEqual(full['strength']['status'],'unresolved')
+        self.assertEqual(full['strength']['status'],'estimated')
+        self.assertEqual(full['strength']['classical_status'],'unresolved')
         self.assertTrue(all(p['formation_status']=='unresolved' for p in full['patterns']))
         self.assertEqual({p['id'] for p in full['useful_god_methods']},{'pattern','balance','climate'})
 
