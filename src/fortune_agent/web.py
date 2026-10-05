@@ -6,7 +6,7 @@ import argparse
 from html import escape
 import json
 import secrets
-from dataclasses import asdict
+from dataclasses import asdict,replace
 from datetime import date, datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib.resources import files
@@ -29,6 +29,10 @@ from .daily_service import get_daily
 from .daily_store import DailyStore
 from .meanings import evidence_for
 from .tarot import draw_reading
+from .tarot_sessions import TarotSessions
+from .ziwei import calculate_ziwei
+from .astrology import calculate_astrology
+from .chart_agent import interpret_chart,offline_chart_reading
 from .iching import build_cast, cast_coins, load_catalog as iching_catalog
 from .iching_reading import select_passages, reference_hexagram
 from .iching_agent import interpret_cast
@@ -50,6 +54,7 @@ class LocalApp:
         self.cache_path = cache_path
         self.daily_lock = Lock()
         self.conversations = ConversationStore()
+        self.tarot_sessions = TarotSessions()
 
     def model_client(self) -> tuple[Any, str]:
         config = ApiConfig.from_env()
@@ -64,18 +69,24 @@ class LocalApp:
         interpret = payload.get("interpret", False)
         if not isinstance(interpret, bool):
             raise ValueError("interpret 必须为布尔值")
+        for flag in ("use_profile","save_history"):
+            if flag in payload and not isinstance(payload[flag],bool):raise ValueError(f"{flag} 必须为布尔值")
         style = text_field(payload, "style", "gentle", 20)
         if style not in ("direct", "gentle"):
             raise ValueError("无效回答风格")
 
-        if mode in ("profiles", "profile-save", "profile-delete", "profile-export", "daily-report", "daily-history", "daily-review"):
+        if mode in ("profiles", "profile-save", "profile-delete", "profile-export", "daily-report", "daily-history", "daily-review", "profile-import", "reading-history"):
             store = FortuneStore(self.cache_path.parent / "fortune.sqlite3")
             profile = text_field(payload, "profile", "reader-01", 128)
+            if mode == "profile-import":
+                return {"profile":store.import_archive(payload.get("archive"))}
+            if mode == "reading-history":
+                return {"readings":store.readings(profile)}
             if mode == "profiles":
                 return {"profiles": store.profiles()}
             if mode == "profile-save":
                 gender = text_field(payload, "gender", "", 10) or None
-                return {"profile": store.save_profile(profile, text_field(payload,"birth",limit=60), text_field(payload,"pillars",limit=60), gender, text_field(payload,"timezone","Asia/Shanghai",100))}
+                return {"profile": store.save_profile(profile, text_field(payload,"birth",limit=60), text_field(payload,"pillars",limit=60), gender, text_field(payload,"timezone","Asia/Shanghai",100), chart_birth=text_field(payload,"chart_birth",limit=60), chart_timezone=text_field(payload,"chart_timezone","Asia/Shanghai",100), latitude=payload.get("latitude"), longitude=payload.get("longitude"), style=style, preferred_method=text_field(payload,"preferred_method","none",20), display_name=text_field(payload,"display_name",limit=80))}
             if mode == "profile-delete":
                 store.delete(profile)
                 return {"deleted": True}
@@ -96,6 +107,47 @@ class LocalApp:
                     try: return make_daily_report(store,profile,selected,client,model)
                     finally: client.close()
                 return make_daily_report(store,profile,selected)
+
+        if mode in ("ziwei", "astrology"):
+            profile = text_field(payload,"profile",limit=128)
+            birth=text_field(payload,"birth",limit=60)
+            gender=text_field(payload,"gender",limit=10) or None
+            zone=text_field(payload,"chart_timezone","Asia/Shanghai",100)
+            latitude,longitude=payload.get("latitude"),payload.get("longitude")
+            if payload.get("use_profile"):
+                saved=FortuneStore(self.cache_path.parent/"fortune.sqlite3").get_profile(profile)
+                birth=saved.get("chart_birth") or saved["birth"]
+                gender=saved["gender"];style=saved.get("style","gentle");zone=saved.get("chart_timezone","Asia/Shanghai")
+                latitude,longitude=saved.get("latitude"),saved.get("longitude")
+            domain=calculate_ziwei(birth,gender) if mode=="ziwei" else calculate_astrology(birth,zone,latitude,longitude)
+            answer=offline_chart_reading(mode,domain)
+            if interpret:
+                client,model=self.model_client()
+                try:answer=interpret_chart(mode,domain,text_field(payload,"question","请解释这张星盘"),client,model,style)
+                finally:client.close()
+            result={"mode":mode,"chart_result":domain,"interpretation":answer,"evidence":domain["evidence"]}
+            if payload.get("save_history"):
+                result["history_key"]=FortuneStore(self.cache_path.parent/"fortune.sqlite3").save_reading(profile,mode,result)
+            return result
+
+        if mode=="tarot-shuffle":
+            return self.tarot_sessions.create(text_field(payload,"question"),text_field(payload,"spread","three",20))
+        if mode in ("tarot-reveal","tarot-followup"):
+            key=text_field(payload,"draw_id",limit=100)
+            reading=self.tarot_sessions.reveal(key,payload.get("picks")) if mode=="tarot-reveal" else self.tarot_sessions.reading(key)
+            question=text_field(payload,"question",reading.question)
+            if mode=="tarot-followup" and not question:raise ValueError('追问不能为空')
+            answer=None
+            if interpret or mode=="tarot-followup":
+                client,model=self.model_client()
+                fixed=replace(reading,question=question)
+                try:answer=TarotAgent(client,model,draw=lambda *_:fixed).read(question,reading.spread,style=style).interpretation
+                finally:client.close()
+            result={"mode":"tarot","draw_id":key,"reading":asdict(reading),"interpretation":answer,"evidence":evidence_for(reading)}
+            if payload.get("save_history"):
+                profile=text_field(payload,"profile",limit=128)
+                result["history_key"]=FortuneStore(self.cache_path.parent/"fortune.sqlite3").save_reading(profile,"tarot",result)
+            return result
 
         if mode == "chat-clear":
             identifier=text_field(payload,"session_id",limit=100)
@@ -225,7 +277,7 @@ class LocalApp:
         raise ValueError("未知功能")
 
 
-def make_server(port: int, cache_path: Path) -> ThreadingHTTPServer:
+def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1") -> ThreadingHTTPServer:
     app = LocalApp(cache_path)
     token = secrets.token_urlsafe(32)
 
@@ -273,7 +325,7 @@ def make_server(port: int, cache_path: Path) -> ThreadingHTTPServer:
                 return
             try:
                 length = int(self.headers.get("Content-Length", "0"))
-                if not 0 < length <= 16384:
+                if not 0 < length <= 4*1024*1024:
                     raise ValueError("请求为空或过大")
                 payload = json.loads(self.rfile.read(length))
                 if not isinstance(payload, dict):
@@ -287,17 +339,18 @@ def make_server(port: int, cache_path: Path) -> ThreadingHTTPServer:
                 # Provider error bodies may contain confidential details.
                 self.json_response(502, {"error": "模型请求或本地处理失败，请检查中转站配置和运行依赖。"})
 
-    return ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    return ThreadingHTTPServer((bind, port), Handler)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="启动 Fortune Agent 本地网页")
+    parser.add_argument("--bind",choices=("127.0.0.1","0.0.0.0"),default="127.0.0.1",help="容器内部可显式绑定0.0.0.0；默认仅回环")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--cache", type=Path, default=Path("work/daily.sqlite3"))
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error("端口须为 1–65535")
-    with make_server(args.port, args.cache) as server:
+    with make_server(args.port, args.cache,args.bind) as server:
         print(f"本地网页：http://127.0.0.1:{args.port}（Ctrl+C 停止）", flush=True)
         try:
             server.serve_forever()

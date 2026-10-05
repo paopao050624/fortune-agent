@@ -6,13 +6,13 @@ import argparse
 import json
 from dataclasses import asdict
 
-from .tarot import draw_reading
+from .tarot import draw_reading,SPREADS
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="塔罗抽牌原型")
     parser.add_argument("question", help="想问的问题")
-    parser.add_argument("--spread", choices=("single", "three"), default="single")
+    parser.add_argument("--spread", choices=tuple(SPREADS), default="single")
     parser.add_argument(
         "--pick",
         type=int,

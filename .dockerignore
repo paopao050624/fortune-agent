@@ -1,0 +1,10 @@
+.git
+.env
+.env.*
+work
+node_modules
+.pnpm-store
+__pycache__
+*.egg-info
+build
+dist

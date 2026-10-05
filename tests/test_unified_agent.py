@@ -14,7 +14,7 @@ from fortune_agent.unified_agent import UnifiedAgent, validate_route, birth_matc
 def plan(action="read",method="tarot",**fields):
     result={"action":action,"method":method,"question":None,"birth":None,"pillars":None,
             "birth_timezone":None,"spread":None,"picks":None,"lines":None,"policy":None,
-            "style":None,"reply":"请补充资料。"}
+            "style":None,"gender":None,"chart_timezone":None,"latitude":None,"longitude":None,"reply":"请补充资料。"}
     result.update(fields);return result
 
 
@@ -183,7 +183,7 @@ class UnifiedTests(unittest.TestCase):
     def test_route_types_and_unsupported_method_are_rejected(self):
         invalid=plan();invalid["picks"]=[True]
         with self.assertRaises(ValueError):validate_route(invalid)
-        invalid=plan();invalid["method"]="ziwei"
+        invalid=plan();invalid["method"]="unsupported-system"
         with self.assertRaises(ValueError):validate_route(invalid)
 
     def test_explicit_new_draw_runs_tool_again(self):

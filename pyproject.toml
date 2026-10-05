@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "fortune-agent"
-version = "0.1.0"
+version = "0.2.0"
 description = "A transparent tarot and fortune agent project"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -17,14 +17,18 @@ fortune-daily = "fortune_agent.daily_cli:main"
 fortune-bazi = "fortune_agent.bazi_cli:main"
 fortune-web = "fortune_agent.web:main"
 fortune-iching = "fortune_agent.iching_cli:main"
+fortune-doctor = "fortune_agent.doctor:main"
+fortune-chart = "fortune_agent.chart_cli:main"
 fortune-chat = "fortune_agent.chat_cli:main"
 
 [project.optional-dependencies]
 agent = ["openai>=3.7,<4"]
 bazi = ["lunar-python==1.4.8"]
+astro = ["astronomy-engine==2.1.19"]
+all = ["openai>=3.7,<4", "lunar-python==1.4.8", "astronomy-engine==2.1.19"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-fortune_agent = ["data/*.json", "static/*.html"]
+fortune_agent = ["data/*.json", "static/*.html", "static/*.cjs", "static/*.txt"]

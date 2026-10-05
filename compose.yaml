@@ -1,0 +1,14 @@
+services:
+  fortune:
+    build: .
+    ports:
+      - "127.0.0.1:8766:8766"
+    environment:
+      FORTUNE_API_KEY: ${FORTUNE_API_KEY:-}
+      FORTUNE_BASE_URL: ${FORTUNE_BASE_URL:-}
+      FORTUNE_MODEL: ${FORTUNE_MODEL:-}
+    volumes:
+      - fortune-data:/app/work
+    restart: unless-stopped
+volumes:
+  fortune-data:

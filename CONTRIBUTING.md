@@ -1,31 +1,18 @@
-# 参与开发
+# Contributing
 
-项目当前是 v0.1 本地原型。提交改动前，请说明解决的具体问题、输入示例、依据和验证结果。所有新增命理规则需要明确版本与适用条件，不能只以模型输出作为规则来源。
-
-## 开发环境
+Install Python 3.11+ and Node.js 18+, then run:
 
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[agent,bazi]' build
+pip install -e '.[all]'
 python -W error::ResourceWarning -m unittest discover -s tests -v
+python -m pip install build
 python -m build
 ```
 
-本地测试使用模拟客户端，不要求 API 密钥。真实评估会调用中转站并产生费用，请明确选择案例数量，并使用虚构出生时间。修改提示词、资料、规则或相对日期参考点后应新建结果文件，不得把不同配置的回答混在同一轮评估中。
+The Zi Wei bridge is already bundled. To rebuild it, install pnpm and run `pnpm install --frozen-lockfile`, then `pnpm run build:ziwei`. Esbuild's optional platform binary must be installed; permit its install script when your package manager requires it. Rebuild the bundled notices with `python scripts/build_ziwei_notices.py` after dependency changes.
 
-## 资料与规则
+Keep API keys, personal profiles, databases, and real birth information out of commits. Use synthetic evaluation fixtures. Describe algorithm versions, timezone/calendar conventions, source provenance and missing conditions. Tests verify software behavior, not the predictive validity of divination.
 
-新增古籍资料应保存书名、版本、条目、来源链接、书内页码或修订号。扫描页号与书内页码必须分别记录；保留原字和校勘疑点，注明标点是否经过整理。原文、注解、现代解释及程序规则应分别说明。请确认现代校注、翻译和图片的授权。
-
-新增程序判断时应列出必要条件、例外和当前未计算项，配备能够暴露错误的边界样例。预期排盘数据由同一库生成，只验证一致性；独立算法或其他版本的交叉验证需另行标明。
-
-用户直接提供的四柱只经过单柱六十甲子合法性检查，不代表出生日期、节气或柱间规则已经验证。修改模型提示词或界面时必须保留这一区别，不得把未知时间字段补成虚构日期。
-
-## 隐私与网页
-
-不要提交真实出生资料、私人问题、密钥、`.env` 或每日缓存。网页只作本机体验，不提供多人账户认证。模型文字须按文本渲染；服务错误不能返回密钥或完整中转站错误正文。
-
-## 提交与报告
-
-提交说明应包含改动原因、验证方法和剩余限制。测试或真实评估未完成时明确记录，不能将超时案例当作通过。GitHub Actions 工作流在推送后运行；本地验证不等于远端 CI 已通过。
+Submit changes through a pull request with a short description and relevant validation. A new calculator should return reproducible facts before model interpretation, preserve its results on followups, and ask for missing inputs.

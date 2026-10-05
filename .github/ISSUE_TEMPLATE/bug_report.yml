@@ -1,0 +1,21 @@
+name: Bug report
+description: Report reproducible software behavior
+title: "[Bug] "
+body:
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Use synthetic data. Do not include API keys or private birth records.
+    validations:
+      required: true
+  - type: textarea
+    id: expectation
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version and environment

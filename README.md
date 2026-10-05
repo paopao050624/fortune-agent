@@ -2,7 +2,7 @@
 
 [![Tests and package](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml/badge.svg)](https://github.com/paopao050624/fortune-agent/actions/workflows/tests.yml)
 
-一个逐步构建的塔罗与每日运势 Agent 项目。目前包含塔罗解读、每日牌、中国标准时间八字排盘及周易硬币起卦。紫微与西方占星尚未实现；八字和周易也仍有明确的功能边界。
+一个逐步构建的塔罗与每日运势 Agent 项目。目前包含塔罗解读、每日牌、中国标准时间八字排盘及周易硬币起卦。新增紫微本命盘、热带整宫占星、多档案与可视化选牌；各模块展示版本与功能边界。
 
 当前版本为 **v0.1 本地原型**。首次安装、配置和演示步骤见 [v0.1 使用说明](docs/release-v0.1.md)，开发流程见 [CONTRIBUTING](CONTRIBUTING.md)。
 
@@ -133,3 +133,7 @@ fortune-report report --profile demo --date 2026-10-05
 ```
 
 八字判断层已加入 [项目模型 v1](docs/bazi-judgment.md)：执行旺衰、格局配合/风险/救应、扶抑与调候候选、特殊格筛选；权重和条件代理为公开工程约定，不声称古籍统一标准。
+
+## v0.2.0：星盘、档案与选牌
+
+紫微十二宫和十大天体占星盘、多个本地档案、工具历史、导入恢复、78张背牌选取与原牌追问已接入页面和统一对话。安装需要Python 3.11+与Node.js 18+，执行 `pip install -e ".[all]"`，再运行 `fortune-doctor` 与 `fortune-web --port 8766`。详见 [完整使用与部署说明](docs/charts-and-profiles.md)、[发布说明](docs/release-v0.2.md) 和 [第三方许可](THIRD_PARTY_NOTICES.md)。

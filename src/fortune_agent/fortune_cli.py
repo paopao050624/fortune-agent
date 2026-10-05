@@ -10,7 +10,7 @@ from .fortune_daily import make_daily_report
 
 def main():
     parser=argparse.ArgumentParser(description='每日运势、档案与历史回顾')
-    parser.add_argument('action',choices=['save','report','history','review','export','delete'])
+    parser.add_argument('action',choices=['save','report','history','review','export','delete','profiles','import','readings'])
     parser.add_argument('--profile',required=True)
     parser.add_argument('--birth',default='')
     parser.add_argument('--pillars',default='')
@@ -21,10 +21,21 @@ def main():
     parser.add_argument('--key',help='回顾对应的日报key')
     parser.add_argument('--note',default='')
     parser.add_argument('--interpret',action='store_true')
+    parser.add_argument('--file',type=Path,help='导入的JSON路径')
+    parser.add_argument('--chart-birth',default='')
+    parser.add_argument('--chart-timezone',default='Asia/Shanghai')
+    parser.add_argument('--latitude',type=float)
+    parser.add_argument('--longitude',type=float)
+    parser.add_argument('--style',choices=['gentle','direct'],default='gentle')
     args=parser.parse_args()
     try:
         store=FortuneStore(args.store)
-        if args.action=='save':result=store.save_profile(args.profile,args.birth,args.pillars,args.gender,args.timezone)
+        if args.action=='save':result=store.save_profile(args.profile,args.birth,args.pillars,args.gender,args.timezone,chart_birth=args.chart_birth,chart_timezone=args.chart_timezone,latitude=args.latitude,longitude=args.longitude,style=args.style)
+        elif args.action=='profiles':result=store.profiles()
+        elif args.action=='readings':result=store.readings(args.profile)
+        elif args.action=='import':
+            if not args.file or args.file.stat().st_size>4*1024*1024:raise ValueError('请选择不超过4MB的导出JSON')
+            result=store.import_archive(json.loads(args.file.read_text(encoding='utf-8')))
         elif args.action=='history':result=store.history(args.profile)
         elif args.action=='export':result=store.export(args.profile)
         elif args.action=='delete':store.delete(args.profile);result={'deleted':True}

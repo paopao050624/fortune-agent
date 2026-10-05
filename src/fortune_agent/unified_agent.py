@@ -24,10 +24,13 @@ from .iching import build_cast, cast_coins
 from .iching_agent import interpret_cast
 from .iching_reading import select_passages
 from .meanings import evidence_for
-from .tarot import draw_reading
+from .tarot import draw_reading,SPREADS
+from .ziwei import calculate_ziwei
+from .astrology import calculate_astrology
+from .chart_agent import interpret_chart
 
 ROUTER_INSTRUCTIONS = """你是统一占卜助手的意图与资料路由器，只调用 choose_action，不自行起卦、抽牌或排盘。
-支持 tarot（塔罗）、daily（每日提示；存在已保存档案时整合塔罗与八字）、bazi（八字）和 iching（周易）。紫微和西方占星尚未实现。
+支持 tarot（塔罗）、daily（每日提示；存在已保存档案时整合塔罗与八字）、bazi（八字）、iching（周易）、ziwei（紫微斗数）和 astrology（西方占星）。
 今天运势等泛化当日问题默认 daily，但明确指定其他方式时遵循用户选择。没有指定方式且不是每日问题时，clarify 询问想用塔罗、八字或周易，不擅自替用户选择。
 明确要求每日八字或用八字看今天时选 bazi，沿用本方式已收集资料；普通今日提示才用 daily 塔罗。每日八字只算当天干支与本命日主关系，不能承诺吉凶。
 用户只说算塔罗或起卦但没有具体问题，clarify 追问。问题足够具体则 read；塔罗未选牌阵采用 three。
@@ -39,23 +42,27 @@ active_result 存在时，解释已有结果、进一步建议、为何抽到某
 同一周易卦切换取辞策略必须 followup 并设置 policy，不重新起卦；每日牌的小步骤追问也必须 followup，不能只重复缓存的首条回答。
 收到资料补充而没有重复问题时，使用 slots.question 保留此前问题。如果用户改出生资料，应 read 重新核对。
 用户可选择 direct/gentle，默认 gentle；直接不意味着确定性预测。不能承诺未来、诊断、停药、投资或胜诉结果。
+紫微需要准确中国标准出生时间及用户明确选择的传统男/女参数；西方占星需要带UTC偏移的出生时间、IANA出生时区和用户明确给出的经纬度。不能按城市名猜经纬度，不默认未知时刻或性别。使用chart_timezone、gender、latitude、longitude填写这些信息。
 你好、功能介绍等用 answer，简短说明。超出已实现模块用 unsupported，明确限制。澄清 reply 简短且一次只问当前必要资料。
 每日代号及时区来自页面设置，不要从用户文字编造。六次硬币值与选牌位置只提取明确数字，不能为了读卦自己填随机数。
 输出 question 是用户的问题或已确认问题；未获得具体问题时为 null。所有模型输出都会再次被程序校验。"""
 
 ROUTE_SCHEMA = {"type":"object","additionalProperties":False,"properties":{
     "action":{"type":"string","enum":["read","followup","clarify","answer","unsupported"]},
-    "method":{"type":"string","enum":["none","tarot","daily","bazi","iching"]},
+    "method":{"type":"string","enum":["none","tarot","daily","bazi","iching","ziwei","astrology"]},
     "question":{"type":["string","null"]}, "birth":{"type":["string","null"]},
     "pillars":{"type":["string","null"]},
     "birth_timezone":{"type":["string","null"],"enum":["Asia/Shanghai","unknown","unsupported",None]},
-    "spread":{"type":["string","null"],"enum":["single","three",None]},
+    "spread":{"type":["string","null"],"enum":[*SPREADS,None]},
     "picks":{"type":["array","null"],"items":{"type":"integer"}},
     "lines":{"type":["array","null"],"items":{"type":"integer"}},
     "policy":{"type":["string","null"],"enum":["moving-count-v1","all-moving-v1",None]},
     "style":{"type":["string","null"],"enum":["direct","gentle",None]},
+    "gender":{"type":["string","null"],"enum":["male","female",None]},
+    "chart_timezone":{"type":["string","null"]},
+    "latitude":{"type":["number","null"]},"longitude":{"type":["number","null"]},
     "reply":{"type":"string"}},
-    "required":["action","method","question","birth","pillars","birth_timezone","spread","picks","lines","policy","style","reply"]}
+    "required":["action","method","question","birth","pillars","birth_timezone","spread","picks","lines","policy","style","gender","chart_timezone","latitude","longitude","reply"]}
 ROUTE_TOOL = {"type":"function","name":"choose_action","description":"Choose the supported tool or ask for missing information.",
               "parameters":ROUTE_SCHEMA,"strict":True}
 
@@ -68,8 +75,11 @@ def validate_route(route):
         if "enum" in schema and value not in schema["enum"]:
             raise ValueError(f"路由字段 {key} 无效")
         if key in ("picks","lines"):
-            if value is not None and (not isinstance(value,list) or len(value)>6 or any(type(v) is not int for v in value)):
+            if value is not None and (not isinstance(value,list) or len(value)>(10 if key=="picks" else 6) or any(type(v) is not int for v in value)):
                 raise ValueError("选牌或六爻输入无效")
+        elif key in ("latitude","longitude"):
+            import math
+            if value is not None and (type(value) not in (int,float) or not math.isfinite(value)):raise ValueError("经纬度须为有限数值")
         elif value is not None and (not isinstance(value,str) or len(value)>2000):
             raise ValueError(f"路由字段 {key} 无效")
     return route
@@ -142,8 +152,8 @@ class UnifiedAgent:
             session.slots={"method":method}
             if preferred_style:session.slots["style"]=preferred_style
             session.artifact=None
-        old_input=(session.slots.get("birth"),session.slots.get("pillars"))
-        for key in ("question","birth","pillars","birth_timezone","spread","picks","lines","policy","style"):
+        old_input=tuple(session.slots.get(k) for k in ("birth","pillars","gender","chart_timezone","latitude","longitude"))
+        for key in ("question","birth","pillars","birth_timezone","spread","picks","lines","policy","style","gender","chart_timezone","latitude","longitude"):
             if route[key] is not None:
                 session.slots[key]=route[key]
         if route["birth"] is not None: session.slots.pop("pillars",None)
@@ -160,7 +170,7 @@ class UnifiedAgent:
             session.slots["_birth_timezone_user_confirmed"]=True
             session.slots.pop("_awaiting_birth_timezone",None)
             route["action"]="read"
-        if old_input!=(session.slots.get("birth"),session.slots.get("pillars")) and method=="bazi":
+        if old_input!=tuple(session.slots.get(k) for k in ("birth","pillars","gender","chart_timezone","latitude","longitude")) and method in ("bazi","ziwei","astrology"):
             session.artifact=None
         if session.artifact and not session.artifact.data.get("interpretation") and route["action"]=="read":
             if not re.search(r"重抽|重新抽|重新起卦|再抽|新问题|重新掷",message):
@@ -241,15 +251,41 @@ class UnifiedAgent:
             if slots.get("birth") and not slots.get("_birth_timezone_user_confirmed") and not re.search(r"中国标准|北京时间|东八区|Asia/Shanghai|\+08:00|北京|上海",history):
                 slots["_awaiting_birth_timezone"]=True
                 return finish("请明确确认出生时刻是中国标准时间（+08:00）；页面中的每日时区不会用来推断出生时区。",status="needs_input")
+        if method in ("ziwei","astrology"):
+            from pathlib import Path
+            try:saved=FortuneStore(Path(self.cache_path).parent/"fortune.sqlite3").get_profile(profile)
+            except ValueError:saved=None
+            trusted={}
+            if saved:
+                if route["style"] is None:slots["style"]=saved.get("style","gentle")
+                trusted={"birth":saved.get("chart_birth") or saved["birth"],"gender":saved["gender"],
+                         "chart_timezone":saved.get("chart_timezone","Asia/Shanghai"),"latitude":saved.get("latitude"),"longitude":saved.get("longitude")}
+                for key,value in trusted.items():
+                    if slots.get(key) is None and value is not None:slots[key]=value
+            history="\n".join([m['content'] for m in session.messages if m['role']=='user']+[message])
+            if not slots.get("birth"):return finish("请提供准确公历出生日期、时刻及UTC偏移，或在档案页保存这些资料。未知时刻请不要假填。",status="needs_input")
+            if slots['birth']!=trusted.get('birth') and not birth_matches_user_text(slots['birth'],history):
+                return finish("出生日期和时刻未能从你明确提供的资料中核实，请补充。",status="needs_input")
+            if method=='ziwei':
+                if not slots.get('gender'):return finish("请选择紫微传统排盘参数：男或女；不会根据姓名猜测。",status="needs_input")
+                wanted='男' if slots['gender']=='male' else '女'
+                if slots['gender']!=trusted.get('gender') and wanted not in history and slots['gender'] not in history.lower():return finish("紫微排盘参数尚未明确，请确认男或女参数。",status="needs_input")
+            else:
+                if not slots.get('chart_timezone') or slots.get('latitude') is None or slots.get('longitude') is None:
+                    return finish("西方占星还需要IANA出生时区及明确经纬度，例如 Asia/Shanghai、北纬31.23、东经121.47；可以在档案页保存，不按城市名猜测。",status="needs_input")
+                numbers=[float(n) for n in re.findall(r'-?\d+(?:\.\d+)?',history)]
+                for key in ('latitude','longitude'):
+                    if slots[key]!=trusted.get(key) and not any(abs(slots[key]-n)<1e-7 for n in numbers):return finish("经纬度尚未从你明确提供的数据核实，请填写数值。",status="needs_input")
+                if slots['chart_timezone']!=trusted.get('chart_timezone') and slots['chart_timezone'] not in history:return finish("请明确IANA出生时区，不用每日时区代替。",status="needs_input")
         if route["action"]=="clarify":
             return finish(route["reply"] or "请补充需要分析的资料或具体问题。",status="needs_input")
 
         try:
-            artifact=self.prepare(method,question or "请解释四柱及已有依据。",slots,profile,zone)
+            artifact=self.prepare(method,question or ("请解释星盘及计算规则。" if method in ("ziwei","astrology") else "请解释四柱及已有依据。"),slots,profile,zone)
         except ValueError as exc:
             return finish(f"资料需要修正：{exc}",status="needs_input")
         session.artifact=artifact  # Keep the actual result even if interpretation times out.
-        trace.append({"tool":{"tarot":"draw_tarot","daily":"daily_tarot","bazi":"prepare_bazi","iching":"cast_iching"}[method],
+        trace.append({"tool":{"tarot":"draw_tarot","daily":"daily_tarot","bazi":"prepare_bazi","iching":"cast_iching","ziwei":"calculate_ziwei","astrology":"calculate_astrology"}[method],
                       "method":method,"reused":False})
         if artifact.data.get("interpretation"):
             result=artifact.data
@@ -260,6 +296,9 @@ class UnifiedAgent:
         return finish(result["interpretation"],result)
 
     def prepare(self,method,question,slots,profile,zone):
+        if method in ("ziwei","astrology"):
+            result=calculate_ziwei(slots['birth'],slots['gender']) if method=='ziwei' else calculate_astrology(slots['birth'],slots['chart_timezone'],slots['latitude'],slots['longitude'])
+            return Artifact(method,question,result,{"mode":method,"chart_result":result,"evidence":result['evidence']})
         if method=="tarot":
             reading=draw_reading(question,slots.get("spread","three"),tuple(slots["picks"]) if slots.get("picks") is not None else None)
             return Artifact(method,question,reading,{"mode":method,"reading":asdict(reading),"evidence":evidence_for(reading)})
@@ -314,7 +353,9 @@ class UnifiedAgent:
 
     def explain(self,artifact,question,style,include_hexagram_context=False):
         data=dict(artifact.data)
-        if data.get("mode")=="daily-report":
+        if artifact.method in ("ziwei","astrology"):
+            data["interpretation"]=interpret_chart(artifact.method,artifact.domain,question,self.client,self.model,style)
+        elif data.get("mode")=="daily-report":
             payload={k:v for k,v in data.items() if k not in ("profile_key","key","review")}
             response=self.client.responses.create(model=self.model,store=False,
                 instructions="围绕同一份每日综合报告回答追问，不改牌面、日期或计算结果。不预测事件，不将未确定旺衰、格局、用神写为已确定。用中文给可执行建议。",
