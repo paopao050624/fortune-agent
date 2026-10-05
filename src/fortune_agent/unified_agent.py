@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 
 from .agent import TarotAgent
 from .bazi import calculate_bazi, parse_bazi_pillars
+from .bazi_analysis import comprehensive_analysis
 from .bazi_agent import interpret_bazi
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
@@ -15,6 +16,8 @@ from .bazi_daily import daily_bazi_context
 from .bazi_structure import analyze_structure
 from .bazi_sources import evidence_for as bazi_evidence
 from .daily import daily_draw
+from .fortune_store import FortuneStore
+from .fortune_daily import make_daily_report, report_identity
 from .daily_service import get_daily
 from .daily_store import DailyStore
 from .iching import build_cast, cast_coins
@@ -24,7 +27,7 @@ from .meanings import evidence_for
 from .tarot import draw_reading
 
 ROUTER_INSTRUCTIONS = """你是统一占卜助手的意图与资料路由器，只调用 choose_action，不自行起卦、抽牌或排盘。
-支持 tarot（塔罗）、daily（每日一张塔罗）、bazi（八字）和 iching（周易）。紫微和西方占星尚未实现。
+支持 tarot（塔罗）、daily（每日提示；存在已保存档案时整合塔罗与八字）、bazi（八字）和 iching（周易）。紫微和西方占星尚未实现。
 今天运势等泛化当日问题默认 daily，但明确指定其他方式时遵循用户选择。没有指定方式且不是每日问题时，clarify 询问想用塔罗、八字或周易，不擅自替用户选择。
 明确要求每日八字或用八字看今天时选 bazi，沿用本方式已收集资料；普通今日提示才用 daily 塔罗。每日八字只算当天干支与本命日主关系，不能承诺吉凶。
 用户只说算塔罗或起卦但没有具体问题，clarify 追问。问题足够具体则 read；塔罗未选牌阵采用 three。
@@ -108,7 +111,7 @@ class UnifiedAgent:
         active = None
         if session.artifact:
             active={"method":session.artifact.method,"question":session.artifact.question,
-                    "data":session.artifact.data}
+                    "data":{key:value for key,value in session.artifact.data.items() if key not in ("review","profile_key","key")}}
         context={"reference_date":datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat(),
                  "slots":session.slots,"active_result":active,
                  "recent_messages":session.messages[-12:],"user_message":content}
@@ -189,6 +192,12 @@ class UnifiedAgent:
                 if (session.artifact.data["day"]!=current.day or session.artifact.data["timezone"]!=zone
                     or session.artifact.data.get("profile_key")!=current.cache_key):
                     session.artifact=None
+                if session.artifact and session.artifact.data.get("mode")=="daily-report":
+                    from pathlib import Path
+                    store=FortuneStore(Path(self.cache_path).parent / "fortune.sqlite3")
+                    try: expected_key=report_identity(store,profile)[3]
+                    except ValueError: expected_key=None
+                    if expected_key!=session.artifact.data.get("key"):session.artifact=None
             if session.artifact:
                 if method=="bazi" and session.slots.get("daily_bazi"):
                     current=daily_bazi_context(session.artifact.domain)
@@ -259,14 +268,35 @@ class UnifiedAgent:
                                                 "evidence":selection["passages"]},policy)
         if method=="bazi":
             chart=parse_bazi_pillars(slots["pillars"]) if slots.get("pillars") else calculate_bazi(slots["birth"])
+            from pathlib import Path
+            gender=None
+            store=FortuneStore(Path(self.cache_path).parent / "fortune.sqlite3")
+            try: saved=store.get_profile(profile)
+            except ValueError: saved=None
+            if saved and chart.birth_time and saved.get("birth"):
+                if calculate_bazi(saved["birth"]).birth_time==chart.birth_time:gender=saved["gender"]
             data={"mode":method,"chart":asdict(chart),"derived_facts":chart_facts(chart),
                   "method_checklist":wealth_checklist(chart),"evidence":bazi_evidence(chart),
                   "structural_analysis":analyze_structure(chart),
+                  "complete_analysis":comprehensive_analysis(chart,gender),
                   "daily_context":daily_bazi_context(chart) if slots.get("daily_bazi") else None}
             return Artifact(method,question,chart,data)
         if method=="daily":
             instant=datetime.now(timezone.utc)
             draw=daily_draw(profile,zone,instant)
+            from pathlib import Path
+            store=FortuneStore(Path(self.cache_path).parent / "fortune.sqlite3")
+            try: saved_profile=store.get_profile(profile)
+            except ValueError: saved_profile=None
+            if saved_profile:
+                if saved_profile["timezone"]!=zone:
+                    raise ValueError("对话每日时区与保存档案不一致，请统一设置后重试")
+                with self.daily_lock:
+                    report=make_daily_report(store,profile,client=self.client,model=self.model)
+                report["profile_key"]=draw.cache_key
+                reply=report.get("interpretation") or "\n".join(i["question"] for i in report["reflections"])
+                report["interpretation"]=reply
+                return Artifact(method,draw.reading.question,draw.reading,report)
             with self.daily_lock:
                 result=get_daily(profile,zone,store=DailyStore(self.cache_path),client=self.client,
                                  model=self.model,style=slots.get("style","gentle"),at=instant)
@@ -281,13 +311,20 @@ class UnifiedAgent:
 
     def explain(self,artifact,question,style,include_hexagram_context=False):
         data=dict(artifact.data)
-        if artifact.method in ("tarot","daily"):
+        if data.get("mode")=="daily-report":
+            payload={k:v for k,v in data.items() if k not in ("profile_key","key","review")}
+            response=self.client.responses.create(model=self.model,store=False,
+                instructions="围绕同一份每日综合报告回答追问，不改牌面、日期或计算结果。不预测事件，不将未确定旺衰、格局、用神写为已确定。用中文给可执行建议。",
+                input=[{"role":"user","content":json.dumps({"question":question,"report":payload},ensure_ascii=False)}])
+            if not response.output_text.strip():raise RuntimeError("模型返回空回答")
+            data["interpretation"]=response.output_text.strip()
+        elif artifact.method in ("tarot","daily"):
             fixed=replace(artifact.domain,question=question)
             result=TarotAgent(self.client,self.model,draw=lambda *_:fixed).read(question,fixed.spread,style=style)
             data["interpretation"]=result.interpretation
         elif artifact.method=="bazi":
             data["interpretation"]=interpret_bazi(artifact.domain,question,self.client,self.model,
-                                                   style=style,daily_context=data.get("daily_context"))
+                                                   style=style,daily_context=data.get("daily_context"),full_analysis=data.get("complete_analysis"))
         else:
             result=interpret_cast(artifact.domain,question,self.client,self.model,artifact.policy,style,
                                   include_hexagram_context=include_hexagram_context)

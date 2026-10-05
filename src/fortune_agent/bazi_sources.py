@@ -9,6 +9,7 @@ from importlib.resources import files
 
 from .bazi import BaziChart
 from .bazi_interactions import load_interaction_rules
+from .bazi_analysis import load_analysis_methods
 from .bazi_rules import load_rule_catalog
 from .bazi_structure import load_structure_rules
 
@@ -34,7 +35,7 @@ def load_ziping_catalog() -> dict:
 def catalog_sha256() -> str:
     content = json.dumps({"stems": load_catalog(), "context": load_context_catalog(),
                           "ziping": load_ziping_catalog(), "wealth_rules": load_rule_catalog(),
-                          "structure_rules":load_structure_rules(), "interaction_rules":load_interaction_rules()},
+                          "structure_rules":load_structure_rules(), "interaction_rules":load_interaction_rules(), "analysis_methods":load_analysis_methods()},
                          ensure_ascii=False, sort_keys=True).encode("utf-8")
     return hashlib.sha256(content).hexdigest()
 

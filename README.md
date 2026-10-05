@@ -121,3 +121,13 @@ fortune-agent "这个项目该怎么推进？" --spread three --interpret --styl
 候选典籍及使用规则见 [资料与方法](docs/references.md)。已注明的 Waite 塔罗资料、《滴天髓》和《子平真诠》有限摘录已接入；其他典籍仍在规划中。
 
 代码已推送至 GitHub，自动测试状态见顶部徽章。该版本提供本地原型，尚未发布到 PyPI，也不是已部署的公共网站。
+
+## 八字综合报告与每日运势
+
+新增“每日运势与回顾”：保存本地档案后，把每日塔罗、八字当日关系和已计算的大运流年整合成日报，支持历史、回顾、JSON导出与删除。准确出生时间与传统顺逆运参数具备时可计算起运与十年大运。旺衰、成格、喜用神条件不足时仍明确待核实。详见 [使用说明与边界](docs/complete-fortune.md)。
+
+```bash
+fortune-bazi --birth 2000-01-01T12:00:00+08:00 --gender female --complete --json
+fortune-report save --profile demo --birth 2000-01-01T12:00:00+08:00 --gender female
+fortune-report report --profile demo --date 2026-10-05
+```

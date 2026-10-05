@@ -57,6 +57,9 @@ BAZI_INSTRUCTIONS = (
     "不要从单个天干断言用户性格、能力、婚姻、寿命或疾病。"
     "不要把命理推断当成事实或必然预言，也不要替代医疗、法律、财务判断。"
     "今天、明年等相对日期必须以输入中的 reference_date 为准；它与出生日期不同。"
+    "complete_analysis 若提供，使用其中的旺衰证据、格局条件与分方法取用；未确定字段不能变为确定结论。"
+    "pattern研究清单和balance_scenarios是项目条件讨论，不是已核对古籍的成败算法；分别解释两个前提分支，不替用户选择身强或身弱，不把cooperation存在当成已成格。"
+    "luck.status=calculated 时允许解释实际计算的大运干支、顺逆与起运时间，不再声称完全没有大运；区分年龄标签与实际起运区间。不由运柱预言事件。"
     "结合用户问题给出具体的反思方向。用中文回答。"
 )
 PROMPT_SHA256 = hashlib.sha256(BAZI_INSTRUCTIONS.encode("utf-8")).hexdigest()
@@ -71,6 +74,7 @@ def interpret_bazi(
     reference_date: date | None = None,
     style: str = "gentle",
     daily_context: dict | None = None,
+    full_analysis: dict | None = None,
 ) -> str:
     if not question.strip():
         raise ValueError("问题不能为空")
@@ -87,6 +91,7 @@ def interpret_bazi(
         input=[{
             "role": "user",
             "content": json.dumps({
+                "complete_analysis": full_analysis,
                 "question": question.strip(),
                 "chart": asdict(chart),
                 "reference_date": (reference_date or current_reference_date()).isoformat(),

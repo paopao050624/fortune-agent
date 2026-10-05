@@ -28,6 +28,7 @@ jobs:
         run: |
           fortune-agent --help
           fortune-daily --help
+          fortune-report --help
           fortune-bazi --help
           fortune-web --help
           fortune-iching --help

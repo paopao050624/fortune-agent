@@ -34,7 +34,7 @@ def analyze_interactions(facts, roots, candidates):
         }
         events.append(event)
 
-    for i, j in combinations(range(4), 2):
+    for i, j in combinations(range(len(pillars)), 2):
         stem_pair = pillars[i]['heavenly_stem']['stem'] + pillars[j]['heavenly_stem']['stem']
         if any(set(stem_pair) == set(pair) for pair in rules['stem_combinations']):
             record('天干五合', [i, j], list(stem_pair), 'stem')

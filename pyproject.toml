@@ -12,6 +12,7 @@ license = {text = "MIT"}
 
 [project.scripts]
 fortune-agent = "fortune_agent.cli:main"
+fortune-report = "fortune_agent.fortune_cli:main"
 fortune-daily = "fortune_agent.daily_cli:main"
 fortune-bazi = "fortune_agent.bazi_cli:main"
 fortune-web = "fortune_agent.web:main"

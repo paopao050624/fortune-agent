@@ -7,7 +7,7 @@ from html import escape
 import json
 import secrets
 from dataclasses import asdict
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib.resources import files
 from pathlib import Path
@@ -16,6 +16,9 @@ from typing import Any
 
 from .agent import TarotAgent
 from .bazi import calculate_bazi, parse_bazi_pillars
+from .bazi_analysis import comprehensive_analysis
+from .fortune_store import FortuneStore
+from .fortune_daily import make_daily_report, existing_daily_report
 from .bazi_agent import interpret_bazi
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
@@ -64,6 +67,35 @@ class LocalApp:
         style = text_field(payload, "style", "gentle", 20)
         if style not in ("direct", "gentle"):
             raise ValueError("无效回答风格")
+
+        if mode in ("profiles", "profile-save", "profile-delete", "profile-export", "daily-report", "daily-history", "daily-review"):
+            store = FortuneStore(self.cache_path.parent / "fortune.sqlite3")
+            profile = text_field(payload, "profile", "reader-01", 128)
+            if mode == "profiles":
+                return {"profiles": store.profiles()}
+            if mode == "profile-save":
+                gender = text_field(payload, "gender", "", 10) or None
+                return {"profile": store.save_profile(profile, text_field(payload,"birth",limit=60), text_field(payload,"pillars",limit=60), gender, text_field(payload,"timezone","Asia/Shanghai",100))}
+            if mode == "profile-delete":
+                store.delete(profile)
+                return {"deleted": True}
+            if mode == "profile-export":
+                return store.export(profile)
+            if mode == "daily-history":
+                return {"history": store.history(profile)}
+            if mode == "daily-review":
+                store.review(profile, text_field(payload,"key",limit=64), text_field(payload,"review"))
+                return {"saved": True}
+            selected = text_field(payload,"date",limit=10)
+            selected = date.fromisoformat(selected) if selected else None
+            with self.daily_lock:
+                cached = existing_daily_report(store,profile,selected)
+                if cached: return cached
+                if interpret:
+                    client, model = self.model_client()
+                    try: return make_daily_report(store,profile,selected,client,model)
+                    finally: client.close()
+                return make_daily_report(store,profile,selected)
 
         if mode == "chat-clear":
             identifier=text_field(payload,"session_id",limit=100)
@@ -174,18 +206,22 @@ class LocalApp:
             chart = parse_bazi_pillars(pillars) if pillars else calculate_bazi(birth)
             daily=payload.get("daily_bazi",False)
             if not isinstance(daily,bool):raise ValueError("daily_bazi 必须为布尔值")
-            daily_context=daily_bazi_context(chart) if daily else None
+            reference = text_field(payload,"date",limit=10)
+            reference = date.fromisoformat(reference) if reference else None
+            gender = text_field(payload,"gender","",10) or None
+            complete = comprehensive_analysis(chart,gender,reference)
+            daily_context=daily_bazi_context(chart,reference) if daily else None
             question = text_field(payload, "question", "请说明排盘和所提供的依据。")
             if interpret and not question:
                 raise ValueError("解读问题不能为空")
             answer = None
             if interpret:
                 client, model = self.model_client()
-                answer = interpret_bazi(chart, question, client, model,style=style,daily_context=daily_context)
+                answer = interpret_bazi(chart, question, client, model,style=style,daily_context=daily_context,full_analysis=complete)
             return {"mode": mode, "chart": asdict(chart), "derived_facts": chart_facts(chart),
                     "method_checklist": wealth_checklist(chart),
                     "interpretation": answer, "evidence": bazi_evidence(chart),"daily_context":daily_context,
-                    "structural_analysis":analyze_structure(chart)}
+                    "structural_analysis":analyze_structure(chart), "complete_analysis":complete}
         raise ValueError("未知功能")
 
 

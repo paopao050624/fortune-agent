@@ -1,0 +1,567 @@
+{
+  "case": "bazi",
+  "mode": "real-model",
+  "synthetic": true,
+  "model": "gpt-6-sol",
+  "analysis": {
+    "method_version": "bazi-report-v1",
+    "strength": {
+      "status": "unresolved",
+      "signals": [
+        "季节标签与日主为生泄、克耗或受制关系",
+        "四支有同干或同五行藏根观察",
+        "四柱可见同类或印星生助证据",
+        "四柱可见食伤、财或官杀关系"
+      ],
+      "season": {
+        "month_branch": "子",
+        "label": "冬",
+        "associated_element": "水",
+        "relation_to_day_master": "日主克季节五行",
+        "strength_status": "unassessed"
+      },
+      "roots": [
+        {
+          "position": "日柱",
+          "branch": "午",
+          "hidden_stem": "己",
+          "match": "same_element"
+        },
+        {
+          "position": "时柱",
+          "branch": "午",
+          "hidden_stem": "己",
+          "match": "same_element"
+        }
+      ],
+      "support_observations": [
+        {
+          "position": "年柱",
+          "stem": "己",
+          "element": "土",
+          "polarity": "阴",
+          "ten_god": "劫财"
+        },
+        {
+          "position": "月柱",
+          "stem": "丙",
+          "element": "火",
+          "polarity": "阳",
+          "ten_god": "偏印"
+        },
+        {
+          "position": "日柱",
+          "stem": "丁",
+          "element": "火",
+          "polarity": "阴",
+          "ten_god": "正印"
+        },
+        {
+          "position": "日柱",
+          "stem": "己",
+          "element": "土",
+          "polarity": "阴",
+          "ten_god": "劫财"
+        },
+        {
+          "position": "时柱",
+          "stem": "戊",
+          "element": "土",
+          "polarity": "阳",
+          "ten_god": "比肩"
+        },
+        {
+          "position": "时柱",
+          "stem": "丁",
+          "element": "火",
+          "polarity": "阴",
+          "ten_god": "正印"
+        },
+        {
+          "position": "时柱",
+          "stem": "己",
+          "element": "土",
+          "polarity": "阴",
+          "ten_god": "劫财"
+        }
+      ],
+      "drain_control_observations": [
+        {
+          "position": "年柱",
+          "stem": "乙",
+          "element": "木",
+          "polarity": "阴",
+          "ten_god": "正官"
+        },
+        {
+          "position": "月柱",
+          "stem": "癸",
+          "element": "水",
+          "polarity": "阴",
+          "ten_god": "正财"
+        }
+      ],
+      "unresolved": [
+        "人元司令与本余气轻重",
+        "藏根有效性与合冲竞争",
+        "四柱生克制化的实际效力",
+        "从格化格及方法差异"
+      ],
+      "conclusion": "已完成得时、得地、得助的证据汇总；不按五行数量或任意分数判身强身弱。"
+    },
+    "patterns": [
+      {
+        "id": "month-hidden-癸",
+        "label": "正财格研究候选",
+        "month_branch": "子",
+        "stem": "癸",
+        "ten_god": "正财",
+        "transmitted": false,
+        "visible_positions": [],
+        "status": "candidate_only",
+        "source_ids": [
+          "ziping-yongshen-month-origin",
+          "ziping-yongshen-pillar-coordination"
+        ],
+        "conditions_to_check": [
+          "月令取用的实际适用条件",
+          "多藏干与透干的取舍",
+          "整体旺衰",
+          "其他干支的成败救应"
+        ],
+        "screening": {
+          "candidate_id": "month-hidden-癸",
+          "label": "正财格研究候选",
+          "status": "ordinary_candidate",
+          "support": []
+        },
+        "interaction_review": {
+          "candidate_id": "month-hidden-癸",
+          "interaction_ids": [
+            "branch-相刑配对-1-0",
+            "branch-相刑配对-0-1",
+            "branch-六冲-1-2",
+            "branch-六冲-1-3"
+          ],
+          "formation_effect": "unassessed"
+        },
+        "formation_status": "unresolved",
+        "failure_status": "unresolved"
+      }
+    ],
+    "special_route": {
+      "route": "ordinary",
+      "label": "普通月令研究",
+      "status": "research_only",
+      "source_ids": [
+        "ziping-yongshen-month-origin"
+      ],
+      "mapping_note": "项目采用传统禄位表及五阳干月刃映射；阴干帝旺月另列月劫路径，不采用阴刃映射。扫描阳刃段‘六陽’异文尚待校勘，映射不是该句的逐字转化。",
+      "month_combinations": [],
+      "candidate_selection": [
+        {
+          "candidate_id": "month-hidden-癸",
+          "label": "正财格研究候选",
+          "status": "ordinary_candidate",
+          "support": []
+        }
+      ],
+      "visible_coordination": [],
+      "unresolved": [
+        "会支是否实际合化及合冲竞争",
+        "兼透兼会的取舍与有情无情",
+        "特殊路径中的财官煞食及其他四柱配合",
+        "旺衰、成败救应和最终取用"
+      ],
+      "limitations": "筛选仅安排核查方向，不删除原候选，不判三合化局、成格或喜用神；无筛选证据不表示该星不存在。"
+    },
+    "wealth_conditions": {
+      "method_version": "wealth-method-checklist-v1",
+      "source_id": "ziping-wealth-success-conditions",
+      "month_branch": "子",
+      "month_wealth_hidden_stems": [
+        {
+          "stem": "癸",
+          "element": "水",
+          "polarity": "阴",
+          "ten_god": "正财"
+        }
+      ],
+      "observations": {
+        "wealth_visible": {
+          "label": "财星透干",
+          "present": false,
+          "stems": []
+        },
+        "official_visible": {
+          "label": "正官透干",
+          "present": false,
+          "stems": []
+        },
+        "food_god_visible": {
+          "label": "食神透干",
+          "present": false,
+          "stems": []
+        },
+        "peer_visible": {
+          "label": "比肩或劫财天干可见",
+          "present": true,
+          "stems": [
+            {
+              "position": "年柱",
+              "stem": "己",
+              "element": "土",
+              "polarity": "阴",
+              "ten_god": "劫财"
+            },
+            {
+              "position": "时柱",
+              "stem": "戊",
+              "element": "土",
+              "polarity": "阳",
+              "ten_god": "比肩"
+            }
+          ]
+        },
+        "resource_visible": {
+          "label": "印星透干（正印或偏印）",
+          "present": true,
+          "stems": [
+            {
+              "position": "月柱",
+              "stem": "丙",
+              "element": "火",
+              "polarity": "阳",
+              "ten_god": "偏印"
+            }
+          ]
+        }
+      },
+      "paths": [
+        {
+          "id": "wealth-generates-official",
+          "label": "财旺生官",
+          "observations": [
+            {
+              "label": "财星透干",
+              "present": false,
+              "stems": []
+            },
+            {
+              "label": "正官透干",
+              "present": false,
+              "stems": []
+            }
+          ],
+          "unverified_conditions": [
+            "命局已确认为财格",
+            "财旺",
+            "财生官的有效配合"
+          ],
+          "status": "unverified"
+        },
+        {
+          "id": "output-generates-wealth",
+          "label": "财逢食生而身强带比",
+          "observations": [
+            {
+              "label": "财星透干",
+              "present": false,
+              "stems": []
+            },
+            {
+              "label": "食神透干",
+              "present": false,
+              "stems": []
+            },
+            {
+              "label": "比肩或劫财天干可见",
+              "present": true,
+              "stems": [
+                {
+                  "position": "年柱",
+                  "stem": "己",
+                  "element": "土",
+                  "polarity": "阴",
+                  "ten_god": "劫财"
+                },
+                {
+                  "position": "时柱",
+                  "stem": "戊",
+                  "element": "土",
+                  "polarity": "阳",
+                  "ten_god": "比肩"
+                }
+              ]
+            }
+          ],
+          "unverified_conditions": [
+            "命局已确认为财格",
+            "财逢食生的有效配合",
+            "身强",
+            "原文带比条件是否满足"
+          ],
+          "status": "unverified"
+        },
+        {
+          "id": "wealth-with-resource",
+          "label": "财格透印而位置妥适、两不相克",
+          "observations": [
+            {
+              "label": "财星透干",
+              "present": false,
+              "stems": []
+            },
+            {
+              "label": "印星透干（正印或偏印）",
+              "present": true,
+              "stems": [
+                {
+                  "position": "月柱",
+                  "stem": "丙",
+                  "element": "火",
+                  "polarity": "阳",
+                  "ten_god": "偏印"
+                }
+              ]
+            }
+          ],
+          "unverified_conditions": [
+            "命局已确认为财格",
+            "所见印星是否符合此路径取用条件",
+            "位置妥适",
+            "两不相克"
+          ],
+          "status": "unverified"
+        }
+      ],
+      "conclusion": "undetermined",
+      "limitations": "财格方法学习清单，不是定格结果；未见透干不等于该星不存在，藏干不参与透干观察。"
+    },
+    "useful_god_methods": [
+      {
+        "id": "pattern",
+        "label": "格局取用",
+        "status": "conditional",
+        "evidence": "普通月令研究",
+        "source_ids": [
+          "ziping-yongshen-month-origin",
+          "ziping-yongshen-pillar-coordination"
+        ],
+        "conclusion": "按月令与四柱配合研究格局用神，候选尚未成格，暂不指定最终用神。"
+      },
+      {
+        "id": "balance",
+        "label": "扶抑取用",
+        "status": "conditional",
+        "evidence": [
+          "季节标签与日主为生泄、克耗或受制关系",
+          "四支有同干或同五行藏根观察",
+          "四柱可见同类或印星生助证据",
+          "四柱可见食伤、财或官杀关系"
+        ],
+        "source_ids": [
+          "ziping-season-not-final",
+          "ziping-root-observation"
+        ],
+        "conclusion": "一般研究方向：身强再查泄耗制、身弱再查生扶；整体旺衰尚未核实，因此不输出具体喜忌五行。"
+      },
+      {
+        "id": "climate",
+        "label": "调候取用",
+        "status": "needs_source",
+        "evidence": "寒暖核查：检查寒湿与温暖条件，不能仅见冬月便指定丙丁为用神。",
+        "source_ids": [],
+        "conclusion": "季节检查提示为项目方法说明；《穷通宝鉴》指定日主月令条文尚未逐条核对，不冒充经典调候结论。"
+      }
+    ],
+    "luck": {
+      "status": "calculated",
+      "gender_parameter": "female",
+      "forward": true,
+      "start_offset": {
+        "years": 1,
+        "months": 7,
+        "days": 15,
+        "hours": 0
+      },
+      "starts_at": "2001-08-16T12:00:00+08:00",
+      "cycles": [
+        {
+          "index": 1,
+          "ganzhi": "丁丑",
+          "starts_at": "2001-08-16 12:00:00+08:00",
+          "ends_before": "2011-08-16 12:00:00+08:00",
+          "library_start_age": 2,
+          "library_end_age": 11,
+          "heavenly_stem": {
+            "stem": "丁",
+            "element": "火",
+            "polarity": "阴",
+            "ten_god": "正印"
+          }
+        },
+        {
+          "index": 2,
+          "ganzhi": "戊寅",
+          "starts_at": "2011-08-16 12:00:00+08:00",
+          "ends_before": "2021-08-16 12:00:00+08:00",
+          "library_start_age": 12,
+          "library_end_age": 21,
+          "heavenly_stem": {
+            "stem": "戊",
+            "element": "土",
+            "polarity": "阳",
+            "ten_god": "比肩"
+          }
+        },
+        {
+          "index": 3,
+          "ganzhi": "己卯",
+          "starts_at": "2021-08-16 12:00:00+08:00",
+          "ends_before": "2031-08-16 12:00:00+08:00",
+          "library_start_age": 22,
+          "library_end_age": 31,
+          "heavenly_stem": {
+            "stem": "己",
+            "element": "土",
+            "polarity": "阴",
+            "ten_god": "劫财"
+          }
+        },
+        {
+          "index": 4,
+          "ganzhi": "庚辰",
+          "starts_at": "2031-08-16 12:00:00+08:00",
+          "ends_before": "2041-08-16 12:00:00+08:00",
+          "library_start_age": 32,
+          "library_end_age": 41,
+          "heavenly_stem": {
+            "stem": "庚",
+            "element": "金",
+            "polarity": "阳",
+            "ten_god": "食神"
+          }
+        },
+        {
+          "index": 5,
+          "ganzhi": "辛巳",
+          "starts_at": "2041-08-16 12:00:00+08:00",
+          "ends_before": "2051-08-16 12:00:00+08:00",
+          "library_start_age": 42,
+          "library_end_age": 51,
+          "heavenly_stem": {
+            "stem": "辛",
+            "element": "金",
+            "polarity": "阴",
+            "ten_god": "伤官"
+          }
+        },
+        {
+          "index": 6,
+          "ganzhi": "壬午",
+          "starts_at": "2051-08-16 12:00:00+08:00",
+          "ends_before": "2061-08-16 12:00:00+08:00",
+          "library_start_age": 52,
+          "library_end_age": 61,
+          "heavenly_stem": {
+            "stem": "壬",
+            "element": "水",
+            "polarity": "阳",
+            "ten_god": "偏财"
+          }
+        },
+        {
+          "index": 7,
+          "ganzhi": "癸未",
+          "starts_at": "2061-08-16 12:00:00+08:00",
+          "ends_before": "2071-08-16 12:00:00+08:00",
+          "library_start_age": 62,
+          "library_end_age": 71,
+          "heavenly_stem": {
+            "stem": "癸",
+            "element": "水",
+            "polarity": "阴",
+            "ten_god": "正财"
+          }
+        },
+        {
+          "index": 8,
+          "ganzhi": "甲申",
+          "starts_at": "2071-08-16 12:00:00+08:00",
+          "ends_before": "2081-08-16 12:00:00+08:00",
+          "library_start_age": 72,
+          "library_end_age": 81,
+          "heavenly_stem": {
+            "stem": "甲",
+            "element": "木",
+            "polarity": "阳",
+            "ten_god": "七杀"
+          }
+        },
+        {
+          "index": 9,
+          "ganzhi": "乙酉",
+          "starts_at": "2081-08-16 12:00:00+08:00",
+          "ends_before": "2091-08-16 12:00:00+08:00",
+          "library_start_age": 82,
+          "library_end_age": 91,
+          "heavenly_stem": {
+            "stem": "乙",
+            "element": "木",
+            "polarity": "阴",
+            "ten_god": "正官"
+          }
+        },
+        {
+          "index": 10,
+          "ganzhi": "丙戌",
+          "starts_at": "2091-08-16 12:00:00+08:00",
+          "ends_before": "2101-08-16 12:00:00+08:00",
+          "library_start_age": 92,
+          "library_end_age": 101,
+          "heavenly_stem": {
+            "stem": "丙",
+            "element": "火",
+            "polarity": "阳",
+            "ten_god": "偏印"
+          }
+        }
+      ],
+      "reference_date": "2026-10-05",
+      "current_cycle": {
+        "index": 3,
+        "ganzhi": "己卯",
+        "starts_at": "2021-08-16 12:00:00+08:00",
+        "ends_before": "2031-08-16 12:00:00+08:00",
+        "library_start_age": 22,
+        "library_end_age": 31,
+        "heavenly_stem": {
+          "stem": "己",
+          "element": "土",
+          "polarity": "阴",
+          "ten_god": "劫财"
+        }
+      },
+      "current_state": "cycle",
+      "annual_reference": {
+        "ganzhi": "丙午",
+        "heavenly_stem": {
+          "stem": "丙",
+          "element": "火",
+          "polarity": "阳",
+          "ten_god": "偏印"
+        }
+      },
+      "method": "lunar-python 1.4.8 getYun(..., sect=2)：年干阴阳与用户提供的传统性别参数决定顺逆，按出生到前/后节的分钟差折算起运。",
+      "limitations": "仅此顺逆起运体系，未校正真太阳时；显示年龄为库的年段标签，不是精确周岁。当前运按起运时刻十年周年区间判断，年柱按参考日12:00节气年计算。大运干支不直接等于吉凶。"
+    },
+    "source_ids": [
+      "ziping-season-not-final",
+      "ziping-root-observation",
+      "ziping-yongshen-pillar-coordination"
+    ],
+    "limitations": "完整报告覆盖结构、旺衰证据、格局成败待核实项、三种取用方法及起运流年；最终旺衰、成格与喜用神仍依赖尚未核实的条件，不代表已实现完整古籍判命算法。"
+  },
+  "answer": "按输入资料，四柱为**己卯、丙子、戊午、戊午**，日主为**戊土**；以下不重新排盘。出生输入是 **2000 年 1 月 1 日 12:00（Asia/Shanghai，+08:00）法定时间**，未作真太阳时校正；所用子时规则为 **23:00 后日柱仍按当日、00:00 换日**。\n\n### 起运、当前大运与流年\n\n按资料所用的顺逆及节气时间折算方法，以提供的女性参数**顺行**，起运偏移为 **1 年 7 个月 15 天**，实际起运时刻为 **2001 年 8 月 16 日 12:00（+08:00）**。这是一套特定计算方法的结果，未校正真太阳时。\n\n以 **2026 年 10 月 5 日**为参考日，当前是第三步**己卯大运**：自 **2021 年 8 月 16 日 12:00**起，至 **2031 年 8 月 16 日 12:00**前。资料中的“22—31”是程序的**年龄段标签**，不是精确周岁起止。参考日对应的流年为**丙午**。己为日主的劫财、丙为偏印，是十神标记；**不能仅由运柱或流年柱推断会发生什么事，或判定吉凶**。\n\n### 旺衰、格局与三种取用方法\n\n| 问题 | 目前能确定的观察 | 目前不能确定的结论 |\n|---|---|---|\n| **旺衰** | 月支是**子**，季节标签为冬；日、时两支均为**午**，其中的己土是戊土的**同五行藏干观察**，并非同干藏根。年干己土、时干戊土及月干丙火也提供了可见的同类或印星生助线索；同时还有其他关系需权衡。 | 根气有效性、各项生克配合及**整体身强身弱**均未定。子午冲已被记录为关系观察，不能据此断言午中的藏根已被冲掉。 |\n| **格局** | 走的是**普通月令研究**路径；子中癸水为正财，构成“**正财格研究候选**”，但癸**未透干**。 | 候选不等于已成财格；成败救应及最终格局未定。未见财星透干，也不等于藏干中没有财星。 |\n| **格局取用** | 可以从月令候选出发，继续核对四柱配合。 | 候选尚未成格，**不能指定格局用神**。 |\n| **扶抑取用** | 已汇总季节、藏根、可见生助与克耗等证据。 | 旺衰未定，**不能指定应扶应抑或喜忌五行**。 |\n| **调候取用** | 冬月提示可以检查寒湿、温暖条件。 | 不能仅凭冬月就指定丙、丁为用神；相应专门条文尚未接入核对。 |\n\n资料中的财格条件也只是**核查清单**：财旺生官一项，财格本身、财旺及生官的有效配合未核实；“财逢食生而身强带比”一项，食生配合、身强及“带比”条件未核实；“财格透印”一项，虽见月干丙偏印，印星是否适用、位置是否妥适及两不相克仍未核实。三项都**不能据现有透干观察宣布成立**。\n\n《子平真诠》“论用神·月令起点”说：“**八字用神，專求月令。以干日配月令地支，而生剋不同，格局分焉。**”〔[书内第17页，PDF第26个扫描页](https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=26)〕传统含义是以月令作为研究起点；**“以干日”保留扫描本字序，尚待跨版本校勘**，不能静默改字。**现代反思建议**是把月令当作提问的起点，而不是看到子中有癸就立即定财格或补某种五行。\n\n同书“论用神·四柱配合”说：“**凡看命者，先觀用神之何屬，然後或順或逆，以年月日時，逐干逐支參配，而權衡之。**”〔[书内第17页，PDF第26个扫描页](https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=26)〕传统含义是还要权衡年月日时的配合；同篇另有“**然亦有月令無用神者，將若之何？**”的设问〔[书内第18页，PDF第27个扫描页](https://upload.wikimedia.org/wikipedia/commons/f/fe/NLC416-11jh010455-35296_%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE.pdf#page=27)〕，有后续语境，不能把开篇一句当作完整算法。**现代反思建议**是把尚未核实的根力、配合与例外列为待查项，而不是急着给自己贴“身强”“身弱”或“财格”的标签。\n\n上述《子平真诠》**仅为已看图核对的所列短段**，并非整章或整本已校勘；版本间也未完整校勘。对这一步己卯运，更可选择的做法是把十年区间用于回顾自己的实际目标、资源与压力变化，按现实证据调整计划，不把干支当作事件预言。"
+}
