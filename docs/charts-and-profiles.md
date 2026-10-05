@@ -65,3 +65,5 @@ docker compose logs -f
 Compose只发布至本机127.0.0.1；容器内部显式绑定0.0.0.0，保持Host与请求token校验。名为fortune-data的卷保存档案和历史；`docker compose down`保留卷，`docker compose down -v`会删除数据，不应在需要保留档案时执行。默认不是公网网站。
 
 本机Docker守护进程若未运行，需先启动Docker Desktop。GitHub CI提供Docker构建和离线HTTP流程检查。开源交付材料包括许可证、第三方完整许可通知、贡献指南、安全说明、问题模板、固定依赖、测试与构建流程；只有实际通过CI的提交才称为发布验证通过。
+
+若把容器8766映射到不同宿主机端口，须显式传入 `fortune-web --bind 0.0.0.0 --port 8766 --external-port 18766` 并使用 `-p 127.0.0.1:18766:8766`。服务器仅额外接受该端口的本机Host，不开放任意域名。

@@ -39,6 +39,19 @@ class WebTests(unittest.TestCase):
         response = self.connection.getresponse()
         return response.status, json.loads(response.read())
 
+    def test_explicit_container_external_port_preserves_local_host_guard(self):
+        with make_server(0, Path(self.directory.name)/"external.sqlite3", external_port=18766) as server:
+            thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+            connection=http.client.HTTPConnection("127.0.0.1",server.server_port,timeout=3)
+            try:
+                for host,expected in (("127.0.0.1:18766",200),("localhost:18766",200),("127.0.0.1:18767",403),("untrusted.example:18766",403)):
+                    connection.request("GET","/",headers={"Host":host})
+                    response=connection.getresponse();response.read()
+                    self.assertEqual(response.status,expected)
+            finally:
+                connection.close();server.shutdown();thread.join()
+        with self.assertRaises(ValueError):make_server(0,Path(self.directory.name)/"bad.sqlite3",external_port=0)
+
     def test_draw_is_local_and_selected_positions_are_validated(self):
         with patch.object(LocalApp, "model_client", side_effect=AssertionError("API must not be used")):
             status, data = self.post({"mode": "tarot", "question": "怎么安排学习？", "spread": "three", "picks": [1, 15, 78]})

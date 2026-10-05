@@ -64,3 +64,10 @@ Known limits: no complete strength, pattern, useful-god, or luck-cycle calculati
 - 增加多档案、出生地点、偏好、工具历史与导入恢复；保留明确保存操作。
 - 增加服务端固定洗牌、78背牌选择、翻牌、稳定追问及对比/五张/十字牌阵。
 - 增加第三方许可、Docker本机部署、健康检查、贡献与安全文档、CI容器检查。
+
+## Unreleased: browser and Docker validation fixes
+
+- Support explicit Docker external localhost ports while preserving Host/token checks.
+- Disable unused manual birth fields in profile mode and display actual chart input.
+- Restore complete HTTP tests and add browser/container persistence validation in CI.
+- Confirm 183 tests and 17 browser acceptance groups; validate real image build and restart persistence.

@@ -277,7 +277,9 @@ class LocalApp:
         raise ValueError("未知功能")
 
 
-def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1") -> ThreadingHTTPServer:
+def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1", external_port: int | None = None) -> ThreadingHTTPServer:
+    if external_port is not None and (type(external_port) is not int or not 1 <= external_port <= 65535):
+        raise ValueError("外部端口须为1–65535的整数")
     app = LocalApp(cache_path)
     token = secrets.token_urlsafe(32)
 
@@ -301,7 +303,9 @@ def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1") -> Threadi
 
         def local_request(self) -> bool:
             return self.headers.get("Host") in {
-                f"127.0.0.1:{self.server.server_port}", f"localhost:{self.server.server_port}",
+                f"{hostname}:{allowed_port}"
+                for hostname in ("127.0.0.1", "localhost")
+                for allowed_port in (self.server.server_port, external_port) if allowed_port is not None
             }
 
         def do_GET(self) -> None:
@@ -346,11 +350,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="启动 Fortune Agent 本地网页")
     parser.add_argument("--bind",choices=("127.0.0.1","0.0.0.0"),default="127.0.0.1",help="容器内部可显式绑定0.0.0.0；默认仅回环")
     parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--external-port",type=int,help="Docker映射的宿主机端口，仅允许该端口的localhost/127.0.0.1 Host")
     parser.add_argument("--cache", type=Path, default=Path("work/daily.sqlite3"))
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error("端口须为 1–65535")
-    with make_server(args.port, args.cache,args.bind) as server:
+    if args.external_port is not None and not 1 <= args.external_port <= 65535:
+        parser.error("外部端口须为1–65535")
+    with make_server(args.port, args.cache,args.bind,args.external_port) as server:
         print(f"本地网页：http://127.0.0.1:{args.port}（Ctrl+C 停止）", flush=True)
         try:
             server.serve_forever()

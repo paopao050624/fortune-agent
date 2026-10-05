@@ -24,20 +24,7 @@ jobs:
       - name: Install project and build tools
         run: python -m pip install '.[all]' build
       - name: Test without API credentials
-        run: |
-          python -W error::ResourceWarning - <<'PY'
-          import unittest
-          def flatten(suite):
-              for test in suite:
-                  if isinstance(test, unittest.TestSuite):
-                      yield from flatten(test)
-                  else:
-                      yield test
-          suite = unittest.TestLoader().discover('tests')
-          selected = unittest.TestSuite(t for t in flatten(suite) if t.__class__.__module__ != 'test_web')
-          result = unittest.TextTestRunner(verbosity=2).run(selected)
-          raise SystemExit(not result.wasSuccessful())
-          PY
+        run: python -W error::ResourceWarning -m unittest discover -s tests -v
       - name: Build distribution
         run: python -m build
       - name: Check command entry points
@@ -55,3 +42,48 @@ jobs:
           fortune-chart astrology --birth 2000-01-01T12:00:00+00:00 --timezone Europe/London --latitude 51.4779 --longitude 0
           fortune-iching --reference 1
           fortune-iching --lines 9 9 9 9 9 9
+
+  browser-and-docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Build container
+        run: docker build -t fortune-agent:validation .
+      - name: Start isolated container with external port mapping
+        run: docker run -d --name fortune-validation -p 127.0.0.1:18766:8766 -v fortune-validation-data:/app/work fortune-agent:validation fortune-web --bind 0.0.0.0 --port 8766 --external-port 18766 --cache /app/work/daily.sqlite3
+      - name: HTTP functionality and request guards
+        run: |
+          python scripts/smoke_http.py http://127.0.0.1:18766
+          python scripts/verify_container.py prepare
+      - name: Verify restart persistence
+        run: |
+          docker restart fortune-validation
+          python scripts/smoke_http.py http://127.0.0.1:18766
+          python scripts/verify_container.py recover
+          test "$(docker exec fortune-validation id -u)" != 0
+      - name: Install pinned browser tooling
+        run: |
+          npm install --prefix work/browser-tools --no-save playwright@1.62.1
+          node work/browser-tools/node_modules/playwright/cli.js install --with-deps chromium
+      - name: Browser acceptance, desktop and mobile
+        env:
+          FORTUNE_TEST_URL: http://127.0.0.1:18766
+          PLAYWRIGHT_MODULE_PATH: ../work/browser-tools/node_modules/playwright
+        run: node scripts/verify_web.cjs
+      - name: Clean synthetic profile
+        run: python scripts/verify_container.py cleanup
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-validation
+          path: work/web-validation/screenshots
+      - name: Container diagnostics
+        if: failure()
+        run: docker logs fortune-validation || true
