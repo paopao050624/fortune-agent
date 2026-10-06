@@ -8,6 +8,7 @@ from typing import Any, Callable, Literal
 
 from .meanings import evidence_for
 from .tarot import Reading, draw_reading
+from .question_focus import question_guidance
 
 Style = Literal["direct", "gentle"]
 
@@ -70,7 +71,7 @@ class TarotAgent:
             if style == "direct"
             else "表达温和，标明不确定性，给出可选择的建议。"
         )
-        instructions = f"{SYSTEM_INSTRUCTIONS}\n{style_instruction}"
+        instructions = f"{SYSTEM_INSTRUCTIONS}\n{style_instruction}\n{question_guidance(question)}"
         if self.use_sources:
             instructions += f"\n{SOURCE_INSTRUCTIONS}"
         user_input = [{"role": "user", "content": question.strip()}]

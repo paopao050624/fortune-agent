@@ -9,7 +9,7 @@ const check=(ok,message)=>{if(!ok)throw Error(message);};
  const page=await browser.newPage({viewport:{width:1280,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(process.env.FORTUNE_TEST_URL||'http://127.0.0.1:8766');
  const reply='### 今日建议\n\n先完成**一个小目标**，保留*休息时间*。\n\n1. 写清完成标准。\n2. 专注20分钟。\n\n- 先确认资料。\n- 再决定下一步。\n\n| 方向 | 行动 |\n| --- | --- |\n| 学习 | 修改一小节 |\n\n[参考资料](https://example.com/reference)\n\n<img src=x onerror="window.formatProbe=1">\n[不安全链接](javascript:alert)\n\n```text\n**代码中的星号保留**\n```';
- await page.route('**/api/run',async route=>{const data=route.request().postDataJSON();if(data.mode==='chat')return route.fulfill({json:{session_id:'format-test',reply,status:'answered',method:'none',trace:[],result:null,turns:1}});return route.continue();});
+ await require('./browser_job_stub.cjs')(page,async data=>data.mode==='chat'?{session_id:'format-test',reply,status:'answered',method:'none',trace:[],result:null,turns:1}:null);
  await page.locator('#chat-message').fill('测试：**用户原文不改写**');await page.locator('#chat-send').click();await page.waitForFunction(()=>document.querySelector('.bubble.assistant .markdown'));
  const bubble=page.locator('.bubble.assistant').last();
  check(await bubble.locator('strong').textContent()==='一个小目标','bold markers not rendered');

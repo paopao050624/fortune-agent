@@ -155,3 +155,7 @@ class FortuneStore:
                 if owner and owner[0]!=identifier:key=uuid.uuid4().hex
                 con.execute('INSERT OR IGNORE INTO readings VALUES (?,?,?,?,?)',(key,identifier,r['kind'],r['created'],json.dumps(r['result'],ensure_ascii=False)))
         return self.get_profile(identifier)
+
+
+def profile_token(profile):
+    return hashlib.sha256(json.dumps(profile,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()

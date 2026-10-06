@@ -28,11 +28,7 @@ const check=(ok,message)=>{if(!ok)throw Error(message);};
  }
  await snapshot('tarot-ten');await layout();
  // Exercise provider-dependent front-end responses using a declared browser stub, never real predictions.
- await page.route('**/api/run',async route=>{const data=route.request().postDataJSON();
-  if(data.mode!=='tarot-followup')return route.continue();
-  const original=await page.evaluate(()=>JSON.parse(document.querySelector('#result pre').textContent));
-  await route.fulfill({json:{...original,interpretation:'测试替身：沿用原牌面，先完成一个小目标。'}});
- });
+ await require('./browser_job_stub.cjs')(page,async data=>{if(data.mode!=='tarot-followup')return null;const original=await page.evaluate(()=>JSON.parse(document.querySelector('#result pre').textContent));return {...original,interpretation:'测试替身：沿用原牌面，先完成一个小目标。'};});
  await page.locator('#tarot-followup-send').evaluate(b=>b.closest('details').open=true);
  await page.locator('#tarot-followup').fill('给一个具体步骤');await page.locator('#tarot-followup-send').click();
  await page.waitForFunction(()=>document.querySelector('#status').textContent==='追问沿用原牌面。');checks.push('tarot-followup-browser-stub');
@@ -63,7 +59,7 @@ const check=(ok,message)=>{if(!ok)throw Error(message);};
  page.on('dialog',dialog=>dialog.accept());await page.locator('#report-delete').click();await complete('#report-status');
  await page.locator('#profile-import-file').setInputFiles(archive);await page.locator('#profile-import').click();await complete('#report-status');await page.locator('#report-history').click();await complete('#report-status');check(await page.locator('#report-history-list button').count()===1,'restore failed');checks.push('profile-delete-import');
  await tab('统一对话');let turn=0;
- await page.route('**/api/run',async route=>{const d=route.request().postDataJSON();if(d.mode==='chat'){turn++;return route.fulfill({json:{session_id:'synthetic-session',status:'needs_input',method:'astrology',trace:[],result:null,reply:turn===1?'测试替身：请提供出生时间和经纬度。':'测试替身：资料已收到。'}});}if(d.mode==='chat-clear')return route.fulfill({json:{cleared:true}});return route.continue();});
+ await require('./browser_job_stub.cjs')(page,async d=>{if(d.mode==='chat'){turn++;return {session_id:'synthetic-session',status:'needs_input',method:'astrology',trace:[],result:null,reply:turn===1?'测试替身：请提供出生时间和经纬度。':'测试替身：资料已收到。'};}if(d.mode==='chat-clear')return {cleared:true};return null;});
  await page.locator('#chat-message').fill('用占星分析学习');await page.locator('#chat-send').click();await page.waitForFunction(()=>document.querySelector('#chat-history').textContent.includes('测试替身：请提供'));
  await page.locator('#chat-clear').click();await page.waitForFunction(()=>document.querySelector('#chat-status').textContent==='已开启新对话。');checks.push('chat-clarify-clear-browser-stub');await page.unroute('**/api/run');
  await page.setViewportSize({width:390,height:844});

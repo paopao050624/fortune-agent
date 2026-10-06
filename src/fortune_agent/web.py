@@ -11,13 +11,13 @@ from datetime import date, datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib.resources import files
 from pathlib import Path
-from threading import Lock
+from threading import Lock,local
 from typing import Any
 
 from .agent import TarotAgent
 from .bazi import calculate_bazi, parse_bazi_pillars
 from .bazi_analysis import comprehensive_analysis
-from .fortune_store import FortuneStore
+from .fortune_store import FortuneStore,profile_token
 from .fortune_daily import make_daily_report, existing_daily_report
 from .bazi_agent import interpret_bazi
 from .bazi_facts import chart_facts
@@ -33,6 +33,7 @@ from .tarot_sessions import TarotSessions
 from .ziwei import calculate_ziwei
 from .astrology import calculate_astrology
 from .chart_agent import interpret_chart,offline_chart_reading
+from .request_jobs import RequestJobs,ProgressClient,RequestCancelled
 from .iching import build_cast, cast_coins, load_catalog as iching_catalog
 from .iching_reading import select_passages, reference_hexagram
 from .iching_agent import interpret_cast
@@ -55,6 +56,8 @@ class LocalApp:
         self.daily_lock = Lock()
         self.conversations = ConversationStore()
         self.tarot_sessions = TarotSessions()
+        self.request_jobs=RequestJobs()
+        self.request_context=local()
 
     def model_client(self) -> tuple[Any, str]:
         config = ApiConfig.from_env()
@@ -63,6 +66,29 @@ class LocalApp:
         except ImportError as exc:
             raise ValueError("请先安装模型依赖：pip install -e '.[agent,bazi]'") from exc
         return OpenAI(api_key=config.api_key, base_url=config.base_url, timeout=60, max_retries=0), config.model
+
+    def get_model_client(self):
+        client,model=self.model_client()
+        job=getattr(self.request_context,'job',None)
+        if job:
+            client=ProgressClient(client,job)
+            self.request_context.clients.append(client)
+        return client,model
+
+    def request_progress(self,stage,session_id=None,preview=None):
+        job=getattr(self.request_context,'job',None)
+        if job:job.progress(stage,session_id,preview)
+
+    def run_job(self,payload,job):
+        self.request_context.job=job
+        self.request_context.clients=[]
+        try:return self.run(payload)
+        finally:
+            for client in self.request_context.clients:
+                try:client.close()
+                except Exception:pass
+            del self.request_context.clients
+            del self.request_context.job
 
     def run(self, payload: dict) -> dict:
         mode = text_field(payload, "mode", limit=20)
@@ -74,6 +100,20 @@ class LocalApp:
         style = text_field(payload, "style", "gentle", 20)
         if style not in ("direct", "gentle"):
             raise ValueError("无效回答风格")
+
+        if mode=='job-start':
+            request=payload.get('request')
+            allowed={'chat','tarot','tarot-reveal','tarot-followup','bazi','ziwei','astrology','iching','daily','daily-report'}
+            if not isinstance(request,dict) or request.get('mode') not in allowed:raise ValueError('无效后台请求类型')
+            return self.request_jobs.start(request,self.run_job)
+        if mode=='job-retry':
+            return self.request_jobs.retry(text_field(payload,'job_id',limit=100),self.run_job)
+        if mode in ('job-status','job-cancel'):
+            identifier=text_field(payload,'job_id',limit=100)
+            return self.request_jobs.cancel(identifier) if mode=='job-cancel' else self.request_jobs.status(identifier)
+        if mode=='profile-preview':
+            saved=FortuneStore(self.cache_path.parent/'fortune.sqlite3').get_profile(text_field(payload,'profile',limit=128))
+            return {'profile':saved,'confirmation_token':profile_token(saved)}
 
         if mode in ("profiles", "profile-save", "profile-delete", "profile-export", "daily-report", "daily-history", "daily-review", "profile-import", "reading-history"):
             store = FortuneStore(self.cache_path.parent / "fortune.sqlite3")
@@ -103,7 +143,7 @@ class LocalApp:
                 cached = existing_daily_report(store,profile,selected)
                 if cached: return cached
                 if interpret:
-                    client, model = self.model_client()
+                    client, model = self.get_model_client()
                     try: return make_daily_report(store,profile,selected,client,model)
                     finally: client.close()
                 return make_daily_report(store,profile,selected)
@@ -121,8 +161,9 @@ class LocalApp:
                 latitude,longitude=saved.get("latitude"),saved.get("longitude")
             domain=calculate_ziwei(birth,gender) if mode=="ziwei" else calculate_astrology(birth,zone,latitude,longitude)
             answer=offline_chart_reading(mode,domain)
+            self.request_progress("星盘已计算，正在准备解读",preview={"mode":mode,"chart_result":domain,"interpretation":answer,"evidence":domain["evidence"]})
             if interpret:
-                client,model=self.model_client()
+                client,model=self.get_model_client()
                 try:answer=interpret_chart(mode,domain,text_field(payload,"question","请解释这张星盘"),client,model,style)
                 finally:client.close()
             result={"mode":mode,"chart_result":domain,"interpretation":answer,"evidence":domain["evidence"]}
@@ -138,8 +179,9 @@ class LocalApp:
             question=text_field(payload,"question",reading.question)
             if mode=="tarot-followup" and not question:raise ValueError('追问不能为空')
             answer=None
+            self.request_progress("牌面已固定，正在准备解读",preview={"mode":"tarot","draw_id":key,"reading":asdict(reading),"evidence":evidence_for(reading)})
             if interpret or mode=="tarot-followup":
-                client,model=self.model_client()
+                client,model=self.get_model_client()
                 fixed=replace(reading,question=question)
                 try:answer=TarotAgent(client,model,draw=lambda *_:fixed).read(question,reading.spread,style=style).interpretation
                 finally:client.close()
@@ -158,10 +200,17 @@ class LocalApp:
                 raise ValueError("请输入消息")
             profile=text_field(payload,"profile","reader-01",128)
             zone=text_field(payload,"timezone","Asia/Shanghai",100)
+            use_saved=False
+            confirmation=text_field(payload,'profile_confirmation',limit=64)
+            if confirmation:
+                saved=FortuneStore(self.cache_path.parent/'fortune.sqlite3').get_profile(profile)
+                if not secrets.compare_digest(confirmation,profile_token(saved)):raise ValueError('档案资料已修改，请重新确认后使用')
+                use_saved=True
+                zone=saved['timezone']
             daily_draw(profile,zone)  # Validate settings before a model request.
             identifier=text_field(payload,"session_id",limit=100)
             session=self.conversations.get(identifier) if identifier else None
-            client,model=self.model_client()
+            client,model=self.get_model_client()
             if session is None:
                 try:session=self.conversations.get()
                 except Exception:
@@ -173,10 +222,11 @@ class LocalApp:
                 if close:close()
                 raise ValueError("当前对话正在处理，请稍候")
             try:
+                self.request_progress("正在核对对话资料",session.id)
                 agent=UnifiedAgent(client,model,self.cache_path,self.daily_lock)
                 try:
-                    result=agent.turn(session,message,profile,zone)
-                except ValueError:
+                    result=agent.turn(session,message,profile,zone,use_saved_profile=use_saved)
+                except (ValueError,RequestCancelled):
                     raise
                 except Exception:
                     reply="本次模型请求未完成。已保留当前对话和已有计算结果，可以说‘重试解读’；不会因此重新抽牌或起卦。"
@@ -200,15 +250,22 @@ class LocalApp:
                     raise ValueError("参考库查阅不能同时起卦或解读")
                 return {"mode": mode, "reference": reference_hexagram(reference)}
             lines = payload.get("lines")
-            result = cast_coins() if lines is None else build_cast(lines)
+            retry_id=text_field(payload,'retry_job_id',limit=100)
+            if retry_id:
+                previous=self.request_jobs.get(retry_id)
+                if previous.payload.get('mode')!='iching' or not previous.preview or not previous.done.is_set():raise ValueError('无法复用此卦象')
+                old=previous.preview['cast']
+                result=build_cast(old['lines_bottom_to_top'],old['coins_bottom_to_top'])
+            else:result = cast_coins() if lines is None else build_cast(lines)
             policy = text_field(payload, "policy", "moving-count-v1", 40)
             selection = select_passages(result, policy)
             interpreted = None
+            self.request_progress("卦象已计算，正在准备解读",preview={"mode":"iching","cast":asdict(result),"selection":selection,"evidence":selection["passages"]})
             if interpret:
                 question = text_field(payload, "question")
                 if not question:
                     raise ValueError("解读需要一个具体问题")
-                client, model = self.model_client()
+                client, model = self.get_model_client()
                 interpreted = interpret_cast(result, question, client, model, policy, style)
             return {"mode": mode, "cast": asdict(result), "selection": selection,
                     "interpretation": interpreted["interpretation"] if interpreted else None,
@@ -223,9 +280,17 @@ class LocalApp:
                 if not isinstance(picks, list) or any(type(item) is not int for item in picks):
                     raise ValueError("选牌位置必须是整数列表")
                 picks = tuple(picks)
-            reading = draw_reading(question, spread, picks)
+            retry_id=text_field(payload,'retry_job_id',limit=100)
+            if retry_id:
+                from .tarot import Reading,DrawnCard,DECK
+                previous=self.request_jobs.get(retry_id)
+                if previous.payload.get('mode')!='tarot' or not previous.preview or not previous.done.is_set():raise ValueError('无法复用此牌面')
+                data=previous.preview['reading'];deck={card.id:card for card in DECK}
+                reading=Reading(data['question'],data['spread'],tuple(DrawnCard(c['position'],deck[c['card']['id']],c['reversed']) for c in data['cards']))
+            else:reading = draw_reading(question, spread, picks)
+            self.request_progress("牌面已固定，正在准备解读",preview={"mode":"tarot","reading":asdict(reading),"evidence":evidence_for(reading)})
             if interpret:
-                client, model = self.model_client()
+                client, model = self.get_model_client()
                 result = TarotAgent(client, model, draw=lambda *_: reading).read(question, spread, style=style)
                 return {"mode": mode, **asdict(result)}
             return {"mode": mode, "reading": asdict(reading), "interpretation": None,
@@ -245,7 +310,7 @@ class LocalApp:
                 if store.get(draw) is not None:
                     result = get_daily(profile, zone, store=store, at=instant)
                 else:
-                    client, model = self.model_client()
+                    client, model = self.get_model_client()
                     result = get_daily(profile, zone, store=store, client=client,
                                        model=model, style=style, at=instant)
                 return {"mode": mode, **asdict(result)}
@@ -267,8 +332,9 @@ class LocalApp:
             if interpret and not question:
                 raise ValueError("解读问题不能为空")
             answer = None
+            self.request_progress("命盘已计算，正在准备解读",preview={"mode":"bazi","chart":asdict(chart),"derived_facts":chart_facts(chart),"structural_analysis":analyze_structure(chart),"method_checklist":wealth_checklist(chart),"complete_analysis":complete,"evidence":bazi_evidence(chart)})
             if interpret:
-                client, model = self.model_client()
+                client, model = self.get_model_client()
                 answer = interpret_bazi(chart, question, client, model,style=style,daily_context=daily_context,full_analysis=complete)
             return {"mode": mode, "chart": asdict(chart), "derived_facts": chart_facts(chart),
                     "method_checklist": wealth_checklist(chart),

@@ -1,0 +1,7 @@
+[
+  {"id":"missing-birth","profile_confirmed":false,"messages":["请用八字帮我梳理学习安排。"],"expected_method":"bazi","expected_status":"needs_input"},
+  {"id":"confirmed-profile","profile_confirmed":true,"messages":["请用八字帮我安排这周的论文修改。"],"expected_method":"bazi","expected_status":"completed"},
+  {"id":"tarot-followup","profile_confirmed":false,"messages":["用三张塔罗牌帮我梳理这周复习如何分配时间。","沿用这组三张牌，给出明天可以完成的两件小事。"],"expected_method":"tarot","expected_status":"completed","stable_result":true},
+  {"id":"iching-work","profile_confirmed":false,"messages":["用周易梳理项目下一步，六次结果为9 9 9 9 9 9。"],"expected_method":"iching","expected_status":"completed"},
+  {"id":"astrology-missing-location","profile_confirmed":false,"messages":["用西方占星分析工作安排，我在2000-01-01 12:00 +08:00 Asia/Shanghai出生，但还没提供出生地点。"],"expected_method":"astrology","expected_status":"needs_input"}
+]

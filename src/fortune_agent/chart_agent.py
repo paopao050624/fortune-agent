@@ -1,5 +1,6 @@
 """Grounded chart interpretation with a useful offline summary."""
 import json
+from .question_focus import question_guidance
 
 
 def offline_chart_reading(mode,result):
@@ -48,14 +49,14 @@ def interpret_chart(mode,result,question,client,model,style="gentle"):
     if style not in ("gentle","direct"):raise ValueError("无效回答风格")
     if mode=='ziwei':
         response=client.responses.create(model=model,store=False,
-          instructions='根据实际紫微本命盘返回结构化中文解释，summary简洁，explanations选2–3个直接相关source_id。只选输入evidence中实际提供的id，结合命宫、身宫与对宫三方，不改变星曜/亮度/四化。原文和来源由程序展示，模型字段不另造经典引文或纸本页码。meaning解释历史概念，application是现代反思，不能混为原文。旧时代性别偏见、疾病、寿夭、贫富和宿命断语不能套用为用户事实或预言；化忌不代表灾祸。给两条行动建议与明确版本限制。',
+          instructions='根据实际紫微本命盘返回结构化中文解释，summary简洁，explanations选2–3个直接相关source_id。只选输入evidence中实际提供的id，结合命宫、身宫与对宫三方，不改变星曜/亮度/四化。原文和来源由程序展示，模型字段不另造经典引文或纸本页码。meaning解释历史概念，application是现代反思，不能混为原文。旧时代性别偏见、疾病、寿夭、贫富和宿命断语不能套用为用户事实或预言；化忌不代表灾祸。给两条行动建议与明确版本限制。'+question_guidance(question),
           input=[{'role':'user','content':json.dumps({'question':question,'result':result,'style':style},ensure_ascii=False)}],
           text={'format':{'type':'json_schema','name':'ziwei_interpretation','schema':ZIWEI_SCHEMA,'strict':True}})
         try:analysis=json.loads(response.output_text)
         except (ValueError,TypeError):raise RuntimeError('紫微模型返回的解释结构无效')
         return render_ziwei_analysis(analysis,result)
     response=client.responses.create(model=model,store=False,
-      instructions='用中文解释输入实际星盘，默认600字以内。保持星座、度数、宫位和相位不变，不重新排盘。说明热带黄道与整宫制约定。解释是传统概念与现代反思，不保证婚姻财运疾病等事件。结合问题给两条行动建议，说明未算天体/宫制限制。',
+      instructions='用中文解释输入实际星盘，默认600字以内。保持星座、度数、宫位和相位不变，不重新排盘。说明热带黄道与整宫制约定。解释是传统概念与现代反思，不保证婚姻财运疾病等事件。结合问题给两条行动建议，说明未算天体/宫制限制。'+question_guidance(question),
       input=[{'role':'user','content':json.dumps({'method':mode,'question':question,'result':result,'style':style},ensure_ascii=False)}])
     if not response.output_text.strip():raise RuntimeError('星盘模型返回空回答')
     return response.output_text.strip()

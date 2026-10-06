@@ -165,8 +165,8 @@ class UnifiedChartTests(unittest.TestCase):
         store=FortuneStore(Path(self.temp.name)/'fortune.sqlite3')
         store.save_profile('one',chart_birth='2000-01-01T12:00:00+00:00',chart_timezone='Europe/London',latitude=51.4779,longitude=0)
         agent=self.agent([plan(method='astrology',question='学习安排'),plan(action='followup',method='astrology',question='沟通建议')])
-        first=agent.turn(self.session,'用占星梳理学习安排','one')
-        second=agent.turn(self.session,'继续给沟通建议','one')
+        first=agent.turn(self.session,'用占星梳理学习安排','one',use_saved_profile=True)
+        second=agent.turn(self.session,'继续给沟通建议','one',use_saved_profile=True)
         self.assertEqual(first['result']['chart_result'],second['result']['chart_result'])
         self.assertTrue(second['trace'][-1]['reused'])
     def test_model_cannot_invent_gender_for_ziwei(self):

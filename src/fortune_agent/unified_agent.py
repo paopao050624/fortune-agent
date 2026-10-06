@@ -16,7 +16,7 @@ from .bazi_daily import daily_bazi_context
 from .bazi_structure import analyze_structure
 from .bazi_sources import evidence_for as bazi_evidence
 from .daily import daily_draw
-from .fortune_store import FortuneStore
+from .fortune_store import FortuneStore,profile_token
 from .fortune_daily import make_daily_report, report_identity
 from .daily_service import get_daily
 from .daily_store import DailyStore
@@ -28,6 +28,7 @@ from .tarot import draw_reading,SPREADS
 from .ziwei import calculate_ziwei
 from .astrology import calculate_astrology
 from .chart_agent import interpret_chart
+from .question_focus import question_guidance
 
 ROUTER_INSTRUCTIONS = """你是统一占卜助手的意图与资料路由器，只调用 choose_action，不自行起卦、抽牌或排盘。
 支持 tarot（塔罗）、daily（每日提示；存在已保存档案时整合塔罗与八字）、bazi（八字）、iching（周易）、ziwei（紫微斗数）和 astrology（西方占星）。
@@ -37,11 +38,12 @@ ROUTER_INSTRUCTIONS = """你是统一占卜助手的意图与资料路由器，�
 八字可以提供完整四柱或准确出生时间。只提取用户实际给出的信息，未说时辰不得填午夜，未说日期不得编造日期。
 将明确出生日期时间规范为 ISO 8601；仅当前支持的中国标准时间可用 +08:00，用户没确认时区时 birth_timezone=unknown 并追问。
 直接四柱按年、月、日、时提供；不凭姓名、性别或年份推断缺失柱。birth 和 pillars 不同时填。
+confirmed_profile是用户已在页面确认允许复用的档案，可用于出生资料、经纬度、传统性别参数和偏好；空对象表示未授权复用，不能猜测。没有明确选择方式时可用已确认preferred_method；明确指定方式优先。
 slots 是以前从用户收集的资料，可用于补全。fields 为 null 表示没有新信息，不删除旧资料。
 active_result 存在时，解释已有结果、进一步建议、为何抽到某牌等选 followup。默认不重抽、不改命盘；用户明确重抽/重新起卦或转到新方式才 read。
 同一周易卦切换取辞策略必须 followup 并设置 policy，不重新起卦；每日牌的小步骤追问也必须 followup，不能只重复缓存的首条回答。
 收到资料补充而没有重复问题时，使用 slots.question 保留此前问题。如果用户改出生资料，应 read 重新核对。
-用户可选择 direct/gentle，默认 gentle；直接不意味着确定性预测。不能承诺未来、诊断、停药、投资或胜诉结果。
+用户可选择 direct/gentle；未明确新风格时style=null，程序沿用确认档案或原有偏好，最后才默认gentle；直接不意味着确定性预测。不能承诺未来、诊断、停药、投资或胜诉结果。
 紫微需要准确中国标准出生时间及用户明确选择的传统男/女参数；西方占星需要带UTC偏移的出生时间、IANA出生时区和用户明确给出的经纬度。不能按城市名猜经纬度，不默认未知时刻或性别。使用chart_timezone、gender、latitude、longitude填写这些信息。
 你好、功能介绍等用 answer，简短说明。超出已实现模块用 unsupported，明确限制。澄清 reply 简短且一次只问当前必要资料。
 每日代号及时区来自页面设置，不要从用户文字编造。六次硬币值与选牌位置只提取明确数字，不能为了读卦自己填随机数。
@@ -116,6 +118,7 @@ class Artifact:
 class UnifiedAgent:
     def __init__(self, client, model, cache_path, daily_lock):
         self.client,self.model,self.cache_path,self.daily_lock=client,model,cache_path,daily_lock
+        self.saved_profile=None
 
     def decide(self,session,content):
         active = None
@@ -123,7 +126,8 @@ class UnifiedAgent:
             active={"method":session.artifact.method,"question":session.artifact.question,
                     "data":{key:value for key,value in session.artifact.data.items() if key not in ("review","profile_key","key")}}
         context={"reference_date":datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat(),
-                 "slots":session.slots,"active_result":active,
+                 "slots":{k:v for k,v in session.slots.items() if not k.startswith("_")},"active_result":active,
+                 "confirmed_profile":{k:v for k,v in (self.saved_profile or {}).items() if k in ("birth","pillars","gender","chart_birth","chart_timezone","latitude","longitude","style","preferred_method")},
                  "recent_messages":session.messages[-12:],"user_message":content}
         response=self.client.responses.create(model=self.model,instructions=ROUTER_INSTRUCTIONS,
             input=[{"role":"user","content":json.dumps(context,ensure_ascii=False)}],
@@ -136,16 +140,27 @@ class UnifiedAgent:
         except (ValueError,TypeError) as exc:
             raise RuntimeError("模型路由数据无效，未执行工具") from exc
 
-    def turn(self,session,message,profile="reader-01",zone="Asia/Shanghai"):
+    def turn(self,session,message,profile="reader-01",zone="Asia/Shanghai",use_saved_profile=False):
         if not isinstance(message,str) or not message.strip() or len(message)>2000:
             raise ValueError("消息须为 1–2000 个字符")
         message=message.strip()
         if len(session.messages)>=40:
             raise ValueError("本次对话已满 20 轮，请开启新对话")
+        from pathlib import Path
+        self.saved_profile=None
+        if use_saved_profile:
+            self.saved_profile=FortuneStore(Path(self.cache_path).parent/'fortune.sqlite3').get_profile(profile)
+        binding=profile_token(self.saved_profile) if self.saved_profile else None
+        previous=getattr(session,'profile_binding',None)
+        if previous!=binding and (previous is not None or binding is not None):
+            session.slots={};session.artifact=None;session.messages=[]
+        session.profile_binding=binding
         route=self.decide(session,message)
         model_action=route["action"]
         trace=[{"tool":"choose_action","action":route["action"],"method":route["method"]}]
         method=route["method"]
+        if method=="none" and self.saved_profile and route["action"] not in ("answer","unsupported"):
+            method=self.saved_profile.get("preferred_method","none")
         if method=="none": method=session.slots.get("method","none")
         if method!=session.slots.get("method") and method!="none":
             preferred_style=session.slots.get("style")
@@ -156,6 +171,8 @@ class UnifiedAgent:
         for key in ("question","birth","pillars","birth_timezone","spread","picks","lines","policy","style","gender","chart_timezone","latitude","longitude"):
             if route[key] is not None:
                 session.slots[key]=route[key]
+        session.slots['_use_saved_profile']=use_saved_profile
+        if self.saved_profile and route['style'] is None:session.slots['style']=self.saved_profile.get('style','gentle')
         if route["birth"] is not None: session.slots.pop("pillars",None)
         if route["pillars"] is not None: session.slots.pop("birth",None)
         if method=="bazi":
@@ -183,6 +200,8 @@ class UnifiedAgent:
         trace[0].update({"action":route["action"],"model_action":model_action})
 
         def finish(reply,result=None,status="completed"):
+            job=getattr(self.client,'job',None)
+            if job:job.check()
             session.messages.extend([{"role":"user","content":message},{"role":"assistant","content":reply[:6000]}])
             return {"session_id":session.id,"reply":reply,"status":status,"method":method,
                     "trace":trace,"result":deepcopy(result),"turns":len(session.messages)//2}
@@ -228,6 +247,15 @@ class UnifiedAgent:
             return finish("你想用塔罗、八字、周易、紫微本命盘还是占星？今天的提示也可选择每日运势。",status="needs_input")
         if method in ("tarot","iching") and not question:
             return finish("你想梳理什么具体问题？例如学习安排、工作选择或沟通分歧。",status="needs_input")
+        trusted_bazi={}
+        if method=='bazi' and self.saved_profile:
+            saved=self.saved_profile
+            if saved.get('birth'):trusted_bazi={'birth':saved['birth'],'birth_timezone':'Asia/Shanghai','gender':saved.get('gender')}
+            elif saved.get('pillars'):trusted_bazi={'pillars':saved['pillars']}
+            if not slots.get('birth') and not slots.get('pillars'):
+                slots.update({k:v for k,v in trusted_bazi.items() if v is not None})
+            if slots.get('birth')==trusted_bazi.get('birth') and slots.get('birth'):
+                slots['birth_timezone']='Asia/Shanghai'
         if method=="bazi":
             if not slots.get("birth") and not slots.get("pillars"):
                 return finish("请提供完整四柱（年、月、日、时），或准确的公历出生日期、时刻和时区。暂仅支持中国标准时间排盘；未知时辰请不要假填。",status="needs_input")
@@ -243,18 +271,17 @@ class UnifiedAgent:
                     return finish(f"资料需要修正：{exc}",status="needs_input")
                 wanted=candidate.year+candidate.month+candidate.day+candidate.hour
                 supplied="".join(re.findall(r"[甲乙丙丁戊己庚辛壬癸][子丑寅卯辰巳午未申酉戌亥]",history))
-                if wanted not in supplied:
+                if slots['pillars']!=trusted_bazi.get('pillars') and wanted not in supplied:
                     return finish("请完整写出年、月、日、时四柱；我不能补出你未提供的干支。",status="needs_input")
             if slots.get("birth"):
-                if not birth_matches_user_text(slots["birth"],history):
+                if slots["birth"]!=trusted_bazi.get("birth") and not birth_matches_user_text(slots["birth"],history):
                     return finish("请补充准确的公历出生年月日和时刻；不能用默认日期或午夜代替未知资料。也可以直接提供完整四柱。",status="needs_input")
-            if slots.get("birth") and not slots.get("_birth_timezone_user_confirmed") and not re.search(r"中国标准|北京时间|东八区|Asia/Shanghai|\+08:00|北京|上海",history):
+            if slots.get("birth") and slots["birth"]!=trusted_bazi.get("birth") and not slots.get("_birth_timezone_user_confirmed") and not re.search(r"中国标准|北京时间|东八区|Asia/Shanghai|\+08:00|北京|上海",history):
                 slots["_awaiting_birth_timezone"]=True
                 return finish("请明确确认出生时刻是中国标准时间（+08:00）；页面中的每日时区不会用来推断出生时区。",status="needs_input")
         if method in ("ziwei","astrology"):
             from pathlib import Path
-            try:saved=FortuneStore(Path(self.cache_path).parent/"fortune.sqlite3").get_profile(profile)
-            except ValueError:saved=None
+            saved=self.saved_profile
             trusted={}
             if saved:
                 if route["style"] is None:slots["style"]=saved.get("style","gentle")
@@ -284,7 +311,9 @@ class UnifiedAgent:
             artifact=self.prepare(method,question or ("请解释星盘及计算规则。" if method in ("ziwei","astrology") else "请解释四柱及已有依据。"),slots,profile,zone)
         except ValueError as exc:
             return finish(f"资料需要修正：{exc}",status="needs_input")
-        session.artifact=artifact  # Keep the actual result even if interpretation times out.
+        session.artifact=artifact  # Keep actual result even when cancelled or provider fails.
+        job=getattr(self.client,'job',None)
+        if job:job.progress('工具结果已准备，正在解读',session.id,artifact.data)
         trace.append({"tool":{"tarot":"draw_tarot","daily":"daily_tarot","bazi":"prepare_bazi","iching":"cast_iching","ziwei":"calculate_ziwei","astrology":"calculate_astrology"}[method],
                       "method":method,"reused":False})
         if artifact.data.get("interpretation"):
@@ -315,7 +344,7 @@ class UnifiedAgent:
             store=FortuneStore(Path(self.cache_path).parent / "fortune.sqlite3")
             try: saved=store.get_profile(profile)
             except ValueError: saved=None
-            if saved and chart.birth_time and saved.get("birth"):
+            if slots.get("_use_saved_profile",True) and saved and chart.birth_time and saved.get("birth"):
                 if calculate_bazi(saved["birth"]).birth_time==chart.birth_time:gender=saved["gender"]
             data={"mode":method,"chart":asdict(chart),"derived_facts":chart_facts(chart),
                   "method_checklist":wealth_checklist(chart),"evidence":bazi_evidence(chart),
@@ -330,7 +359,7 @@ class UnifiedAgent:
             store=FortuneStore(Path(self.cache_path).parent / "fortune.sqlite3")
             try: saved_profile=store.get_profile(profile)
             except ValueError: saved_profile=None
-            if saved_profile:
+            if saved_profile and slots.get("_use_saved_profile",True):
                 if saved_profile["timezone"]!=zone:
                     raise ValueError("对话每日时区与保存档案不一致，请统一设置后重试")
                 with self.daily_lock:
@@ -358,7 +387,7 @@ class UnifiedAgent:
         elif data.get("mode")=="daily-report":
             payload={k:v for k,v in data.items() if k not in ("profile_key","key","review")}
             response=self.client.responses.create(model=self.model,store=False,
-                instructions="围绕同一份每日综合报告回答追问，不改牌面、日期或计算结果。不预测事件，不将未确定旺衰、格局、用神写为已确定。用中文给可执行建议。",
+                instructions="围绕同一份每日综合报告回答追问，不改牌面、日期或计算结果。不预测事件，不将未确定旺衰、格局、用神写为已确定。用中文给可执行建议。"+question_guidance(question),
                 input=[{"role":"user","content":json.dumps({"question":question,"report":payload},ensure_ascii=False)}])
             if not response.output_text.strip():raise RuntimeError("模型返回空回答")
             data["interpretation"]=response.output_text.strip()

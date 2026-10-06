@@ -10,7 +10,7 @@
 
 | 功能 | 当前内容 | 使用说明 |
 | --- | --- | --- |
-| 统一对话 | 六种方式的工具路由、缺资料补问、稳定追问、重试及清除会话 | [对话流程](docs/unified-agent.md) |
+| 统一对话 | 六种工具路由、确认档案复用、实际进度、取消/原任务重试与稳定追问 | [对话流程](docs/unified-agent.md) |
 | 塔罗问答 | 78张牌、单张／三张／选择对比／五张／凯尔特十字，原创符号牌图、背牌选取、翻牌和原牌追问 | [塔罗体验](docs/charts-and-profiles.md#塔罗交互) |
 | 每日一张 | 按代号、时区与当地日期确定固定牌面，首次模型解读本地缓存 | 下文“每日提示与综合日报” |
 | 每日运势与回顾 | 档案关联的塔罗＋八字参考、大运流年依据、日报缓存、历史回顾 | [综合报告](docs/complete-fortune.md) |
@@ -116,3 +116,5 @@ docker compose up --build -d
 复现命令见 [CONTRIBUTING](CONTRIBUTING.md)，容器端口和数据卷说明见 [部署指南](docs/charts-and-profiles.md#docker本机部署)。项目已发布GitHub Release，尚未发布到PyPI，也没有部署成公共网站。软件与第三方依赖的授权见 [LICENSE](LICENSE) 和 [第三方许可](THIRD_PARTY_NOTICES.md)。
 
 本批紫微原文的版本与解释链见 [紫微依据](docs/ziwei-evidence.md)；塔罗78张符号牌面为项目原创MIT资产，非原版Waite图像。
+
+对话中的档案复用需要先预览确认；模型请求显示实际阶段并可合作式取消、复用原结果重试。见 [Agent体验与评估](docs/agent-experience.md)。

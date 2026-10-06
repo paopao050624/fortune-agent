@@ -10,6 +10,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from .bazi import BaziChart
+from .question_focus import question_guidance,guidance_signature
 from .bazi_sources import evidence_for
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
@@ -65,7 +66,7 @@ BAZI_INSTRUCTIONS = (
     "luck.status=calculated 时允许解释实际计算的大运干支、顺逆与起运时间，不再声称完全没有大运；区分年龄标签与实际起运区间。不由运柱预言事件。"
     "结合用户问题给出具体的反思方向。用中文回答；除非用户要求长篇，控制在600字左右，原文只引用直接相关的一两条。"
 )
-PROMPT_SHA256 = hashlib.sha256(BAZI_INSTRUCTIONS.encode("utf-8")).hexdigest()
+PROMPT_SHA256 = hashlib.sha256((BAZI_INSTRUCTIONS+guidance_signature()).encode("utf-8")).hexdigest()
 
 
 def current_reference_date() -> date:
@@ -88,7 +89,7 @@ def interpret_bazi(
         full_analysis = comprehensive_analysis(chart,reference_date=reference_date)
     response = client.responses.create(
         model=model,
-        instructions=BAZI_INSTRUCTIONS + ("\n措辞直接简洁，保留不确定性。" if style=="direct" else "\n措辞温和，给出可选择的建议。") + (
+        instructions=BAZI_INSTRUCTIONS + "\n" + question_guidance(question) + ("\n措辞直接简洁，保留不确定性。" if style=="direct" else "\n措辞温和，给出可选择的建议。") + (
             "\n这是每日八字提示。daily_context 的日期和参考时刻由程序确定，不能把当日柱说成本命柱。"
             "只使用其中计算的十神关系。偏财、正官等是分类，不意味着今天有进账或升职，"
             "七杀、伤官等不能变成灾祸、疾病或失败预言。没有大运或旺衰、喜用神，不能评分或判断吉凶。"
