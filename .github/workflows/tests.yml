@@ -75,7 +75,9 @@ jobs:
         env:
           FORTUNE_TEST_URL: http://127.0.0.1:18766
           PLAYWRIGHT_MODULE_PATH: ../work/browser-tools/node_modules/playwright
-        run: node scripts/verify_web.cjs
+        run: |
+          node scripts/verify_web.cjs
+          node scripts/verify_result_format.cjs
       - name: Clean synthetic profile
         run: python scripts/verify_container.py cleanup
       - name: Upload browser evidence
