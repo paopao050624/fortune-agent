@@ -14,7 +14,7 @@ from .bazi_facts import chart_facts,HIDDEN_STEMS,stem_facts
 from .meanings import evidence_for,load_catalog
 from .bazi_sources import catalog_sha256,evidence_for as bazi_evidence
 
-VERSION='integrated-daily-v5'
+VERSION='integrated-daily-v6'
 REFLECTIONS={
  '比肩':('自主与合作','今天哪些任务适合自己完成，哪些需要明确分工？'),
  '劫财':('共享与边界','是否需要先确认资源、时间或费用如何分配？'),

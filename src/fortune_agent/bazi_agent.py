@@ -10,6 +10,7 @@ from typing import Any
 from zoneinfo import ZoneInfo
 
 from .bazi import BaziChart
+from .library import select_evidence
 from .question_focus import question_guidance,guidance_signature
 from .bazi_sources import evidence_for
 from .bazi_facts import chart_facts
@@ -87,6 +88,9 @@ def interpret_bazi(
     if full_analysis is None:
         from .bazi_analysis import comprehensive_analysis
         full_analysis = comprehensive_analysis(chart,reference_date=reference_date)
+    all_evidence=evidence_for(chart)
+    mandatory=[all_evidence[0]['id'],'ziping-yongshen-month-origin','ziping-yongshen-pillar-coordination','ziping-season-not-final','ziping-root-observation']
+    retrieval=select_evidence(all_evidence,question,mandatory,limit=10,context='八字 '+chart.day_master+'日主')
     response = client.responses.create(
         model=model,
         instructions=BAZI_INSTRUCTIONS + "\n" + question_guidance(question) + ("\n措辞直接简洁，保留不确定性。" if style=="direct" else "\n措辞温和，给出可选择的建议。") + (
@@ -105,7 +109,8 @@ def interpret_bazi(
                 "reference_timezone": "Asia/Shanghai",
                 "style": style,
                 "daily_context":daily_context,
-                "source_evidence": evidence_for(chart),
+                "source_evidence": retrieval["entries"],
+                "source_retrieval":{k:v for k,v in retrieval.items() if k!="entries"},
                 "derived_facts": chart_facts(chart),
                 "method_checklist": wealth_checklist(chart),
                 "structural_analysis":analyze_structure(chart),

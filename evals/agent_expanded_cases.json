@@ -1,0 +1,191 @@
+[
+  {
+    "id": "missing-birth",
+    "profile_confirmed": false,
+    "messages": [
+      "请用八字帮我梳理学习安排。"
+    ],
+    "expected_method": "bazi",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "confirmed-profile",
+    "profile_confirmed": true,
+    "messages": [
+      "请用八字帮我安排这周的论文修改。"
+    ],
+    "expected_method": "bazi",
+    "expected_status": "completed"
+  },
+  {
+    "id": "tarot-followup",
+    "profile_confirmed": false,
+    "messages": [
+      "用三张塔罗牌帮我梳理这周复习如何分配时间。",
+      "沿用这组三张牌，给出明天可以完成的两件小事。"
+    ],
+    "expected_method": "tarot",
+    "expected_status": "completed",
+    "stable_result": true
+  },
+  {
+    "id": "iching-work",
+    "profile_confirmed": false,
+    "messages": [
+      "用周易梳理项目下一步，六次结果为9 9 9 9 9 9。"
+    ],
+    "expected_method": "iching",
+    "expected_status": "completed"
+  },
+  {
+    "id": "astrology-missing-location",
+    "profile_confirmed": false,
+    "messages": [
+      "用西方占星分析工作安排，我在2000-01-01 12:00 +08:00 Asia/Shanghai出生，但还没提供出生地点。"
+    ],
+    "expected_method": "astrology",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "greeting",
+    "profile_confirmed": false,
+    "messages": [
+      "你好，请简短介绍支持哪些功能。"
+    ],
+    "expected_method": "none",
+    "expected_status": "answered"
+  },
+  {
+    "id": "ambiguous-method",
+    "profile_confirmed": false,
+    "messages": [
+      "想梳理接下来的工作方向，先问我想用什么方式。"
+    ],
+    "expected_method": "none",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "missing-question",
+    "profile_confirmed": false,
+    "messages": [
+      "我想算塔罗，还没有具体问题。"
+    ],
+    "expected_method": "tarot",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "unknown-birth-time",
+    "profile_confirmed": false,
+    "messages": [
+      "用八字看学习，我只知道2000-01-01出生，不知道几点，别默认时间。"
+    ],
+    "expected_method": "bazi",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "incomplete-pillars",
+    "profile_confirmed": false,
+    "messages": [
+      "用八字分析学习，只知道己卯 丙子 戊午三柱，不知道时柱。"
+    ],
+    "expected_method": "bazi",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "unsupported-timezone",
+    "profile_confirmed": false,
+    "messages": [
+      "用八字分析项目，我在2000-01-01 12:00 -05:00 America/New_York出生。"
+    ],
+    "expected_method": "bazi",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "provided-pillars",
+    "profile_confirmed": false,
+    "messages": [
+      "用八字梳理学习，四柱为己卯 丙子 戊午 戊午，出生日期未提供。"
+    ],
+    "expected_method": "bazi",
+    "expected_status": "completed"
+  },
+  {
+    "id": "daily-plain",
+    "profile_confirmed": false,
+    "messages": [
+      "今天的提示是什么？"
+    ],
+    "expected_method": "daily",
+    "expected_status": "completed"
+  },
+  {
+    "id": "daily-bazi-profile",
+    "profile_confirmed": true,
+    "messages": [
+      "用已确认档案八字梳理今天工作安排。"
+    ],
+    "expected_method": "bazi",
+    "expected_status": "completed"
+  },
+  {
+    "id": "ziwei-profile",
+    "profile_confirmed": true,
+    "messages": [
+      "用已确认档案的紫微斗数梳理学习，引用实际原文。"
+    ],
+    "expected_method": "ziwei",
+    "expected_status": "completed"
+  },
+  {
+    "id": "astrology-profile",
+    "profile_confirmed": true,
+    "messages": [
+      "用已确认档案的西方占星梳理沟通安排。"
+    ],
+    "expected_method": "astrology",
+    "expected_status": "completed"
+  },
+  {
+    "id": "ziwei-missing-gender",
+    "profile_confirmed": false,
+    "messages": [
+      "用紫微看学习，出生2000-01-01 12:00 +08:00，但还没提供传统男/女排盘参数。"
+    ],
+    "expected_method": "ziwei",
+    "expected_status": "needs_input"
+  },
+  {
+    "id": "policy-change",
+    "profile_confirmed": false,
+    "messages": [
+      "周易看项目，六次是9 9 9 9 9 9。",
+      "同一卦切换为全部动爻并读。"
+    ],
+    "expected_method": "iching",
+    "expected_status": "completed",
+    "stable_result": true,
+    "stable_field": "cast"
+  },
+  {
+    "id": "switch-tool",
+    "profile_confirmed": false,
+    "messages": [
+      "用塔罗梳理学习安排。",
+      "现在改用周易梳理学习，六次是7 8 7 8 7 8。"
+    ],
+    "expected_method": "iching",
+    "expected_status": "completed"
+  },
+  {
+    "id": "repeat-chart",
+    "profile_confirmed": true,
+    "messages": [
+      "用已确认档案西方占星分析工作安排。",
+      "沿用同一星盘给出两个沟通步骤。"
+    ],
+    "expected_method": "astrology",
+    "expected_status": "completed",
+    "stable_result": true,
+    "stable_field": "chart_result"
+  }
+]

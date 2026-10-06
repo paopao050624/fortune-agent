@@ -11,7 +11,7 @@ from .bazi_structure import analyze_structure
 from .bazi_rules import wealth_checklist
 from .bazi_judgment import judge_chart
 
-VERSION = 'bazi-report-v3'
+VERSION = 'bazi-report-v4'
 
 
 @lru_cache(maxsize=1)

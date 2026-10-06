@@ -92,6 +92,9 @@ def strength_estimate(chart,structure,rules):
                                        'reason':'仅项目特殊格筛选代理；从格化格实际条件和司令效力未统一裁定，不自动按特殊格取用。'})
     return {'status':'estimated','classification':category,'label':labels[category]+'（项目模型估计）',
             'support_ratio':round(ratio,5),'evidence':evidence,'parameter_stability':'stable' if stable else 'sensitive',
+            'decision_status':'provisional' if stable and not special_conditions else 'abstain_final',
+            'classification_options':sorted({c['classification'] for c in cases}),
+            'calibration_version':'robustness-audit-v1',
             'sensitivity_cases':cases,'special_reviews':special_conditions,
             'limitations':'此数值是模型内部生助占比，不是好运评分或古籍旺衰标准。权重不是司令分日，冲的效力只作敏感性情景，不自动合化或删根。'}
 
@@ -189,6 +192,8 @@ def useful_god_estimates(chart,structure,strength,patterns,rules):
                                         'present':strength['evidence']['element_shares'][e]>0} for e in elements]
     if strength['special_reviews']:
         balance={'status':'manual_review','preferred':[],'avoid_increasing':[],'reason':'特殊从化方向待核实，暂停常规格扶抑取用。'}
+    elif strength['parameter_stability']=='sensitive':
+        balance={'status':'parameter_sensitive','preferred':[],'avoid_increasing':[],'reason':'模型在已测参数下出现不同旺衰分类；校准策略暂停选定扶抑喜用，展示多方案等待更多依据。'}
     elif strength['classification']=='strong':
         balance={'status':'estimated','preferred':element_roles([ELEMENTS[(i+1)%5],ELEMENTS[(i+2)%5],ELEMENTS[(i+3)%5]]),
                  'avoid_increasing':element_roles([master,ELEMENTS[(i-1)%5]]),'reason':'模型偏强，列出泄、耗、制候选；需结合格局和调候择用，不把全部同时定喜。'}

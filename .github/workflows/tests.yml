@@ -80,8 +80,10 @@ jobs:
           node scripts/verify_result_format.cjs
           node scripts/verify_sources_visuals.cjs
           node scripts/verify_agent_experience.cjs
+          node scripts/verify_export_retrieval.cjs
           node scripts/verify_sources_visuals.cjs
           node scripts/verify_agent_experience.cjs
+          node scripts/verify_export_retrieval.cjs
       - name: Clean synthetic profile
         run: python scripts/verify_container.py cleanup
       - name: Upload browser evidence

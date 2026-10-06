@@ -4,7 +4,7 @@
 
 一个用于Agent实战的开源塔罗、八字、紫微斗数与占星项目。模型选择工具、补问资料并解释实际计算结果；牌面、历法和天体位置由程序生成，追问默认复用同一次结果。
 
-最新正式发布为 **[v0.3.0](https://github.com/paopao050624/fortune-agent/releases/tag/v0.3.0)**。发行包功能见 [v0.3发布说明](docs/release-v0.3.md)，下文以主分支为准；历史标签与下载包保留各自发布时内容。安装与各模块约定见 [使用指南](docs/charts-and-profiles.md)，历史版本见 [CHANGELOG](CHANGELOG.md)。
+最新正式发布为 **[v0.3.0](https://github.com/paopao050624/fortune-agent/releases/tag/v0.3.0)**。发行包功能见 [v0.3发布说明](docs/release-v0.3.md)，下文以主分支为准；历史标签与下载包保留各自发布时内容。主分支新增报告导出、资料检索、扩大评估及参数稳健性校准，见 [后续功能说明](docs/retrieval-export-calibration.md)。安装与各模块约定见 [使用指南](docs/charts-and-profiles.md)，历史版本见 [CHANGELOG](CHANGELOG.md)。
 
 ## 已实现的功能
 
@@ -17,6 +17,7 @@
 | 八字 | 中国标准时间排盘、十神藏干、结构关系、项目旺衰估计、格局条件和分方法取用、大运流年 | [判断模型及边界](docs/bazi-judgment.md) |
 | 紫微斗数 | 固定iztro本命十二宫、星曜四化、27条电子原文匹配及校验解读 | [排盘约定](docs/charts-and-profiles.md#紫微斗数) |
 | 西方占星 | 十大天体、热带黄道、地心位置、整宫宫位、角点、主要相位和逆行，可交互轮盘与SVG导出 | [占星约定](docs/charts-and-profiles.md#西方占星) |
+| 资料检索与报告 | 已接入665条资料的透明关键词检索，报告HTML/PNG/打印PDF，默认隐藏明确出生字段 | [功能与边界](docs/retrieval-export-calibration.md) |
 | 用户档案 | 多代号、出生资料与经纬度、偏好、显式保存工具历史、导出恢复与删除 | [保存与隐私](docs/charts-and-profiles.md#档案) |
 | 周易 | 三枚硬币起卦、主变卦与动爻，两种取辞策略，64卦全文参考库 | [起卦](docs/iching.md)／[解读](docs/iching-interpretation.md) |
 
@@ -34,7 +35,7 @@ fortune-doctor
 fortune-web --port 8766
 ```
 
-浏览器打开 `http://127.0.0.1:8766/`。默认进入统一对话，另有七个手动功能页。`fortune-web`不指定端口时使用8765。Node不在PATH时可以设置 `FORTUNE_NODE` 为完整可执行路径。
+浏览器打开 `http://127.0.0.1:8766/`。默认进入统一对话，另有八个手动功能页。`fortune-web`不指定端口时使用8765。Node不在PATH时可以设置 `FORTUNE_NODE` 为完整可执行路径。
 
 本机计算、选牌、档案和资料查看不需要API密钥。统一对话和勾选模型解读时会使用中转站，需在启动服务的终端设置环境变量：
 

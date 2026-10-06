@@ -1,5 +1,5 @@
 {
-  "version": "bazi-estimate-v1",
+  "version": "bazi-estimate-v2",
   "method_name": "项目量化扶抑与格局条件模型 v1",
   "attribution": "基于传统生克、月令与藏干概念构建的项目近似模型；权重、阈值与条件代理为工程约定，未由古籍给定，未作专家或现实效力验证。结论是本模型估计，不是各学派统一定论。",
   "stem_weight": 1.0,
@@ -174,5 +174,11 @@
     "ziping-blade-success",
     "ziping-lu-success",
     "ziping-rescue-other"
-  ]
+  ],
+  "calibration_policy": {
+    "version": "robustness-audit-v1",
+    "rule": "参数情景分类冲突时不选定扶抑喜用；数值权重保留既有基准，专家案例未标注前不按自造真值调权重。",
+    "reference_status": "synthetic_structural_anchors_only",
+    "expert_calibrated": false
+  }
 }

@@ -102,6 +102,12 @@ class LocalApp:
         if style not in ("direct", "gentle"):
             raise ValueError("无效回答风格")
 
+        if mode=='report-document':
+            from .report_export import export_report
+            return export_report(payload.get('result'),text_field(payload,'format','html',10),payload.get('include_private',False),payload.get('include_sources',True))
+        if mode=='library-search':
+            from .library import search_library
+            return search_library(text_field(payload,'question'),text_field(payload,'module','all',20),payload.get('limit',10))
         if mode=='job-start':
             request=payload.get('request')
             allowed={'chat','tarot','tarot-reveal','tarot-followup','bazi','ziwei','astrology','iching','daily','daily-report'}
@@ -361,7 +367,7 @@ def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1", external_p
             self.send_header("Content-Length", str(len(content)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
+            self.send_header("Content-Security-Policy", "default-src 'self'; img-src 'self' blob: data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'")
             self.end_headers()
             self.wfile.write(content)
 

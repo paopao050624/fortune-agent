@@ -1,0 +1,271 @@
+{
+  "method": "robustness-audit-v1",
+  "generated_utc": "2026-10-06T12:17:37.845909+00:00",
+  "cases_sha256": "f5c4afa0456b131b3601a88d114c070f231eed967c6c169934f25159ee7328d6",
+  "rules_sha256": "64230dab462f6b0575c8727f38117d78c20d61b5e6b77c7f0890886e042fcd86",
+  "candidates": [
+    {
+      "weak_threshold": 0.38,
+      "strong_threshold": 0.62,
+      "train_matches": 2,
+      "holdout_matches": 2,
+      "results": [
+        {
+          "id": "wood-supported-train",
+          "split": "train",
+          "classification": "strong",
+          "ratio": 0.72144,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "wood-controlled-train",
+          "split": "train",
+          "classification": "weak",
+          "ratio": 0.20955,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "fire-supported-holdout",
+          "split": "holdout",
+          "classification": "strong",
+          "ratio": 0.84638,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "water-controlled-holdout",
+          "split": "holdout",
+          "classification": "weak",
+          "ratio": 0.03049,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "earth-borderline",
+          "split": "audit",
+          "classification": "balanced",
+          "ratio": 0.52695,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": null
+        },
+        {
+          "id": "following-review",
+          "split": "audit",
+          "classification": "weak",
+          "ratio": 0.03254,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": null
+        }
+      ]
+    },
+    {
+      "weak_threshold": 0.4,
+      "strong_threshold": 0.6,
+      "train_matches": 2,
+      "holdout_matches": 2,
+      "results": [
+        {
+          "id": "wood-supported-train",
+          "split": "train",
+          "classification": "strong",
+          "ratio": 0.72144,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "wood-controlled-train",
+          "split": "train",
+          "classification": "weak",
+          "ratio": 0.20955,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "fire-supported-holdout",
+          "split": "holdout",
+          "classification": "strong",
+          "ratio": 0.84638,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "water-controlled-holdout",
+          "split": "holdout",
+          "classification": "weak",
+          "ratio": 0.03049,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "earth-borderline",
+          "split": "audit",
+          "classification": "balanced",
+          "ratio": 0.52695,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": null
+        },
+        {
+          "id": "following-review",
+          "split": "audit",
+          "classification": "weak",
+          "ratio": 0.03254,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": null
+        }
+      ]
+    },
+    {
+      "weak_threshold": 0.42,
+      "strong_threshold": 0.58,
+      "train_matches": 2,
+      "holdout_matches": 2,
+      "results": [
+        {
+          "id": "wood-supported-train",
+          "split": "train",
+          "classification": "strong",
+          "ratio": 0.72144,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "wood-controlled-train",
+          "split": "train",
+          "classification": "weak",
+          "ratio": 0.20955,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "fire-supported-holdout",
+          "split": "holdout",
+          "classification": "strong",
+          "ratio": 0.84638,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "water-controlled-holdout",
+          "split": "holdout",
+          "classification": "weak",
+          "ratio": 0.03049,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "earth-borderline",
+          "split": "audit",
+          "classification": "balanced",
+          "ratio": 0.52695,
+          "parameter_stability": "sensitive",
+          "matches_structural_anchor": null
+        },
+        {
+          "id": "following-review",
+          "split": "audit",
+          "classification": "weak",
+          "ratio": 0.03254,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": null
+        }
+      ]
+    },
+    {
+      "weak_threshold": 0.44,
+      "strong_threshold": 0.56,
+      "train_matches": 2,
+      "holdout_matches": 2,
+      "results": [
+        {
+          "id": "wood-supported-train",
+          "split": "train",
+          "classification": "strong",
+          "ratio": 0.72144,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "wood-controlled-train",
+          "split": "train",
+          "classification": "weak",
+          "ratio": 0.20955,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "fire-supported-holdout",
+          "split": "holdout",
+          "classification": "strong",
+          "ratio": 0.84638,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "water-controlled-holdout",
+          "split": "holdout",
+          "classification": "weak",
+          "ratio": 0.03049,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": true
+        },
+        {
+          "id": "earth-borderline",
+          "split": "audit",
+          "classification": "balanced",
+          "ratio": 0.52695,
+          "parameter_stability": "sensitive",
+          "matches_structural_anchor": null
+        },
+        {
+          "id": "following-review",
+          "split": "audit",
+          "classification": "weak",
+          "ratio": 0.03254,
+          "parameter_stability": "stable",
+          "matches_structural_anchor": null
+        }
+      ]
+    }
+  ],
+  "policy_audits": [
+    {
+      "id": "wood-supported-train",
+      "checks": {},
+      "passed": true
+    },
+    {
+      "id": "wood-controlled-train",
+      "checks": {},
+      "passed": true
+    },
+    {
+      "id": "fire-supported-holdout",
+      "checks": {},
+      "passed": true
+    },
+    {
+      "id": "water-controlled-holdout",
+      "checks": {},
+      "passed": true
+    },
+    {
+      "id": "earth-borderline",
+      "checks": {
+        "abstention": true
+      },
+      "passed": true
+    },
+    {
+      "id": "following-review",
+      "checks": {
+        "special_guard": true
+      },
+      "passed": true
+    }
+  ],
+  "decision": "保留既有0.42/0.58阈值；结构锚点不足以证明某个阈值更准确。不按合成标签优化命理结论。新增参数敏感时暂停扶抑取用的保守策略。",
+  "expert_label_count": 0,
+  "limitations": "训练/留出均为工程合成结构锚点，不是独立专家或古籍判例真值；没有现实预测/命理准确率结论。"
+}

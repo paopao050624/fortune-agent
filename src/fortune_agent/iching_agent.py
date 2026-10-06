@@ -37,7 +37,7 @@ def interpret_cast(cast, question, client, model, policy="moving-count-v1", styl
     schema = {"type": "object", "additionalProperties": False,
         "properties": {
             "summary": {"type": "string"},
-            "explanations": {"type": "array", "items": {"type": "object", "additionalProperties": False,
+            "explanations": {"type": "array", "minItems":len(ids),"maxItems":len(ids), "items": {"type": "object", "additionalProperties": False,
                 "properties": {"passage_id": {"type": "string", "enum": ids},
                                "meaning": {"type": "string"}, "application": {"type": "string"}},
                 "required": ["passage_id", "meaning", "application"]}},
@@ -45,7 +45,7 @@ def interpret_cast(cast, question, client, model, policy="moving-count-v1", styl
             "limitations": {"type": "array", "items": {"type": "string"}}},
         "required": ["summary", "explanations", "advice", "limitations"]}
     response = client.responses.create(
-        model=model, instructions=INSTRUCTIONS + question_guidance(question)+"\nsupplementary=true 的条目只是用户追问补充背景，不得将其说成原规则的主辞。",
+        model=model, instructions=INSTRUCTIONS + question_guidance(question)+f"\n本次周易必须逐条解释全部{len(ids)}个选文ID，每个恰好一次；这覆盖通用1–3条依据简洁建议，不能省略经文条目或改成其他policy。ID列表：{ids}。"+"\nsupplementary=true 的条目只是用户追问补充背景，不得将其说成原规则的主辞。",
         input=[{"role": "user", "content": json.dumps({"question": question.strip(), "style": style,
                         "cast": asdict(cast), "selection": selection}, ensure_ascii=False)}],
         text={"format": {"type": "json_schema", "name": "iching_interpretation", "strict": True, "schema": schema}},

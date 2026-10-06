@@ -1,0 +1,8 @@
+[
+ {"id":"wood-supported-train","split":"train","pillars":"甲寅 丙寅 甲寅 甲子","structural_expectation":"strong","label_basis":"synthetic structural anchor, not expert/classical judgment"},
+ {"id":"wood-controlled-train","split":"train","pillars":"庚申 辛酉 甲子 戊辰","structural_expectation":"weak","label_basis":"synthetic structural anchor, not expert/classical judgment"},
+ {"id":"fire-supported-holdout","split":"holdout","pillars":"丙午 甲午 丙午 甲寅","structural_expectation":"strong","label_basis":"synthetic structural anchor, not expert/classical judgment"},
+ {"id":"water-controlled-holdout","split":"holdout","pillars":"戊戌 戊午 壬午 戊戌","structural_expectation":"weak","label_basis":"synthetic structural anchor, not expert/classical judgment"},
+ {"id":"earth-borderline","split":"audit","pillars":"己卯 丙子 戊午 戊午","requires_abstention":true,"label_basis":"existing model parameter sensitivity, not prediction truth"},
+ {"id":"following-review","split":"audit","pillars":"辛酉 辛酉 甲申 辛酉","requires_special_review":true,"label_basis":"special-case guard, not final following-chart label"}
+]
