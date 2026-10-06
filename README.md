@@ -4,7 +4,7 @@
 
 一个用于Agent实战的开源塔罗、八字、紫微斗数与占星项目。模型选择工具、补问资料并解释实际计算结果；牌面、历法和天体位置由程序生成，追问默认复用同一次结果。
 
-最新正式发布为 **[v0.3.0](https://github.com/paopao050624/fortune-agent/releases/tag/v0.3.0)**。发行包功能见 [v0.3发布说明](docs/release-v0.3.md)，下文以主分支为准；历史标签与下载包保留各自发布时内容。主分支新增报告导出、资料检索、扩大评估及参数稳健性校准，见 [后续功能说明](docs/retrieval-export-calibration.md)。安装与各模块约定见 [使用指南](docs/charts-and-profiles.md)，历史版本见 [CHANGELOG](CHANGELOG.md)。
+最新正式发布为 **[v0.4.0](https://github.com/paopao050624/fortune-agent/releases/tag/v0.4.0)**。安装包与主版本包含报告导出、资料检索、扩大评估及稳健性校准；发行说明见 [v0.4](docs/release-v0.4.md)。历史标签和下载包保留各自发布时内容。演示幻灯页、架构和操作脚本见 [项目展示材料](docs/showcase/README.md)。安装及各模块约定见 [使用指南](docs/charts-and-profiles.md)，版本历史见 [CHANGELOG](CHANGELOG.md)。
 
 ## 已实现的功能
 

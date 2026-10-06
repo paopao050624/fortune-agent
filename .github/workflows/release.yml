@@ -31,6 +31,15 @@ jobs:
       - name: Build release distributions
         run: |
           python -m build
+          python - <<'PY'
+          import os, zipfile
+          from pathlib import Path
+          target = Path('dist') / ('fortune-agent-showcase-' + os.environ['GITHUB_REF_NAME'] + '.zip')
+          with zipfile.ZipFile(target, 'w', zipfile.ZIP_DEFLATED) as archive:
+              for path in sorted(Path('docs/showcase').rglob('*')):
+                  if path.is_file():
+                      archive.write(path, str(path.relative_to('docs')))
+          PY
           sha256sum dist/* > dist/SHA256SUMS.txt
       - name: Publish GitHub release
         env:
