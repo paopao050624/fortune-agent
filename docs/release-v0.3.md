@@ -1,6 +1,6 @@
-# Fortune Agent v0.3.0 · historical release
+# v0.3.0 历史发布记录（非当前版本）
 
-> Historical snapshot. Current release: [v0.4.0](release-v0.4.md).
+> 本文仅记录旧版本，当前版本为 [v0.4.0](release-v0.4.md)。安装与使用以 [当前README](../README.md) 为准。
 
 v0.3.0 packages the improvements made after v0.2.0: source-grounded Zi Wei interpretation, 78 original symbolic tarot SVG illustrations, an interactive astrology wheel with aspect filtering and SVG download, readable Markdown answers and compact calculation details, explicit profile consent, observed request stages, cooperative cancellation and stable retries, and question-focused response guidance.
 
