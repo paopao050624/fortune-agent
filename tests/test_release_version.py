@@ -14,3 +14,11 @@ class ReleaseMetadataTests(unittest.TestCase):
         self.assertIn(f'**[v{version}]',(root/'README.md').read_text())
         self.assertTrue((root/'docs'/f'release-v{".".join(version.split(".")[:2])}.md').exists())
         self.assertNotIn('docs/release-v0.2.md',(root/'.github/workflows/release.yml').read_text())
+
+    def test_browser_version_check_reads_metadata_and_workflow_runs_each_check_once(self):
+        root=Path(__file__).resolve().parents[1]
+        script=(root/'scripts/verify_export_retrieval.cjs').read_text()
+        self.assertNotIn("includes('v0.3.0')",script)
+        self.assertIn('package.json',script)
+        commands=[line.strip() for line in (root/'.github/workflows/tests.yml').read_text().splitlines() if line.strip().startswith('node scripts/verify_')]
+        self.assertEqual(len(commands),len(set(commands)))
