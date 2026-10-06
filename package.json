@@ -1,8 +1,14 @@
 {
   "name": "fortune-agent-chart-runtime",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
-  "scripts": {"build:ziwei": "esbuild scripts/ziwei_bridge.cjs --bundle --platform=node --target=node18 --outfile=src/fortune_agent/static/ziwei.cjs --legal-comments=eof"},
-  "dependencies": {"iztro": "2.6.1"},
-  "devDependencies": {"esbuild": "0.25.12"}
+  "scripts": {
+    "build:ziwei": "esbuild scripts/ziwei_bridge.cjs --bundle --platform=node --target=node18 --outfile=src/fortune_agent/static/ziwei.cjs --legal-comments=eof"
+  },
+  "dependencies": {
+    "iztro": "2.6.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
 }

@@ -1,4 +1,6 @@
-# v0.2.0 release
+# v0.2.0 historical release
+
+> Historical record. Current release: [v0.3.0](release-v0.3.md).
 
 Added Zi Wei natal charts, tropical whole-sign Western astrology, multiple local profiles, chart coordinates and preferences, opt-in reading history, JSON archive restoration, visual tarot selection with stable reveals and followups, and additional spreads.
 

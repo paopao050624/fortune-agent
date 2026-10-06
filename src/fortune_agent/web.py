@@ -15,6 +15,7 @@ from threading import Lock,local
 from typing import Any
 
 from .agent import TarotAgent
+from . import __version__
 from .bazi import calculate_bazi, parse_bazi_pillars
 from .bazi_analysis import comprehensive_analysis
 from .fortune_store import FortuneStore,profile_token
@@ -381,7 +382,7 @@ def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1", external_p
                 page = files("fortune_agent").joinpath("static/index.html").read_text(encoding="utf-8")
                 options = "".join(f'<option value="{e["number"]}">第{e["number"]}卦 · {escape(e["name"])}</option>'
                                   for e in sorted(iching_catalog()["hexagrams"],key=lambda e:e["number"]))
-                page = page.replace("__ICHING_REFERENCE_OPTIONS__",options)
+                page = page.replace("__ICHING_REFERENCE_OPTIONS__",options).replace("__APP_VERSION__",__version__)
                 self.send(200, page.replace("__REQUEST_TOKEN__", token).encode("utf-8"), "text/html; charset=utf-8")
             elif self.path.startswith("/assets/tarot/"):
                 identifier=self.path[len("/assets/tarot/"):]

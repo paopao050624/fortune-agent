@@ -3,11 +3,12 @@ import importlib.util
 import json
 import subprocess
 from .ziwei import node_executable
+from . import __version__
 from .config import ApiConfig
 
 
 def main():
-    checks={'python_packages':{name:importlib.util.find_spec(name) is not None for name in ('lunar_python','astronomy','openai')}}
+    checks={'version':__version__,'python_packages':{name:importlib.util.find_spec(name) is not None for name in ('lunar_python','astronomy','openai')}}
     try:
         node=node_executable();result=subprocess.run([node,'--version'],capture_output=True,text=True,timeout=5)
         version=result.stdout.strip();checks['node']={'version':version,'supported':result.returncode==0 and int(version.lstrip('v').split('.')[0])>=18}
