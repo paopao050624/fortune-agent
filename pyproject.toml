@@ -31,4 +31,4 @@ all = ["openai>=3.7,<4", "lunar-python==1.4.8", "astronomy-engine==2.1.19"]
 where = ["src"]
 
 [tool.setuptools.package-data]
-fortune_agent = ["data/*.json", "static/*.html", "static/*.cjs", "static/*.txt"]
+fortune_agent = ["data/*.json", "static/*.html", "static/*.cjs", "static/*.txt", "static/tarot/*.svg"]

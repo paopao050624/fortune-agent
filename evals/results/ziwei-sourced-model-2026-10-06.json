@@ -1,0 +1,1768 @@
+{
+  "synthetic": true,
+  "date": "2026-10-06",
+  "model": "gpt-6-sol",
+  "method": "iztro-2.6.1-natal-sourced-v2",
+  "source_catalog_sha256": "90dcbdc383e656f0911c25be84ff04c88d6bb5f9d7840f0a87365056910e5de4",
+  "result": {
+    "birth_time": "2000-01-01T12:00:00+08:00",
+    "gender_parameter": "female",
+    "chart": {
+      "gender": "女",
+      "solarDate": "2000-01-01",
+      "lunarDate": "一九九九年冬月廿五",
+      "chineseDate": "己卯 丙子 戊午 戊午",
+      "rawDates": {
+        "lunarDate": {
+          "lunarYear": 1999,
+          "lunarMonth": 11,
+          "lunarDay": 25,
+          "isLeap": false
+        },
+        "chineseDate": {
+          "yearly": [
+            "己",
+            "卯"
+          ],
+          "monthly": [
+            "丙",
+            "子"
+          ],
+          "daily": [
+            "戊",
+            "午"
+          ],
+          "hourly": [
+            "戊",
+            "午"
+          ]
+        }
+      },
+      "time": "午时",
+      "timeRange": "11:00~13:00",
+      "sign": "摩羯座",
+      "zodiac": "兔",
+      "earthlyBranchOfBodyPalace": "午",
+      "earthlyBranchOfSoulPalace": "午",
+      "soul": "破军",
+      "body": "天同",
+      "fiveElementsClass": "土五局",
+      "palaces": [
+        {
+          "index": 0,
+          "name": "财帛",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "丙",
+          "earthlyBranch": "寅",
+          "majorStars": [
+            {
+              "name": "武曲",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "得",
+              "mutagen": "禄"
+            },
+            {
+              "name": "天相",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "庙",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "左辅",
+              "type": "soft",
+              "scope": "origin",
+              "brightness": "",
+              "mutagen": ""
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "三台",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天巫",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天福",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "病",
+          "boshi12": "病符",
+          "jiangqian12": "亡神",
+          "suiqian12": "病符",
+          "decadal": {
+            "range": [
+              85,
+              94
+            ],
+            "heavenlyStem": "丙",
+            "earthlyBranch": "寅"
+          },
+          "ages": [
+            12,
+            24,
+            36,
+            48,
+            60,
+            72,
+            84,
+            96,
+            108,
+            120
+          ]
+        },
+        {
+          "index": 1,
+          "name": "子女",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "丁",
+          "earthlyBranch": "卯",
+          "majorStars": [
+            {
+              "name": "太阳",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "庙",
+              "mutagen": ""
+            },
+            {
+              "name": "天梁",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "庙",
+              "mutagen": "科"
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "火星",
+              "type": "tough",
+              "scope": "origin",
+              "brightness": "利"
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "恩光",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天哭",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "死",
+          "boshi12": "大耗",
+          "jiangqian12": "将星",
+          "suiqian12": "岁建",
+          "decadal": {
+            "range": [
+              95,
+              104
+            ],
+            "heavenlyStem": "丁",
+            "earthlyBranch": "卯"
+          },
+          "ages": [
+            11,
+            23,
+            35,
+            47,
+            59,
+            71,
+            83,
+            95,
+            107,
+            119
+          ]
+        },
+        {
+          "index": 2,
+          "name": "夫妻",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "戊",
+          "earthlyBranch": "辰",
+          "majorStars": [
+            {
+              "name": "七杀",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "庙",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "文昌",
+              "type": "soft",
+              "scope": "origin",
+              "brightness": "得",
+              "mutagen": ""
+            },
+            {
+              "name": "铃星",
+              "type": "tough",
+              "scope": "origin",
+              "brightness": "陷"
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "天空",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "墓",
+          "boshi12": "伏兵",
+          "jiangqian12": "攀鞍",
+          "suiqian12": "晦气",
+          "decadal": {
+            "range": [
+              105,
+              114
+            ],
+            "heavenlyStem": "戊",
+            "earthlyBranch": "辰"
+          },
+          "ages": [
+            10,
+            22,
+            34,
+            46,
+            58,
+            70,
+            82,
+            94,
+            106,
+            118
+          ]
+        },
+        {
+          "index": 3,
+          "name": "兄弟",
+          "isBodyPalace": false,
+          "isOriginalPalace": true,
+          "heavenlyStem": "己",
+          "earthlyBranch": "巳",
+          "majorStars": [
+            {
+              "name": "天机",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "平",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "天马",
+              "type": "tianma",
+              "scope": "origin",
+              "brightness": ""
+            },
+            {
+              "name": "地空",
+              "type": "tough",
+              "scope": "origin",
+              "brightness": ""
+            },
+            {
+              "name": "地劫",
+              "type": "tough",
+              "scope": "origin",
+              "brightness": ""
+            },
+            {
+              "name": "陀罗",
+              "type": "tough",
+              "scope": "origin",
+              "brightness": "陷"
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "孤辰",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "蜚廉",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "破碎",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "绝",
+          "boshi12": "官府",
+          "jiangqian12": "岁驿",
+          "suiqian12": "丧门",
+          "decadal": {
+            "range": [
+              115,
+              124
+            ],
+            "heavenlyStem": "己",
+            "earthlyBranch": "巳"
+          },
+          "ages": [
+            9,
+            21,
+            33,
+            45,
+            57,
+            69,
+            81,
+            93,
+            105,
+            117
+          ]
+        },
+        {
+          "index": 4,
+          "name": "命宫",
+          "isBodyPalace": true,
+          "isOriginalPalace": false,
+          "heavenlyStem": "庚",
+          "earthlyBranch": "午",
+          "majorStars": [
+            {
+              "name": "紫微",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "庙",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "禄存",
+              "type": "lucun",
+              "scope": "origin",
+              "brightness": ""
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "天喜",
+              "type": "flower",
+              "scope": "origin"
+            },
+            {
+              "name": "解神",
+              "type": "helper",
+              "scope": "origin"
+            },
+            {
+              "name": "阴煞",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "胎",
+          "boshi12": "博士",
+          "jiangqian12": "息神",
+          "suiqian12": "贯索",
+          "decadal": {
+            "range": [
+              5,
+              14
+            ],
+            "heavenlyStem": "庚",
+            "earthlyBranch": "午"
+          },
+          "ages": [
+            8,
+            20,
+            32,
+            44,
+            56,
+            68,
+            80,
+            92,
+            104,
+            116
+          ]
+        },
+        {
+          "index": 5,
+          "name": "父母",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "辛",
+          "earthlyBranch": "未",
+          "majorStars": [],
+          "minorStars": [
+            {
+              "name": "擎羊",
+              "type": "tough",
+              "scope": "origin",
+              "brightness": "庙"
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "龙池",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "凤阁",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "华盖",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天刑",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "年解",
+              "type": "helper",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "养",
+          "boshi12": "力士",
+          "jiangqian12": "华盖",
+          "suiqian12": "官符",
+          "decadal": {
+            "range": [
+              15,
+              24
+            ],
+            "heavenlyStem": "辛",
+            "earthlyBranch": "未"
+          },
+          "ages": [
+            7,
+            19,
+            31,
+            43,
+            55,
+            67,
+            79,
+            91,
+            103,
+            115
+          ]
+        },
+        {
+          "index": 6,
+          "name": "福德",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "壬",
+          "earthlyBranch": "申",
+          "majorStars": [
+            {
+              "name": "破军",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "得",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "天钺",
+              "type": "soft",
+              "scope": "origin",
+              "brightness": ""
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "封诰",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天厨",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "月德",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "截路",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "长生",
+          "boshi12": "青龙",
+          "jiangqian12": "劫煞",
+          "suiqian12": "小耗",
+          "decadal": {
+            "range": [
+              25,
+              34
+            ],
+            "heavenlyStem": "壬",
+            "earthlyBranch": "申"
+          },
+          "ages": [
+            6,
+            18,
+            30,
+            42,
+            54,
+            66,
+            78,
+            90,
+            102,
+            114
+          ]
+        },
+        {
+          "index": 7,
+          "name": "田宅",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "癸",
+          "earthlyBranch": "酉",
+          "majorStars": [],
+          "minorStars": [],
+          "adjectiveStars": [
+            {
+              "name": "天贵",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天才",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天寿",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天官",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "旬空",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "空亡",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天虚",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "沐浴",
+          "boshi12": "小耗",
+          "jiangqian12": "灾煞",
+          "suiqian12": "大耗",
+          "decadal": {
+            "range": [
+              35,
+              44
+            ],
+            "heavenlyStem": "癸",
+            "earthlyBranch": "酉"
+          },
+          "ages": [
+            5,
+            17,
+            29,
+            41,
+            53,
+            65,
+            77,
+            89,
+            101,
+            113
+          ]
+        },
+        {
+          "index": 8,
+          "name": "官禄",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "甲",
+          "earthlyBranch": "戌",
+          "majorStars": [
+            {
+              "name": "廉贞",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "利",
+              "mutagen": ""
+            },
+            {
+              "name": "天府",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "庙",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "文曲",
+              "type": "soft",
+              "scope": "origin",
+              "brightness": "陷",
+              "mutagen": "忌"
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "天月",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "冠带",
+          "boshi12": "将军",
+          "jiangqian12": "天煞",
+          "suiqian12": "龙德",
+          "decadal": {
+            "range": [
+              45,
+              54
+            ],
+            "heavenlyStem": "甲",
+            "earthlyBranch": "戌"
+          },
+          "ages": [
+            4,
+            16,
+            28,
+            40,
+            52,
+            64,
+            76,
+            88,
+            100,
+            112
+          ]
+        },
+        {
+          "index": 9,
+          "name": "仆役",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "乙",
+          "earthlyBranch": "亥",
+          "majorStars": [
+            {
+              "name": "太阴",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "庙",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [],
+          "adjectiveStars": [
+            {
+              "name": "天姚",
+              "type": "flower",
+              "scope": "origin"
+            },
+            {
+              "name": "天伤",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "临官",
+          "boshi12": "奏书",
+          "jiangqian12": "指背",
+          "suiqian12": "白虎",
+          "decadal": {
+            "range": [
+              55,
+              64
+            ],
+            "heavenlyStem": "乙",
+            "earthlyBranch": "亥"
+          },
+          "ages": [
+            3,
+            15,
+            27,
+            39,
+            51,
+            63,
+            75,
+            87,
+            99,
+            111
+          ]
+        },
+        {
+          "index": 10,
+          "name": "迁移",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "丙",
+          "earthlyBranch": "子",
+          "majorStars": [
+            {
+              "name": "贪狼",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "旺",
+              "mutagen": "权"
+            }
+          ],
+          "minorStars": [
+            {
+              "name": "右弼",
+              "type": "soft",
+              "scope": "origin",
+              "brightness": "",
+              "mutagen": ""
+            },
+            {
+              "name": "天魁",
+              "type": "soft",
+              "scope": "origin",
+              "brightness": ""
+            }
+          ],
+          "adjectiveStars": [
+            {
+              "name": "红鸾",
+              "type": "flower",
+              "scope": "origin"
+            },
+            {
+              "name": "咸池",
+              "type": "flower",
+              "scope": "origin"
+            },
+            {
+              "name": "八座",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "台辅",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天德",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "帝旺",
+          "boshi12": "飞廉",
+          "jiangqian12": "咸池",
+          "suiqian12": "天德",
+          "decadal": {
+            "range": [
+              65,
+              74
+            ],
+            "heavenlyStem": "丙",
+            "earthlyBranch": "子"
+          },
+          "ages": [
+            2,
+            14,
+            26,
+            38,
+            50,
+            62,
+            74,
+            86,
+            98,
+            110
+          ]
+        },
+        {
+          "index": 11,
+          "name": "疾厄",
+          "isBodyPalace": false,
+          "isOriginalPalace": false,
+          "heavenlyStem": "丁",
+          "earthlyBranch": "丑",
+          "majorStars": [
+            {
+              "name": "天同",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "不",
+              "mutagen": ""
+            },
+            {
+              "name": "巨门",
+              "type": "major",
+              "scope": "origin",
+              "brightness": "不",
+              "mutagen": ""
+            }
+          ],
+          "minorStars": [],
+          "adjectiveStars": [
+            {
+              "name": "寡宿",
+              "type": "adjective",
+              "scope": "origin"
+            },
+            {
+              "name": "天使",
+              "type": "adjective",
+              "scope": "origin"
+            }
+          ],
+          "changsheng12": "衰",
+          "boshi12": "喜神",
+          "jiangqian12": "月煞",
+          "suiqian12": "吊客",
+          "decadal": {
+            "range": [
+              75,
+              84
+            ],
+            "heavenlyStem": "丁",
+            "earthlyBranch": "丑"
+          },
+          "ages": [
+            1,
+            13,
+            25,
+            37,
+            49,
+            61,
+            73,
+            85,
+            97,
+            109
+          ]
+        }
+      ],
+      "copyright": "copyright © 2023-2026 iztro (https://github.com/SylarLong/iztro)"
+    },
+    "method_version": "iztro-2.6.1-natal-sourced-v2",
+    "source_catalog_sha256": "90dcbdc383e656f0911c25be84ff04c88d6bb5f9d7840f0a87365056910e5de4",
+    "explanation_context": {
+      "soul_palace": "命宫 午",
+      "body_palace": "命宫 午",
+      "related_palaces": [
+        {
+          "name": "财帛",
+          "branch": "寅",
+          "major_stars": [
+            "武曲",
+            "天相"
+          ]
+        },
+        {
+          "name": "命宫",
+          "branch": "午",
+          "major_stars": [
+            "紫微"
+          ]
+        },
+        {
+          "name": "官禄",
+          "branch": "戌",
+          "major_stars": [
+            "廉贞",
+            "天府"
+          ]
+        },
+        {
+          "name": "迁移",
+          "branch": "子",
+          "major_stars": [
+            "贪狼"
+          ]
+        }
+      ],
+      "source_ids": [
+        "ziwei-star-紫微",
+        "ziwei-star-武曲",
+        "ziwei-star-廉贞",
+        "ziwei-star-天府",
+        "ziwei-star-贪狼",
+        "ziwei-star-天相",
+        "ziwei-star-文曲",
+        "ziwei-star-左辅",
+        "ziwei-star-右弼",
+        "ziwei-star-禄存",
+        "ziwei-mutagen-禄",
+        "ziwei-mutagen-权",
+        "ziwei-mutagen-忌",
+        "ziwei-principle-context",
+        "ziwei-principle-combined",
+        "ziwei-principle-not-absolute"
+      ],
+      "method": "命宫、对宫与三方按库宫位索引偏移0/4/6/8定位；属于程序组织依据，非全书自动格局判定。",
+      "limitations": "亮度及四化采用iztro版本；电子书字词或传统分类有异文时不静默重写，不把现代反思冒充原文结论。"
+    },
+    "calculator": "iztro 2.6.1 (MIT)",
+    "conventions": [
+      "公历输入，农历年界；未校正真太阳时",
+      "23:00晚子时按次日规则；0:00早子时索引0",
+      "闰月前半按本月、后半按下月（iztro fixLeap=true）",
+      "算法default，十二宫、主辅杂曜、亮度与生年四化来自固定库"
+    ],
+    "evidence": [
+      {
+        "id": "ziwei-star-紫微",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問紫微所主若何？",
+        "heading": "問紫微所主若何？",
+        "source_text": "答曰：紫微屬土，乃中天之尊星為帝座，主掌造化樞機，人生主宰。",
+        "star": "紫微",
+        "mutagen": null,
+        "topic": "统筹与整体协调",
+        "reflection": "今天如何把分散的任务整合成一个清楚的目标？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問紫微所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "cd6fa010d28c4db6fe23157d03babde201465329c7c8f7c883dd775a87384f34",
+        "matched_positions": [
+          {
+            "palace": "命宫",
+            "branch": "午",
+            "star": "紫微",
+            "brightness": "庙",
+            "mutagen": "",
+            "is_body_palace": true
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-天机",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問天機所主如何？",
+        "heading": "問天機所主如何？",
+        "source_text": "有靈機應變之志。淵魚察見，作事有方。",
+        "star": "天机",
+        "mutagen": null,
+        "topic": "规划与应变",
+        "reflection": "哪些条件变化需要你调整计划？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問天機所主如何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "0b60baf21e19b2d28fc7ff66f59f9bc2f3301e88685722d422b3610333277955",
+        "matched_positions": [
+          {
+            "palace": "兄弟",
+            "branch": "巳",
+            "star": "天机",
+            "brightness": "平",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-太阳",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問太陽所主若何？",
+        "heading": "問太陽所主若何？",
+        "source_text": "答曰：太陽星屬火，日之精也。",
+        "star": "太阳",
+        "mutagen": null,
+        "topic": "表达与公开责任",
+        "reflection": "哪些承诺需要说清楚并主动兑现？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問太陽所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "d8029d1445315108bea214d31041fcf9311766c5f022f0a879fcdc8d6896e0e8",
+        "matched_positions": [
+          {
+            "palace": "子女",
+            "branch": "卯",
+            "star": "太阳",
+            "brightness": "庙",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-武曲",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問武曲星所主為何？",
+        "heading": "問武曲星所主為何？",
+        "source_text": "答曰：武曲北斗第六星，屬金，乃財帛宮主。",
+        "star": "武曲",
+        "mutagen": null,
+        "topic": "资源与执行",
+        "reflection": "有哪些投入、预算或执行标准需要核对？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問武曲星所主為何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "6e55b920855aa1574b4dd05ce6ac26d5f83438fa48ae0b1691874a42f9224559",
+        "matched_positions": [
+          {
+            "palace": "财帛",
+            "branch": "寅",
+            "star": "武曲",
+            "brightness": "得",
+            "mutagen": "禄",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-天同",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問天同星所主若何？",
+        "heading": "問天同星所主若何？",
+        "source_text": "答曰：天同星屬水，乃南方第四星也，為福德宮之主宰。",
+        "star": "天同",
+        "mutagen": null,
+        "topic": "恢复与支持",
+        "reflection": "如何安排恢复时间并寻求合适的支持？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問天同星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "f8f54bc8997982b368808ac2ac4bfcb3aeb90ff1bc1a3cfbfa68c824c05f7d06",
+        "matched_positions": [
+          {
+            "palace": "疾厄",
+            "branch": "丑",
+            "star": "天同",
+            "brightness": "不",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-廉贞",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問廉貞所主若何？",
+        "heading": "問廉貞所主若何？",
+        "source_text": "答曰：廉貞屬火，北斗第五星也。在斗司品秩，在數司權令。",
+        "star": "廉贞",
+        "mutagen": null,
+        "topic": "规则与边界",
+        "reflection": "你需要确认哪些职责和边界？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問廉貞所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "6189e8e1a582b2e30dcd0b5e6069907cdef7defaf24a076bd3aa35d81879ff37",
+        "matched_positions": [
+          {
+            "palace": "官禄",
+            "branch": "戌",
+            "star": "廉贞",
+            "brightness": "利",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-天府",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問天府所主若何？",
+        "heading": "問天府所主若何？",
+        "source_text": "答曰：天府屬土，南斗主令第一星也。為財帛之主宰，在斗司福權之宿，會吉皆為富貴之基，定作文昌之論。",
+        "star": "天府",
+        "mutagen": null,
+        "topic": "资源保管与组织",
+        "reflection": "你手上的资源有没有长期的安排？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問天府所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "b7ba17d1e96538bcd1d68610f063bd76f88c6666afbac641632ca3b9ce2954a8",
+        "matched_positions": [
+          {
+            "palace": "官禄",
+            "branch": "戌",
+            "star": "天府",
+            "brightness": "庙",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-太阴",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問太陰星所主若何？",
+        "heading": "問太陰星所主若何？",
+        "source_text": "答曰：太陰乃水之精，為田宅主，化富，與日為配。",
+        "star": "太阴",
+        "mutagen": null,
+        "topic": "安顿与积累",
+        "reflection": "什么环境和长期积累能支持你的日常生活？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問太陰星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "561123090ba6152908f90e603d00b657b699ecb4159335145422113baf87b8c7",
+        "matched_positions": [
+          {
+            "palace": "仆役",
+            "branch": "亥",
+            "star": "太阴",
+            "brightness": "庙",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-贪狼",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問貪狼所主若何？",
+        "heading": "問貪狼所主若何？",
+        "source_text": "其氣屬木，體屬水，故化氣為桃花。",
+        "star": "贪狼",
+        "mutagen": null,
+        "topic": "兴趣与互动",
+        "reflection": "如何筛选兴趣、机会与社交投入？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問貪狼所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "16f7d9d48e0adcafaaaf9c596475fad7d359ca214886941cce9b9418c176c8b4",
+        "matched_positions": [
+          {
+            "palace": "迁移",
+            "branch": "子",
+            "star": "贪狼",
+            "brightness": "旺",
+            "mutagen": "权",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-巨门",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問巨門所主若何？",
+        "heading": "問巨門所主若何？",
+        "source_text": "巨門在天，司品萬物。在數則掌執是非，主於暗昧，疑是多非，欺瞞天地，進退兩難。",
+        "star": "巨门",
+        "mutagen": null,
+        "topic": "辨析与沟通",
+        "reflection": "信息不清时，哪些事实需要先核实再表达？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問巨門所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "99dcf36d1556726004690e2b5e183cdee31d7e654f426d3a182a7b4b0f9b30e4",
+        "matched_positions": [
+          {
+            "palace": "疾厄",
+            "branch": "丑",
+            "star": "巨门",
+            "brightness": "不",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-天相",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問天相星所主若何？",
+        "heading": "問天相星所主若何？",
+        "source_text": "答曰：天相屬水，南斗第五星也。為司爵之宿，為福善，化氣曰印，是為官祿文星，佐帝之位。",
+        "star": "天相",
+        "mutagen": null,
+        "topic": "协调与制度",
+        "reflection": "怎样协调不同人的职责而不替人作决定？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問天相星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "72abb8c0f1f9fd125e6e6516d751badb2875b66f19bca003f5fd4979fd7c90c8",
+        "matched_positions": [
+          {
+            "palace": "财帛",
+            "branch": "寅",
+            "star": "天相",
+            "brightness": "庙",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-天梁",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問天梁星所主若何？",
+        "heading": "問天梁星所主若何？",
+        "source_text": "答曰：天梁屬土，南斗第二星也。司壽化氣為蔭為福壽，乃父母之主命化暴戾為祥和。",
+        "star": "天梁",
+        "mutagen": null,
+        "topic": "支持与经验",
+        "reflection": "可以借助谁的经验审视当前问题？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問天梁星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "89c8cd23f5151a265ef95b65cf85404c123e6cc1af2aece052d5c27b2f7e6f48",
+        "matched_positions": [
+          {
+            "palace": "子女",
+            "branch": "卯",
+            "star": "天梁",
+            "brightness": "庙",
+            "mutagen": "科",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-七杀",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問七殺星所主若何？",
+        "heading": "問七殺星所主若何？",
+        "source_text": "答曰：七殺南斗第六星也，屬火、金。乃斗中之上將，實成敗之孤辰。在斗司斗柄，主於風憲。",
+        "star": "七杀",
+        "mutagen": null,
+        "topic": "决断与挑战",
+        "reflection": "面对压力，哪些行动有明确边界和退出条件？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問七殺星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "d6e0862c089d178df371f0b1f810b0d232b64b71c1805821a6881e5d2e13c9dd",
+        "matched_positions": [
+          {
+            "palace": "夫妻",
+            "branch": "辰",
+            "star": "七杀",
+            "brightness": "庙",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-破军",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問破軍所主若何？",
+        "heading": "問破軍所主若何？",
+        "source_text": "居子午入廟，在天為殺氣，在數為耗星，故化氣曰耗。",
+        "star": "破军",
+        "mutagen": null,
+        "topic": "调整与更新",
+        "reflection": "改变现有安排前，需要评估哪些成本和影响？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問破軍所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "ef00964e8f8bbb0c0ad274df2a6f41265d9f9c4ebdb243045e7f9f6b905e2245",
+        "matched_positions": [
+          {
+            "palace": "福德",
+            "branch": "申",
+            "star": "破军",
+            "brightness": "得",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-文昌",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 問文昌星所主若何？",
+        "heading": "問文昌星所主若何？",
+        "source_text": "答曰：文昌主科甲，守身命主人幽閑儒雅，清秀魁梧，博文廣記，機變異常，一舉成名，披緋衣紫，福壽雙全。",
+        "star": "文昌",
+        "mutagen": null,
+        "topic": "学习与表达",
+        "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 問文昌星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "3c1475f800411ab0546238ac2a45e4022a1d18ab2f139acd8ffa65f75581b66b",
+        "matched_positions": [
+          {
+            "palace": "夫妻",
+            "branch": "辰",
+            "star": "文昌",
+            "brightness": "得",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-文曲",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问文曲星所主若何？",
+        "heading": "问文曲星所主若何？",
+        "source_text": "答曰：文曲属水，北斗第四星也，主科甲文车之宿。",
+        "star": "文曲",
+        "mutagen": null,
+        "topic": "表达与细节",
+        "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问文曲星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "ea38c0adc9ac714b3b015aa3961be4643cef491614ff0ea09c741a37fe2a9d45",
+        "matched_positions": [
+          {
+            "palace": "官禄",
+            "branch": "戌",
+            "star": "文曲",
+            "brightness": "陷",
+            "mutagen": "忌",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-左辅",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问左辅所主若何？",
+        "heading": "问左辅所主若何？",
+        "source_text": "希夷先生答曰：左辅帝极主宰之星，守身命诸宫降福。",
+        "star": "左辅",
+        "mutagen": null,
+        "topic": "协助与合作",
+        "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问左辅所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "20cae5efcf7d805e243e0f810692a21de2036ab6cae98ed9e2907c7e6d3bdeb9",
+        "matched_positions": [
+          {
+            "palace": "财帛",
+            "branch": "寅",
+            "star": "左辅",
+            "brightness": "",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-右弼",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问右弼所主若何？",
+        "heading": "问右弼所主若何？",
+        "source_text": "希夷先生答曰：右弼帝极主宰之星，守身命文墨精通。",
+        "star": "右弼",
+        "mutagen": null,
+        "topic": "协助与合作",
+        "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问右弼所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "9ca58cf6bebbaf7caefb73688f2f86b1ba48cb2850887df7858f4a774e77e1bf",
+        "matched_positions": [
+          {
+            "palace": "迁移",
+            "branch": "子",
+            "star": "右弼",
+            "brightness": "",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-禄存",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问禄存星所主若何？",
+        "heading": "问禄存星所主若何？",
+        "source_text": "希夷先生答曰：禄存北斗第三星，真人之宿，主人贵爵，掌人寿基。",
+        "star": "禄存",
+        "mutagen": null,
+        "topic": "积累与资源",
+        "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问禄存星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "7dc0b070d1c6d6cfff3d4732bafffa78143f2e4d8c87aeddfca515db4d8a6b73",
+        "matched_positions": [
+          {
+            "palace": "命宫",
+            "branch": "午",
+            "star": "禄存",
+            "brightness": "",
+            "mutagen": "",
+            "is_body_palace": true
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-star-天马",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问天马星所主若何？",
+        "heading": "问天马星所主若何？",
+        "source_text": "希夷先生答曰：诸宫各有制化，如身命临之谓之驿马。",
+        "star": "天马",
+        "mutagen": null,
+        "topic": "行动与迁移",
+        "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问天马星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "9a20553986b857f340b5841768cecfa239dbcb91dc4f0097a823f185e6dad520",
+        "matched_positions": [
+          {
+            "palace": "兄弟",
+            "branch": "巳",
+            "star": "天马",
+            "brightness": "",
+            "mutagen": "",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-mutagen-禄",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问化禄星所主若何？",
+        "heading": "问化禄星所主若何？",
+        "source_text": "希夷先生答曰：禄为福德之神。",
+        "star": null,
+        "mutagen": "禄",
+        "topic": "资源与支持",
+        "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问化禄星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "2f1b868614bf1fa111cfa66eb9b5d0bf70713dfbcebff7e1f5d1a47f8b707c9d",
+        "matched_positions": [
+          {
+            "palace": "财帛",
+            "branch": "寅",
+            "star": "武曲",
+            "brightness": "得",
+            "mutagen": "禄",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-mutagen-权",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问化权星所主若何？",
+        "heading": "问化权星所主若何？",
+        "source_text": "希夷先生答曰：权星掌判生杀之神。",
+        "star": null,
+        "mutagen": "权",
+        "topic": "责任与行动",
+        "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问化权星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "f13633822dc45e3efdb2095b9ff79eaa8bcfa72439cfdeec40486878ff9f105f",
+        "matched_positions": [
+          {
+            "palace": "迁移",
+            "branch": "子",
+            "star": "贪狼",
+            "brightness": "旺",
+            "mutagen": "权",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-mutagen-科",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问化科星所主若何？",
+        "heading": "问化科星所主若何？",
+        "source_text": "希夷先生答曰：科星上界应试，主掌文墨之星。",
+        "star": null,
+        "mutagen": "科",
+        "topic": "学习与呈现",
+        "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问化科星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "6d96f8e52d033a2fb15a236cebea06d82c7874fd0ffcfc4a25e3d82135e91907",
+        "matched_positions": [
+          {
+            "palace": "子女",
+            "branch": "卯",
+            "star": "天梁",
+            "brightness": "庙",
+            "mutagen": "科",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-mutagen-忌",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 问化忌星所主若何？",
+        "heading": "问化忌星所主若何？",
+        "source_text": "希夷先生答曰：忌为多管之神。",
+        "star": null,
+        "mutagen": "忌",
+        "topic": "阻滞与反思",
+        "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 问化忌星所主若何？（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "46fb64aa6b413d4b5bfa6275eeeb46a275612903bcb18be3ee7b258911af63ba",
+        "matched_positions": [
+          {
+            "palace": "官禄",
+            "branch": "戌",
+            "star": "文曲",
+            "brightness": "陷",
+            "mutagen": "忌",
+            "is_body_palace": false
+          }
+        ],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-principle-context",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 太微賦",
+        "heading": "太微賦",
+        "source_text": "星有同躔，數有分定，須明其生剋之要，必詳乎得垣失度之分。",
+        "star": null,
+        "mutagen": null,
+        "topic": "重视配合与位置",
+        "reflection": "不要只根据一颗星作人生判断。",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 太微賦（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "c1752850e447b63445d390e0b41406b8f126220a270e99814de19ae65766ab79",
+        "matched_positions": [],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-principle-combined",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 太微賦",
+        "heading": "太微賦",
+        "source_text": "星臨廟旺，再觀生剋之機。命坐強宮，細察制化之理。",
+        "star": null,
+        "mutagen": null,
+        "topic": "亮度不等于结果",
+        "reflection": "同宫、对宫和三方的配合需要一起核对。",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 太微賦（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "c1752850e447b63445d390e0b41406b8f126220a270e99814de19ae65766ab79",
+        "matched_positions": [],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "id": "ziwei-principle-not-absolute",
+        "work": "紫微斗数全书",
+        "chapter": "卷一 · 增補太微賦",
+        "heading": "增補太微賦",
+        "source_text": "凶不皆凶，吉無純吉。",
+        "star": null,
+        "mutagen": null,
+        "topic": "避免绝对吉凶",
+        "reflection": "记录实际条件，而不是给自己贴吉凶标签。",
+        "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+        "locator": "卷一 · 增補太微賦（电子修订；不提供纸本页码）",
+        "revision_id": 7913704,
+        "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "notes": [
+          "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+          "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+        ],
+        "section_text_sha256": "2b23bc26581cfc60de48770684d0fec796021872836f03cb2b8e2652221d0afd",
+        "matched_positions": [],
+        "retrieval_basis": "按实际本命星曜/四化匹配；综合方法段共用。不据单颗星直接判断人物或事件。"
+      },
+      {
+        "heading": "紫微排盘算法与版本",
+        "source_url": "https://github.com/SylarLong/iztro",
+        "edition_note": "排盘来自固定开源库；原文来自固定电子修订，未完成纸本全书校勘。"
+      }
+    ],
+    "limitations": "计算结果遵循选定库与时间约定；性别参数用于传统算法，不能由姓名推测。星曜与四化不代表人生事件保证。"
+  },
+  "question": "请围绕命宫与官禄宫解释如何安排学习，使用实际原文条目，不预测事件。",
+  "answer": "### 本次提示\n\n以命身同宫的统筹意象确定学习主线，结合官禄宫的组织与文字意象，把成果整理和校对纳入日常练习。\n\n### 原文与解释\n\n**统筹与整体协调** · 命宫宫紫微\n\n> 答曰：紫微屬土，乃中天之尊星為帝座，主掌造化樞機，人生主宰。\n\n[《紫微斗数全书》卷一 · 問紫微所主若何？](https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704)\n\n传统概念：所对应的原文条目以“帝座”和掌握枢机说明紫微在传统星曜体系中的统领意象。\n\n现代反思：命宫与身宫同在午，紫微为庙，可借“统筹”的意象，把分散课程或任务纳入同一个学习目标。这是规划方法，不是对学习能力的判定。\n\n**资源保管与组织** · 官禄宫天府\n\n> 答曰：天府屬土，南斗主令第一星也。為財帛之主宰，在斗司福權之宿，會吉皆為富貴之基，定作文昌之論。\n\n[《紫微斗数全书》卷一 · 問天府所主若何？](https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704)\n\n传统概念：所对应的原文条目把天府描述为主令及掌管财帛的星曜，属于传统的资源与组织意象；其中的富贵措辞不应套用于个人。\n\n现代反思：官禄宫在戌，天府为庙，与廉贞（利）同宫。安排学习时，可以重视资料保管、阶段目标与持续复盘；官禄宫在这里作为组织学习成果的参照，不等于职业预言。\n\n**表达与细节** · 官禄宫文曲\n\n> 答曰：文曲属水，北斗第四星也，主科甲文车之宿。\n\n[《紫微斗数全书》卷一 · 问文曲星所主若何？](https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704)\n\n传统概念：所对应的原文条目将文曲置于传统科甲、文章的语境；它并未提供现代学习成绩的预测依据。\n\n现代反思：官禄宫文曲为陷、化忌，可把书面表达和细节核对列为练习环节；化忌不代表灾祸。综合来看，命宫午与官禄戌、财帛寅构成三方，迁移子为命宫对宫：除内部规划，也可核对学习所需投入，并适量借助外部交流检验理解。\n\n### 可以采取的行动\n\n- 把当前学习内容归为一个主要目标，列出每周要完成的知识点和可检查的练习成果；周末根据实际完成情况调整，而非同时追逐太多方向。\n\n- 建立资料、笔记和作业的统一目录；提交或展示前，用一张清单核对论证、引用和文字细节，并请他人反馈一处最需修改的地方。\n\n### 适用边界\n\n- 依据 iztro 2.6.1 本命盘及其既定时间约定，未校正真太阳时；亮度与四化均沿用该版本，不另行改判。\n\n- 原文依据固定电子修订，未与指定纸本逐字校勘；以上为现代学习安排的反思，不作事件、成绩或职业预测。\n\n- 引用为固定电子转录，尚未与纸本完整校勘；不提供未经核实的纸本页码。",
+  "status": "success"
+}

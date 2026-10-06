@@ -317,6 +317,15 @@ def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1", external_p
                                   for e in sorted(iching_catalog()["hexagrams"],key=lambda e:e["number"]))
                 page = page.replace("__ICHING_REFERENCE_OPTIONS__",options)
                 self.send(200, page.replace("__REQUEST_TOKEN__", token).encode("utf-8"), "text/html; charset=utf-8")
+            elif self.path.startswith("/assets/tarot/"):
+                identifier=self.path[len("/assets/tarot/"):]
+                import re
+                from .tarot import DECK
+                if not re.fullmatch(r"(?:major-\d{2}|[1-4]-\d{2})\.svg",identifier) or identifier[:-4] not in {card.id for card in DECK}:
+                    self.json_response(404,{"error":"牌图不存在"})
+                    return
+                asset=files("fortune_agent").joinpath("static/tarot",identifier)
+                self.send(200,asset.read_bytes(),"image/svg+xml; charset=utf-8")
             else:
                 self.json_response(404, {"error": "页面不存在"})
 

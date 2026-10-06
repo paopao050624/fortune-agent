@@ -52,6 +52,15 @@ class WebTests(unittest.TestCase):
                 connection.close();server.shutdown();thread.join()
         with self.assertRaises(ValueError):make_server(0,Path(self.directory.name)/"bad.sqlite3",external_port=0)
 
+    def test_original_tarot_art_is_served_locally_without_arbitrary_asset_paths(self):
+        for path,status in (("/assets/tarot/major-00.svg",200),("/assets/tarot/4-14.svg",200),("/assets/tarot/major-99.svg",404),("/assets/tarot/../../config.py",404)):
+            self.connection.request("GET",path)
+            response=self.connection.getresponse();content=response.read()
+            self.assertEqual(response.status,status)
+            if status==200:
+                self.assertIn("image/svg+xml",response.getheader("Content-Type"))
+                self.assertIn(b"<svg",content)
+
     def test_draw_is_local_and_selected_positions_are_validated(self):
         with patch.object(LocalApp, "model_client", side_effect=AssertionError("API must not be used")):
             status, data = self.post({"mode": "tarot", "question": "怎么安排学习？", "spread": "three", "picks": [1, 15, 78]})

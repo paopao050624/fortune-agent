@@ -30,6 +30,11 @@ class FakeResponses:
                                    arguments=json.dumps(self.plans.pop(0),ensure_ascii=False))])
         if kwargs.get("tool_choice")=={"type":"function","name":"draw_tarot"}:
             return SimpleNamespace(output=[SimpleNamespace(type="function_call",name="draw_tarot",arguments="{}",call_id="fixed-card")])
+        if kwargs.get("text",{}).get("format",{}).get("name")=="ziwei_interpretation":
+            content=json.loads(kwargs["input"][0]["content"])
+            entry=next(e for e in content['result']['evidence'] if e.get('id'))
+            result={'summary':'沿用实际星盘反思。','explanations':[{'source_id':entry['id'],'meaning':'传统概念。','application':'核实实际条件。'}],'advice':['推进一件小事。'],'limitations':['非确定预言。']}
+            return SimpleNamespace(output_text=json.dumps(result,ensure_ascii=False))
         if kwargs.get("text",{}).get("format",{}).get("name")=="iching_interpretation":
             content=json.loads(kwargs["input"][0]["content"])
             result={"summary":"结合已有卦象反思。","explanations":[{"passage_id":p["id"],"meaning":"传统语义。","application":"核实实际情况。"} for p in content["selection"]["passages"]],

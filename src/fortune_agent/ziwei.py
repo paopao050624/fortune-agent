@@ -6,6 +6,7 @@ import json
 import os
 import shutil
 import subprocess
+from .ziwei_sources import evidence_for,explanation_context,catalog_sha256
 
 
 def node_executable():
@@ -32,9 +33,10 @@ def calculate_ziwei(birth,gender):
     try:chart=json.loads(result.stdout)
     except ValueError as exc:raise RuntimeError('紫微运行时返回无效结果') from exc
     if len(chart.get('palaces',[]))!=12:raise RuntimeError('紫微十二宫数据不完整')
+    retrieved=evidence_for(chart)
     return {'birth_time':instant.isoformat(),'gender_parameter':gender,'chart':chart,
-            'method_version':'iztro-2.6.1-natal-v1','calculator':'iztro 2.6.1 (MIT)',
+            'method_version':'iztro-2.6.1-natal-sourced-v2','source_catalog_sha256':catalog_sha256(),
+            'explanation_context':explanation_context(chart,retrieved),'calculator':'iztro 2.6.1 (MIT)',
             'conventions':['公历输入，农历年界；未校正真太阳时','23:00晚子时按次日规则；0:00早子时索引0','闰月前半按本月、后半按下月（iztro fixLeap=true）','算法default，十二宫、主辅杂曜、亮度与生年四化来自固定库'],
-            'evidence':[{'heading':'紫微排盘算法与版本','source_url':'https://github.com/SylarLong/iztro','edition_note':'开源库算法依据；不是《紫微斗数全书》全文校勘。'},
-                        {'heading':'传统参考书目：紫微斗数全书','source_url':None,'notes':['指定古籍尚未全文校勘，本模块不编造古籍页码或引文。']}],
+            'evidence':[*retrieved,{'heading':'紫微排盘算法与版本','source_url':'https://github.com/SylarLong/iztro','edition_note':'排盘来自固定开源库；原文来自固定电子修订，未完成纸本全书校勘。'}],
             'limitations':'计算结果遵循选定库与时间约定；性别参数用于传统算法，不能由姓名推测。星曜与四化不代表人生事件保证。'}

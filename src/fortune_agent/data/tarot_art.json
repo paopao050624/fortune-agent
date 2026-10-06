@@ -1,0 +1,398 @@
+{
+  "version": "symbolic-tarot-art-v1",
+  "creator": "Fortune Agent contributors",
+  "license": "MIT",
+  "description": "项目原创符号插画，用于辨识牌名与主题；不是Waite原版图像或原文释义。",
+  "cards": {
+    "major-00": {
+      "path": "tarot/major-00.svg",
+      "name": "愚者",
+      "motif": "旅途"
+    },
+    "major-01": {
+      "path": "tarot/major-01.svg",
+      "name": "魔术师",
+      "motif": "意志"
+    },
+    "major-02": {
+      "path": "tarot/major-02.svg",
+      "name": "女祭司",
+      "motif": "直觉"
+    },
+    "major-03": {
+      "path": "tarot/major-03.svg",
+      "name": "皇后",
+      "motif": "滋养"
+    },
+    "major-04": {
+      "path": "tarot/major-04.svg",
+      "name": "皇帝",
+      "motif": "秩序"
+    },
+    "major-05": {
+      "path": "tarot/major-05.svg",
+      "name": "教皇",
+      "motif": "传承"
+    },
+    "major-06": {
+      "path": "tarot/major-06.svg",
+      "name": "恋人",
+      "motif": "选择"
+    },
+    "major-07": {
+      "path": "tarot/major-07.svg",
+      "name": "战车",
+      "motif": "前行"
+    },
+    "major-08": {
+      "path": "tarot/major-08.svg",
+      "name": "力量",
+      "motif": "勇气"
+    },
+    "major-09": {
+      "path": "tarot/major-09.svg",
+      "name": "隐者",
+      "motif": "内省"
+    },
+    "major-10": {
+      "path": "tarot/major-10.svg",
+      "name": "命运之轮",
+      "motif": "变化"
+    },
+    "major-11": {
+      "path": "tarot/major-11.svg",
+      "name": "正义",
+      "motif": "衡量"
+    },
+    "major-12": {
+      "path": "tarot/major-12.svg",
+      "name": "倒吊人",
+      "motif": "换位"
+    },
+    "major-13": {
+      "path": "tarot/major-13.svg",
+      "name": "死神",
+      "motif": "更新"
+    },
+    "major-14": {
+      "path": "tarot/major-14.svg",
+      "name": "节制",
+      "motif": "调和"
+    },
+    "major-15": {
+      "path": "tarot/major-15.svg",
+      "name": "恶魔",
+      "motif": "束缚"
+    },
+    "major-16": {
+      "path": "tarot/major-16.svg",
+      "name": "高塔",
+      "motif": "重构"
+    },
+    "major-17": {
+      "path": "tarot/major-17.svg",
+      "name": "星星",
+      "motif": "希望"
+    },
+    "major-18": {
+      "path": "tarot/major-18.svg",
+      "name": "月亮",
+      "motif": "未知"
+    },
+    "major-19": {
+      "path": "tarot/major-19.svg",
+      "name": "太阳",
+      "motif": "明朗"
+    },
+    "major-20": {
+      "path": "tarot/major-20.svg",
+      "name": "审判",
+      "motif": "回应"
+    },
+    "major-21": {
+      "path": "tarot/major-21.svg",
+      "name": "世界",
+      "motif": "整合"
+    },
+    "1-01": {
+      "path": "tarot/1-01.svg",
+      "name": "权杖王牌",
+      "motif": "王牌"
+    },
+    "1-02": {
+      "path": "tarot/1-02.svg",
+      "name": "权杖二",
+      "motif": "二"
+    },
+    "1-03": {
+      "path": "tarot/1-03.svg",
+      "name": "权杖三",
+      "motif": "三"
+    },
+    "1-04": {
+      "path": "tarot/1-04.svg",
+      "name": "权杖四",
+      "motif": "四"
+    },
+    "1-05": {
+      "path": "tarot/1-05.svg",
+      "name": "权杖五",
+      "motif": "五"
+    },
+    "1-06": {
+      "path": "tarot/1-06.svg",
+      "name": "权杖六",
+      "motif": "六"
+    },
+    "1-07": {
+      "path": "tarot/1-07.svg",
+      "name": "权杖七",
+      "motif": "七"
+    },
+    "1-08": {
+      "path": "tarot/1-08.svg",
+      "name": "权杖八",
+      "motif": "八"
+    },
+    "1-09": {
+      "path": "tarot/1-09.svg",
+      "name": "权杖九",
+      "motif": "九"
+    },
+    "1-10": {
+      "path": "tarot/1-10.svg",
+      "name": "权杖十",
+      "motif": "十"
+    },
+    "1-11": {
+      "path": "tarot/1-11.svg",
+      "name": "权杖侍从",
+      "motif": "侍从"
+    },
+    "1-12": {
+      "path": "tarot/1-12.svg",
+      "name": "权杖骑士",
+      "motif": "骑士"
+    },
+    "1-13": {
+      "path": "tarot/1-13.svg",
+      "name": "权杖王后",
+      "motif": "王后"
+    },
+    "1-14": {
+      "path": "tarot/1-14.svg",
+      "name": "权杖国王",
+      "motif": "国王"
+    },
+    "2-01": {
+      "path": "tarot/2-01.svg",
+      "name": "圣杯王牌",
+      "motif": "王牌"
+    },
+    "2-02": {
+      "path": "tarot/2-02.svg",
+      "name": "圣杯二",
+      "motif": "二"
+    },
+    "2-03": {
+      "path": "tarot/2-03.svg",
+      "name": "圣杯三",
+      "motif": "三"
+    },
+    "2-04": {
+      "path": "tarot/2-04.svg",
+      "name": "圣杯四",
+      "motif": "四"
+    },
+    "2-05": {
+      "path": "tarot/2-05.svg",
+      "name": "圣杯五",
+      "motif": "五"
+    },
+    "2-06": {
+      "path": "tarot/2-06.svg",
+      "name": "圣杯六",
+      "motif": "六"
+    },
+    "2-07": {
+      "path": "tarot/2-07.svg",
+      "name": "圣杯七",
+      "motif": "七"
+    },
+    "2-08": {
+      "path": "tarot/2-08.svg",
+      "name": "圣杯八",
+      "motif": "八"
+    },
+    "2-09": {
+      "path": "tarot/2-09.svg",
+      "name": "圣杯九",
+      "motif": "九"
+    },
+    "2-10": {
+      "path": "tarot/2-10.svg",
+      "name": "圣杯十",
+      "motif": "十"
+    },
+    "2-11": {
+      "path": "tarot/2-11.svg",
+      "name": "圣杯侍从",
+      "motif": "侍从"
+    },
+    "2-12": {
+      "path": "tarot/2-12.svg",
+      "name": "圣杯骑士",
+      "motif": "骑士"
+    },
+    "2-13": {
+      "path": "tarot/2-13.svg",
+      "name": "圣杯王后",
+      "motif": "王后"
+    },
+    "2-14": {
+      "path": "tarot/2-14.svg",
+      "name": "圣杯国王",
+      "motif": "国王"
+    },
+    "3-01": {
+      "path": "tarot/3-01.svg",
+      "name": "宝剑王牌",
+      "motif": "王牌"
+    },
+    "3-02": {
+      "path": "tarot/3-02.svg",
+      "name": "宝剑二",
+      "motif": "二"
+    },
+    "3-03": {
+      "path": "tarot/3-03.svg",
+      "name": "宝剑三",
+      "motif": "三"
+    },
+    "3-04": {
+      "path": "tarot/3-04.svg",
+      "name": "宝剑四",
+      "motif": "四"
+    },
+    "3-05": {
+      "path": "tarot/3-05.svg",
+      "name": "宝剑五",
+      "motif": "五"
+    },
+    "3-06": {
+      "path": "tarot/3-06.svg",
+      "name": "宝剑六",
+      "motif": "六"
+    },
+    "3-07": {
+      "path": "tarot/3-07.svg",
+      "name": "宝剑七",
+      "motif": "七"
+    },
+    "3-08": {
+      "path": "tarot/3-08.svg",
+      "name": "宝剑八",
+      "motif": "八"
+    },
+    "3-09": {
+      "path": "tarot/3-09.svg",
+      "name": "宝剑九",
+      "motif": "九"
+    },
+    "3-10": {
+      "path": "tarot/3-10.svg",
+      "name": "宝剑十",
+      "motif": "十"
+    },
+    "3-11": {
+      "path": "tarot/3-11.svg",
+      "name": "宝剑侍从",
+      "motif": "侍从"
+    },
+    "3-12": {
+      "path": "tarot/3-12.svg",
+      "name": "宝剑骑士",
+      "motif": "骑士"
+    },
+    "3-13": {
+      "path": "tarot/3-13.svg",
+      "name": "宝剑王后",
+      "motif": "王后"
+    },
+    "3-14": {
+      "path": "tarot/3-14.svg",
+      "name": "宝剑国王",
+      "motif": "国王"
+    },
+    "4-01": {
+      "path": "tarot/4-01.svg",
+      "name": "星币王牌",
+      "motif": "王牌"
+    },
+    "4-02": {
+      "path": "tarot/4-02.svg",
+      "name": "星币二",
+      "motif": "二"
+    },
+    "4-03": {
+      "path": "tarot/4-03.svg",
+      "name": "星币三",
+      "motif": "三"
+    },
+    "4-04": {
+      "path": "tarot/4-04.svg",
+      "name": "星币四",
+      "motif": "四"
+    },
+    "4-05": {
+      "path": "tarot/4-05.svg",
+      "name": "星币五",
+      "motif": "五"
+    },
+    "4-06": {
+      "path": "tarot/4-06.svg",
+      "name": "星币六",
+      "motif": "六"
+    },
+    "4-07": {
+      "path": "tarot/4-07.svg",
+      "name": "星币七",
+      "motif": "七"
+    },
+    "4-08": {
+      "path": "tarot/4-08.svg",
+      "name": "星币八",
+      "motif": "八"
+    },
+    "4-09": {
+      "path": "tarot/4-09.svg",
+      "name": "星币九",
+      "motif": "九"
+    },
+    "4-10": {
+      "path": "tarot/4-10.svg",
+      "name": "星币十",
+      "motif": "十"
+    },
+    "4-11": {
+      "path": "tarot/4-11.svg",
+      "name": "星币侍从",
+      "motif": "侍从"
+    },
+    "4-12": {
+      "path": "tarot/4-12.svg",
+      "name": "星币骑士",
+      "motif": "骑士"
+    },
+    "4-13": {
+      "path": "tarot/4-13.svg",
+      "name": "星币王后",
+      "motif": "王后"
+    },
+    "4-14": {
+      "path": "tarot/4-14.svg",
+      "name": "星币国王",
+      "motif": "国王"
+    }
+  }
+}

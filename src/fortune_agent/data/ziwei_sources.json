@@ -1,0 +1,555 @@
+{
+  "source": {
+    "work": "紫微斗数全书",
+    "page_title": "紫微斗數全書/卷一",
+    "revision_id": 7913704,
+    "revision_timestamp": "2026-08-07T05:47:26Z",
+    "retrieved_date": "2026-10-06",
+    "fetch_url": "https://api.wikimedia.org/core/v1/wikisource/zh/page/紫微斗數全書%2F卷一/html",
+    "html_sha256": "488d1f2b325fa60b1e2a946c1addd86b2dc2ce676ecc434f7e422eef6d44af08",
+    "edition_note": "Wikisource电子转录，纸本版本未确证，未完成全书/跨版本校勘；作者归属不由本批确证。",
+    "rights_note": "历史文本摘录；电子转录来源Wikisource，保留归属与固定修订链接，按其CC BY-SA条款提供转录部分；不把文本来源授权混作代码MIT。"
+  },
+  "entries": [
+    {
+      "id": "ziwei-star-紫微",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問紫微所主若何？",
+      "heading": "問紫微所主若何？",
+      "source_text": "答曰：紫微屬土，乃中天之尊星為帝座，主掌造化樞機，人生主宰。",
+      "star": "紫微",
+      "mutagen": null,
+      "topic": "统筹与整体协调",
+      "reflection": "今天如何把分散的任务整合成一个清楚的目标？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問紫微所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "cd6fa010d28c4db6fe23157d03babde201465329c7c8f7c883dd775a87384f34"
+    },
+    {
+      "id": "ziwei-star-天机",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問天機所主如何？",
+      "heading": "問天機所主如何？",
+      "source_text": "有靈機應變之志。淵魚察見，作事有方。",
+      "star": "天机",
+      "mutagen": null,
+      "topic": "规划与应变",
+      "reflection": "哪些条件变化需要你调整计划？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問天機所主如何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "0b60baf21e19b2d28fc7ff66f59f9bc2f3301e88685722d422b3610333277955"
+    },
+    {
+      "id": "ziwei-star-太阳",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問太陽所主若何？",
+      "heading": "問太陽所主若何？",
+      "source_text": "答曰：太陽星屬火，日之精也。",
+      "star": "太阳",
+      "mutagen": null,
+      "topic": "表达与公开责任",
+      "reflection": "哪些承诺需要说清楚并主动兑现？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問太陽所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "d8029d1445315108bea214d31041fcf9311766c5f022f0a879fcdc8d6896e0e8"
+    },
+    {
+      "id": "ziwei-star-武曲",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問武曲星所主為何？",
+      "heading": "問武曲星所主為何？",
+      "source_text": "答曰：武曲北斗第六星，屬金，乃財帛宮主。",
+      "star": "武曲",
+      "mutagen": null,
+      "topic": "资源与执行",
+      "reflection": "有哪些投入、预算或执行标准需要核对？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問武曲星所主為何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "6e55b920855aa1574b4dd05ce6ac26d5f83438fa48ae0b1691874a42f9224559"
+    },
+    {
+      "id": "ziwei-star-天同",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問天同星所主若何？",
+      "heading": "問天同星所主若何？",
+      "source_text": "答曰：天同星屬水，乃南方第四星也，為福德宮之主宰。",
+      "star": "天同",
+      "mutagen": null,
+      "topic": "恢复与支持",
+      "reflection": "如何安排恢复时间并寻求合适的支持？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問天同星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "f8f54bc8997982b368808ac2ac4bfcb3aeb90ff1bc1a3cfbfa68c824c05f7d06"
+    },
+    {
+      "id": "ziwei-star-廉贞",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問廉貞所主若何？",
+      "heading": "問廉貞所主若何？",
+      "source_text": "答曰：廉貞屬火，北斗第五星也。在斗司品秩，在數司權令。",
+      "star": "廉贞",
+      "mutagen": null,
+      "topic": "规则与边界",
+      "reflection": "你需要确认哪些职责和边界？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問廉貞所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "6189e8e1a582b2e30dcd0b5e6069907cdef7defaf24a076bd3aa35d81879ff37"
+    },
+    {
+      "id": "ziwei-star-天府",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問天府所主若何？",
+      "heading": "問天府所主若何？",
+      "source_text": "答曰：天府屬土，南斗主令第一星也。為財帛之主宰，在斗司福權之宿，會吉皆為富貴之基，定作文昌之論。",
+      "star": "天府",
+      "mutagen": null,
+      "topic": "资源保管与组织",
+      "reflection": "你手上的资源有没有长期的安排？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問天府所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "b7ba17d1e96538bcd1d68610f063bd76f88c6666afbac641632ca3b9ce2954a8"
+    },
+    {
+      "id": "ziwei-star-太阴",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問太陰星所主若何？",
+      "heading": "問太陰星所主若何？",
+      "source_text": "答曰：太陰乃水之精，為田宅主，化富，與日為配。",
+      "star": "太阴",
+      "mutagen": null,
+      "topic": "安顿与积累",
+      "reflection": "什么环境和长期积累能支持你的日常生活？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問太陰星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "561123090ba6152908f90e603d00b657b699ecb4159335145422113baf87b8c7"
+    },
+    {
+      "id": "ziwei-star-贪狼",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問貪狼所主若何？",
+      "heading": "問貪狼所主若何？",
+      "source_text": "其氣屬木，體屬水，故化氣為桃花。",
+      "star": "贪狼",
+      "mutagen": null,
+      "topic": "兴趣与互动",
+      "reflection": "如何筛选兴趣、机会与社交投入？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問貪狼所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "16f7d9d48e0adcafaaaf9c596475fad7d359ca214886941cce9b9418c176c8b4"
+    },
+    {
+      "id": "ziwei-star-巨门",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問巨門所主若何？",
+      "heading": "問巨門所主若何？",
+      "source_text": "巨門在天，司品萬物。在數則掌執是非，主於暗昧，疑是多非，欺瞞天地，進退兩難。",
+      "star": "巨门",
+      "mutagen": null,
+      "topic": "辨析与沟通",
+      "reflection": "信息不清时，哪些事实需要先核实再表达？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問巨門所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "99dcf36d1556726004690e2b5e183cdee31d7e654f426d3a182a7b4b0f9b30e4"
+    },
+    {
+      "id": "ziwei-star-天相",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問天相星所主若何？",
+      "heading": "問天相星所主若何？",
+      "source_text": "答曰：天相屬水，南斗第五星也。為司爵之宿，為福善，化氣曰印，是為官祿文星，佐帝之位。",
+      "star": "天相",
+      "mutagen": null,
+      "topic": "协调与制度",
+      "reflection": "怎样协调不同人的职责而不替人作决定？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問天相星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "72abb8c0f1f9fd125e6e6516d751badb2875b66f19bca003f5fd4979fd7c90c8"
+    },
+    {
+      "id": "ziwei-star-天梁",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問天梁星所主若何？",
+      "heading": "問天梁星所主若何？",
+      "source_text": "答曰：天梁屬土，南斗第二星也。司壽化氣為蔭為福壽，乃父母之主命化暴戾為祥和。",
+      "star": "天梁",
+      "mutagen": null,
+      "topic": "支持与经验",
+      "reflection": "可以借助谁的经验审视当前问题？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問天梁星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "89c8cd23f5151a265ef95b65cf85404c123e6cc1af2aece052d5c27b2f7e6f48"
+    },
+    {
+      "id": "ziwei-star-七杀",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問七殺星所主若何？",
+      "heading": "問七殺星所主若何？",
+      "source_text": "答曰：七殺南斗第六星也，屬火、金。乃斗中之上將，實成敗之孤辰。在斗司斗柄，主於風憲。",
+      "star": "七杀",
+      "mutagen": null,
+      "topic": "决断与挑战",
+      "reflection": "面对压力，哪些行动有明确边界和退出条件？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問七殺星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "d6e0862c089d178df371f0b1f810b0d232b64b71c1805821a6881e5d2e13c9dd"
+    },
+    {
+      "id": "ziwei-star-破军",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問破軍所主若何？",
+      "heading": "問破軍所主若何？",
+      "source_text": "居子午入廟，在天為殺氣，在數為耗星，故化氣曰耗。",
+      "star": "破军",
+      "mutagen": null,
+      "topic": "调整与更新",
+      "reflection": "改变现有安排前，需要评估哪些成本和影响？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問破軍所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "ef00964e8f8bbb0c0ad274df2a6f41265d9f9c4ebdb243045e7f9f6b905e2245"
+    },
+    {
+      "id": "ziwei-star-文昌",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 問文昌星所主若何？",
+      "heading": "問文昌星所主若何？",
+      "source_text": "答曰：文昌主科甲，守身命主人幽閑儒雅，清秀魁梧，博文廣記，機變異常，一舉成名，披緋衣紫，福壽雙全。",
+      "star": "文昌",
+      "mutagen": null,
+      "topic": "学习与表达",
+      "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 問文昌星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "3c1475f800411ab0546238ac2a45e4022a1d18ab2f139acd8ffa65f75581b66b"
+    },
+    {
+      "id": "ziwei-star-文曲",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问文曲星所主若何？",
+      "heading": "问文曲星所主若何？",
+      "source_text": "答曰：文曲属水，北斗第四星也，主科甲文车之宿。",
+      "star": "文曲",
+      "mutagen": null,
+      "topic": "表达与细节",
+      "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问文曲星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "ea38c0adc9ac714b3b015aa3961be4643cef491614ff0ea09c741a37fe2a9d45"
+    },
+    {
+      "id": "ziwei-star-左辅",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问左辅所主若何？",
+      "heading": "问左辅所主若何？",
+      "source_text": "希夷先生答曰：左辅帝极主宰之星，守身命诸宫降福。",
+      "star": "左辅",
+      "mutagen": null,
+      "topic": "协助与合作",
+      "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问左辅所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "20cae5efcf7d805e243e0f810692a21de2036ab6cae98ed9e2907c7e6d3bdeb9"
+    },
+    {
+      "id": "ziwei-star-右弼",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问右弼所主若何？",
+      "heading": "问右弼所主若何？",
+      "source_text": "希夷先生答曰：右弼帝极主宰之星，守身命文墨精通。",
+      "star": "右弼",
+      "mutagen": null,
+      "topic": "协助与合作",
+      "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问右弼所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "9ca58cf6bebbaf7caefb73688f2f86b1ba48cb2850887df7858f4a774e77e1bf"
+    },
+    {
+      "id": "ziwei-star-禄存",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问禄存星所主若何？",
+      "heading": "问禄存星所主若何？",
+      "source_text": "希夷先生答曰：禄存北斗第三星，真人之宿，主人贵爵，掌人寿基。",
+      "star": "禄存",
+      "mutagen": null,
+      "topic": "积累与资源",
+      "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问禄存星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "7dc0b070d1c6d6cfff3d4732bafffa78143f2e4d8c87aeddfca515db4d8a6b73"
+    },
+    {
+      "id": "ziwei-star-天马",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问天马星所主若何？",
+      "heading": "问天马星所主若何？",
+      "source_text": "希夷先生答曰：诸宫各有制化，如身命临之谓之驿马。",
+      "star": "天马",
+      "mutagen": null,
+      "topic": "行动与迁移",
+      "reflection": "怎样把这项传统意象转化为可以核实的具体行动？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问天马星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "9a20553986b857f340b5841768cecfa239dbcb91dc4f0097a823f185e6dad520"
+    },
+    {
+      "id": "ziwei-mutagen-禄",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问化禄星所主若何？",
+      "heading": "问化禄星所主若何？",
+      "source_text": "希夷先生答曰：禄为福德之神。",
+      "star": null,
+      "mutagen": "禄",
+      "topic": "资源与支持",
+      "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问化禄星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "2f1b868614bf1fa111cfa66eb9b5d0bf70713dfbcebff7e1f5d1a47f8b707c9d"
+    },
+    {
+      "id": "ziwei-mutagen-权",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问化权星所主若何？",
+      "heading": "问化权星所主若何？",
+      "source_text": "希夷先生答曰：权星掌判生杀之神。",
+      "star": null,
+      "mutagen": "权",
+      "topic": "责任与行动",
+      "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问化权星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "f13633822dc45e3efdb2095b9ff79eaa8bcfa72439cfdeec40486878ff9f105f"
+    },
+    {
+      "id": "ziwei-mutagen-科",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问化科星所主若何？",
+      "heading": "问化科星所主若何？",
+      "source_text": "希夷先生答曰：科星上界应试，主掌文墨之星。",
+      "star": null,
+      "mutagen": "科",
+      "topic": "学习与呈现",
+      "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问化科星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "6d96f8e52d033a2fb15a236cebea06d82c7874fd0ffcfc4a25e3d82135e91907"
+    },
+    {
+      "id": "ziwei-mutagen-忌",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 问化忌星所主若何？",
+      "heading": "问化忌星所主若何？",
+      "source_text": "希夷先生答曰：忌为多管之神。",
+      "star": null,
+      "mutagen": "忌",
+      "topic": "阻滞与反思",
+      "reflection": "哪些资源、责任或阻碍值得结合实际经历复核？",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 问化忌星所主若何？（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "46fb64aa6b413d4b5bfa6275eeeb46a275612903bcb18be3ee7b258911af63ba"
+    },
+    {
+      "id": "ziwei-principle-context",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 太微賦",
+      "heading": "太微賦",
+      "source_text": "星有同躔，數有分定，須明其生剋之要，必詳乎得垣失度之分。",
+      "star": null,
+      "mutagen": null,
+      "topic": "重视配合与位置",
+      "reflection": "不要只根据一颗星作人生判断。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 太微賦（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "c1752850e447b63445d390e0b41406b8f126220a270e99814de19ae65766ab79"
+    },
+    {
+      "id": "ziwei-principle-combined",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 太微賦",
+      "heading": "太微賦",
+      "source_text": "星臨廟旺，再觀生剋之機。命坐強宮，細察制化之理。",
+      "star": null,
+      "mutagen": null,
+      "topic": "亮度不等于结果",
+      "reflection": "同宫、对宫和三方的配合需要一起核对。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 太微賦（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "c1752850e447b63445d390e0b41406b8f126220a270e99814de19ae65766ab79"
+    },
+    {
+      "id": "ziwei-principle-not-absolute",
+      "work": "紫微斗数全书",
+      "chapter": "卷一 · 增補太微賦",
+      "heading": "增補太微賦",
+      "source_text": "凶不皆凶，吉無純吉。",
+      "star": null,
+      "mutagen": null,
+      "topic": "避免绝对吉凶",
+      "reflection": "记录实际条件，而不是给自己贴吉凶标签。",
+      "source_url": "https://zh.wikisource.org/w/index.php?title=紫微斗數全書/卷一&oldid=7913704",
+      "locator": "卷一 · 增補太微賦（电子修订；不提供纸本页码）",
+      "revision_id": 7913704,
+      "edition_note": "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+      "notes": [
+        "固定电子转录，尚未与指定纸本扫描逐字校勘；同页混有简繁文字与异文，按提供文本保留，不自行更正。",
+        "相关章节含旧时代性别、贫富、疾病和宿命论表述；仅作历史概念参考，不套用于用户的事实、诊断或预言。"
+      ],
+      "section_text_sha256": "2b23bc26581cfc60de48770684d0fec796021872836f03cb2b8e2652221d0afd"
+    }
+  ]
+}

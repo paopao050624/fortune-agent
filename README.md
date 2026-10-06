@@ -11,12 +11,12 @@
 | 功能 | 当前内容 | 使用说明 |
 | --- | --- | --- |
 | 统一对话 | 六种方式的工具路由、缺资料补问、稳定追问、重试及清除会话 | [对话流程](docs/unified-agent.md) |
-| 塔罗问答 | 78张牌、单张／三张／选择对比／五张／凯尔特十字，背牌选取、翻牌和原牌追问 | [塔罗体验](docs/charts-and-profiles.md#塔罗交互) |
+| 塔罗问答 | 78张牌、单张／三张／选择对比／五张／凯尔特十字，原创符号牌图、背牌选取、翻牌和原牌追问 | [塔罗体验](docs/charts-and-profiles.md#塔罗交互) |
 | 每日一张 | 按代号、时区与当地日期确定固定牌面，首次模型解读本地缓存 | 下文“每日提示与综合日报” |
 | 每日运势与回顾 | 档案关联的塔罗＋八字参考、大运流年依据、日报缓存、历史回顾 | [综合报告](docs/complete-fortune.md) |
 | 八字 | 中国标准时间排盘、十神藏干、结构关系、项目旺衰估计、格局条件和分方法取用、大运流年 | [判断模型及边界](docs/bazi-judgment.md) |
-| 紫微斗数 | 固定iztro本命十二宫、主辅杂曜、亮度、生年四化、大限年龄标签 | [排盘约定](docs/charts-and-profiles.md#紫微斗数) |
-| 西方占星 | 十大天体、热带黄道、地心位置、整宫宫位、角点、主要相位和逆行 | [占星约定](docs/charts-and-profiles.md#西方占星) |
+| 紫微斗数 | 固定iztro本命十二宫、星曜四化、27条电子原文匹配及校验解读 | [排盘约定](docs/charts-and-profiles.md#紫微斗数) |
+| 西方占星 | 十大天体、热带黄道、地心位置、整宫宫位、角点、主要相位和逆行，可交互轮盘与SVG导出 | [占星约定](docs/charts-and-profiles.md#西方占星) |
 | 用户档案 | 多代号、出生资料与经纬度、偏好、显式保存工具历史、导出恢复与删除 | [保存与隐私](docs/charts-and-profiles.md#档案) |
 | 周易 | 三枚硬币起卦、主变卦与动爻，两种取辞策略，64卦全文参考库 | [起卦](docs/iching.md)／[解读](docs/iching-interpretation.md) |
 
@@ -114,3 +114,5 @@ docker compose up --build -d
 完整测试包括HTTP请求；CI还运行桌面／手机浏览器验收、Docker构建、请求防护与重启数据持久化。最近补充验证见 [网页与Docker报告](evals/results/web-docker-review-2026-10-06.md)；模型相关浏览器场景使用明确测试替身，不把它报告为中转站实时可用性。
 
 复现命令见 [CONTRIBUTING](CONTRIBUTING.md)，容器端口和数据卷说明见 [部署指南](docs/charts-and-profiles.md#docker本机部署)。项目已发布GitHub Release，尚未发布到PyPI，也没有部署成公共网站。软件与第三方依赖的授权见 [LICENSE](LICENSE) 和 [第三方许可](THIRD_PARTY_NOTICES.md)。
+
+本批紫微原文的版本与解释链见 [紫微依据](docs/ziwei-evidence.md)；塔罗78张符号牌面为项目原创MIT资产，非原版Waite图像。

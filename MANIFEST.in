@@ -1,7 +1,7 @@
 include LICENSE README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md THIRD_PARTY_NOTICES.md
 include Dockerfile compose.yaml package.json pnpm-lock.yaml pnpm-workspace.yaml .env.example .dockerignore
 recursive-include src/fortune_agent/data *.json
-recursive-include src/fortune_agent/static *.html *.cjs *.txt
+recursive-include src/fortune_agent/static *.html *.cjs *.txt *.svg
 recursive-include docs *.md
 recursive-include scripts *.py *.cjs
 recursive-include tests *.py
