@@ -24,7 +24,7 @@ from .bazi_agent import interpret_bazi
 from .bazi_facts import chart_facts
 from .bazi_rules import wealth_checklist
 from .bazi_sources import evidence_for as bazi_evidence
-from .config import ApiConfig
+from .config import ApiConfig, api_status, configure_api
 from .daily import daily_draw
 from .daily_service import get_daily
 from .daily_store import DailyStore
@@ -101,6 +101,22 @@ class LocalApp:
         style = text_field(payload, "style", "gentle", 20)
         if style not in ("direct", "gentle"):
             raise ValueError("无效回答风格")
+
+        if mode == "api-config":
+            action = text_field(payload, "action", "status", 20)
+            if action == "status":
+                return api_status()
+            if action != "save":
+                raise ValueError("未知 API 配置操作")
+            key = payload.get("api_key")
+            if key is not None and (not isinstance(key, str) or len(key) > 500):
+                raise ValueError("API Key 格式无效或过长")
+            base = text_field(payload, "base_url", limit=500)
+            model = text_field(payload, "model", limit=200)
+            test = payload.get("test", True)
+            if not isinstance(test, bool):
+                raise ValueError("test 必须为布尔值")
+            return configure_api(api_key=key, base_url=base, model=model, test=test)
 
         if mode=='report-document':
             from .report_export import export_report
@@ -384,6 +400,11 @@ def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1", external_p
         def do_GET(self) -> None:
             if not self.local_request():
                 self.json_response(403, {"error": "仅允许本机访问"})
+            elif self.path == "/api/config":
+                if not secrets.compare_digest(self.headers.get("X-Fortune-Token", ""), token):
+                    self.json_response(403, {"error": "请从本地页面提交请求"})
+                else:
+                    self.json_response(200, app.run({"mode": "api-config", "action": "status"}))
             elif self.path == "/":
                 page = files("fortune_agent").joinpath("static/index.html").read_text(encoding="utf-8")
                 options = "".join(f'<option value="{e["number"]}">第{e["number"]}卦 · {escape(e["name"])}</option>'
@@ -406,7 +427,7 @@ def make_server(port: int, cache_path: Path, bind: str = "127.0.0.1", external_p
             if not self.local_request() or not secrets.compare_digest(self.headers.get("X-Fortune-Token", ""), token):
                 self.json_response(403, {"error": "请从本地页面提交请求"})
                 return
-            if self.path != "/api/run":
+            if self.path not in ("/api/run", "/api/config"):
                 self.json_response(404, {"error": "接口不存在"})
                 return
             try:

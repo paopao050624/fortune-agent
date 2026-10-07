@@ -49,6 +49,8 @@ export FORTUNE_BASE_URL='https://你的中转站域名/v1'
 export FORTUNE_MODEL='中转站实际支持的完整模型ID'
 ```
 
+网页顶部的“模型 API 配置”可以在本次服务进程内填写 Base URL、模型 ID 和密钥，并通过 `/models` 检查连通性。密钥不会回显、写入报告或保存到仓库；重启服务后需重新设置，或按上面的方式在启动终端设置环境变量。
+
 模型接口使用Responses API；塔罗与统一对话还需要函数工具调用。不要把完整 `/responses` 地址填作API根地址。应用不自动读取 `.env`，示例字段见 [.env.example](.env.example)。密钥不通过网页输入或返回，也不要提交到Git。请求使用 `store=False`，但中转站保存政策仍由服务商决定。
 
 ## 常用命令

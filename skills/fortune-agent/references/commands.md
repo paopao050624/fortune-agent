@@ -4,6 +4,7 @@
 
 ```bash
 RUN doctor
+RUN --installed doctor
 RUN tarot '如何安排毕业论文？' --spread three --json
 RUN daily --profile demo --timezone Asia/Shanghai --json
 RUN bazi --birth 2000-01-01T12:00:00+08:00 --gender female --complete --json

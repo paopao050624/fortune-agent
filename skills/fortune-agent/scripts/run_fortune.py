@@ -37,11 +37,12 @@ def locate_project(explicit=None):
 def main():
     parser = argparse.ArgumentParser(description="Fortune Agent Skill 本地工具适配器")
     parser.add_argument("--project", help="源码项目目录；也可设 FORTUNE_AGENT_HOME")
+    parser.add_argument("--installed", action="store_true", help="跳过源码目录，直接调用已安装的 fortune_agent 包")
     parser.add_argument("action", choices=(*MODULES, "library", "export"))
     parser.add_argument("arguments", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     try:
-        root = locate_project(args.project)
+        root = None if args.installed else locate_project(args.project)
         if root:
             paths = [root / "src", *(root / "work" / name for name in
                       ("vendor", "api-vendor", "astro-vendor"))]

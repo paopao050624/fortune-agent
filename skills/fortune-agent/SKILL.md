@@ -9,7 +9,7 @@ description: 调用 Fortune Agent 本地程序进行塔罗、每日提示、八�
 
 ## 调用
 
-先运行 `python <skill目录>/scripts/run_fortune.py doctor` 确认依赖。脚本支持 `--project <项目目录>`，也可使用 `FORTUNE_AGENT_HOME`；在项目内运行会自动发现源码。其他目录中的已安装 Skill 可使用 `runtime.json` 的 `project` 字段定位本机项目，该文件只存路径，发布安装包不包含它。
+先运行 `python <skill目录>/scripts/run_fortune.py doctor` 确认依赖。脚本支持 `--installed` 直接调用已安装的 `fortune_agent` 包；也支持 `--project <项目目录>` 或 `FORTUNE_AGENT_HOME` 调用源码。已安装 Skill 可使用 `runtime.json` 的 `project` 字段定位本机项目，该文件只存路径，发布安装包不包含它。优先使用已安装包时，不需要源码目录或 runtime.json。
 
 按请求选择工具；具体参数和示例见 [references/commands.md](references/commands.md)。脚本默认本地计算，不调用中转站。解释由当前 Codex 完成；只有用户选择项目模型解读时才传入 `--interpret`，使用继承的环境变量，不输出或复制密钥。
 
@@ -32,3 +32,5 @@ description: 调用 Fortune Agent 本地程序进行塔罗、每日提示、八�
 ## 依赖缺失
 
 项目地址：https://github.com/paopao050624/fortune-agent 。在用户选定目录获取源码，用虚拟环境安装 `python -m pip install -e '.[all]'`。本地计算无需 API 密钥。环境不支持执行时说明缺失依赖，不伪造工具结果；不要为了使用此 Skill 修改无关配置或发布仓库。
+
+网页模型配置：启动 `fortune-web` 后，页面顶部的 API 配置面板可在本次进程内设置兼容 OpenAI 的 Base URL、模型和密钥并测试 `/models`。密钥不会回显或写入项目文件；重启后需要重新设置，除非用户在启动环境中提供变量。
