@@ -42,6 +42,15 @@ jobs:
           fortune-chart astrology --birth 2000-01-01T12:00:00+00:00 --timezone Europe/London --latitude 51.4779 --longitude 0
           fortune-iching --reference 1
           fortune-iching --lines 9 9 9 9 9 9
+      - name: Check Codex Skill adapter
+        run: python scripts/smoke_codex_skill.py
+      - name: Check clean Skill installer
+        run: |
+          destination="$RUNNER_TEMP/codex-skills/fortune-agent"
+          python scripts/install_codex_skill.py --destination "$destination"
+          test -f "$destination/SKILL.md"
+          test -f "$destination/runtime.json"
+          test ! -e "$destination/.env"
 
   browser-and-docker:
     runs-on: ubuntu-latest
