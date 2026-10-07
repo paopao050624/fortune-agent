@@ -1,6 +1,6 @@
 # v0.2.0 历史发布记录（非当前版本）
 
-> 本文仅记录旧版本，当前版本为 [v0.4.0](release-v0.4.md)。安装与使用以 [当前README](../README.md) 为准。
+> 本文仅记录旧版本，当前版本为 [v0.5.0](release-v0.5.md)。安装与使用以 [当前README](../README.md) 为准。
 
 Added Zi Wei natal charts, tropical whole-sign Western astrology, multiple local profiles, chart coordinates and preferences, opt-in reading history, JSON archive restoration, visual tarot selection with stable reveals and followups, and additional spreads.
 
