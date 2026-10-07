@@ -4,6 +4,7 @@ recursive-include src/fortune_agent/data *.json
 recursive-include src/fortune_agent/static *.html *.cjs *.txt *.svg
 recursive-include docs *.md *.html *.jpg
 recursive-include scripts *.py *.cjs
+recursive-include skills *.md *.yaml *.py
 recursive-include tests *.py
 recursive-include evals *.json *.jsonl *.md
 recursive-include .github *.yml *.md

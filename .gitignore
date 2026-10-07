@@ -10,6 +10,7 @@ __pycache__/
 build/
 dist/
 work/
+skills/*/runtime.json
 
 node_modules/
 .pnpm-store/

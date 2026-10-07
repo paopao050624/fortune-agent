@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fortune Agent 运势助手"
+  short_description: "本地排盘与抽牌，结合典籍依据解释塔罗、八字、紫微、占星及周易结果"
+  default_prompt: "使用 $fortune-agent 帮我梳理最近的学习安排，结合实际抽牌结果给出建议和依据。"

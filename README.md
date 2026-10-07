@@ -53,6 +53,12 @@ export FORTUNE_MODEL='中转站实际支持的完整模型ID'
 
 ## 常用命令
 
+### 在 Codex 中使用 Skill（main 分支新增）
+
+将 [skills/fortune-agent](skills/fortune-agent) 文件夹复制到 `~/.codex/skills/fortune-agent`，设置 `FORTUNE_AGENT_HOME` 为本地源码目录，或在该项目目录中使用 Codex。也可在已安装 Skill 的 `runtime.json` 写入 `{"project":"/本地/fortune-agent"}`，不要把本机路径配置加入公开包。Python 环境需安装上述项目依赖，紫微需要 Node.js 18+。
+
+重新打开会话后输入 `$fortune-agent 用塔罗帮我梳理毕业论文安排`。Skill 默认调用本地程序，再由 Codex 解释，无需额外中转站密钥；详情见 [Skill 使用规则](skills/fortune-agent/SKILL.md)。这是主分支新增功能，历史发行包保留发布时内容。
+
 ```bash
 # 只抽牌，不调用模型
 fortune-agent '怎样安排学习？' --spread three --pick 1 15 78 --json
